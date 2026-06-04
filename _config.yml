@@ -1,0 +1,9 @@
+plugins: []
+include:
+  - index.html
+  - insigne-embed.js
+  - manifest.json
+  - manifest.webmanifest
+  - sw.js
+  - logo.png
+  - phonix.png

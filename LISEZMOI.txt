@@ -1,0 +1,35 @@
+CONTRÔLE PARKING — SERVICE GÉNÉRAL (ADC GOURDET)
+=================================================
+
+Dossier : C:\Users\BOUQUET\Documents\controle-vehicules-sg
+
+POUR QUI
+--------
+Responsable service général : rondes parking, véhicules identifiés par badge,
+photos en cas d'écart, rapport WhatsApp.
+
+FONCTIONS
+---------
+• Composition du poste (OP, chef, plantons) + historique par date
+• Rondes parking et incendie, recherche rapide, rapports PDF / mail / WhatsApp
+• Check-list SG (RAS / PB), import Excel ou CSV du parc véhicules
+• Mode clair / sombre, aide découverte, historique des rondes
+
+GITHUB PAGES
+------------
+Voir README.md dans ce dossier.
+
+Fichiers obligatoires à la racine du dépôt :
+  index.html, insigne-embed.js, sw.js, manifest.json, manifest.webmanifest,
+  logo.png, phonix.png, _config.yml
+
+Pages : branche main → dossier / (root)
+URL type : https://VOTRE_COMPTE.github.io/controle-vehicules-sg/
+
+SUR LE TÉLÉPHONE
+----------------
+Installer l'app → Nouvelle ronde → à la fin « Envoyer sur WhatsApp ».
+
+TEST PC : LANCER.bat
+
+Icônes : regen-icons.ps1 si besoin de régénérer.
