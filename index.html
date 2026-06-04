@@ -230,7 +230,8 @@ textarea{min-height:64px;resize:vertical}
 <div class="PAD">
 <p class="HINT" style="margin-top:0">Parc, bâtiments, recherche titulaire et paramètres de l'application.</p>
 <button type="button" class="OUTIL" onclick="ouvrirRecherche('P-OUTILS')"><span class="OUTIL-ICO">🔍</span><span><span class="OUTIL-T">Rechercher un titulaire</span><span class="OUTIL-D">Badge, nom ou prénom</span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-VEH')"><span class="OUTIL-ICO">🚗</span><span><span class="OUTIL-T">Parc véhicules</span><span class="OUTIL-D">Véhicules actifs et bibliothèque</span></span></button>
+<button type="button" class="OUTIL" onclick="show('P-VEH')"><span class="OUTIL-ICO">🚗</span><span><span class="OUTIL-T">Parc véhicules</span><span class="OUTIL-D">Ajouter, importer Excel, ronde parking</span></span></button>
+<button type="button" class="OUTIL" onclick="show('P-BIBLIO')"><span class="OUTIL-ICO">📋</span><span><span class="OUTIL-T">Bibliothèque badges</span><span class="OUTIL-D">Tous les profils importés ou saisis</span></span></button>
 <button type="button" class="OUTIL" onclick="show('P-BAT')"><span class="OUTIL-ICO">🏢</span><span><span class="OUTIL-T">Bâtiments</span><span class="OUTIL-D">Liste pour la ronde incendie</span></span></button>
 <button type="button" class="OUTIL" onclick="show('P-SG-ACT')"><span class="OUTIL-ICO">📝</span><span><span class="OUTIL-T">Personnaliser la check-list</span><span class="OUTIL-D">Ajouter ou retirer des points SG</span></span></button>
 <button type="button" class="OUTIL" id="OUTIL-DISC" onclick="toggleModeDecouverte()"><span class="OUTIL-ICO">💡</span><span><span class="OUTIL-T" id="OUTIL-DISC-T">Aide à la découverte</span><span class="OUTIL-D" id="OUTIL-DISC-D"></span></span></button>
@@ -317,12 +318,11 @@ textarea{min-height:64px;resize:vertical}
 <div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Parc véhicules</span></div>
 </div>
 <div class="PAD">
-<p class="HINT"><b>Parc actif</b> : véhicules contrôlés en ronde parking (max <b id="VEH-MAX-LBL">300</b>). La <b>bibliothèque</b> garde tous les profils enregistrés pour les réutiliser.</p>
+<p class="HINT"><b>Parc actif</b> : véhicules contrôlés en ronde parking (max <b id="VEH-MAX-LBL">300</b>). Liste vide au départ — ajoutez un véhicule ou importez un fichier Excel/CSV (badge, grade, nom, prénom).</p>
 <div id="VEH-LIST"></div>
+<button type="button" id="BTN-AJOUT-VEH" class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%;margin-top:8px" onclick="ajouterVehicule()">+ Ajouter un véhicule</button>
 <button type="button" class="BTN BTN-SML" style="background:#2E7D32;color:#fff;width:100%;margin-top:8px" onclick="show('P-IMPORT-VEH')">📥 Importer Excel / CSV</button>
-<button type="button" class="BTN BTN-SML" style="background:#455A64;color:#fff;width:100%;margin-top:8px" onclick="ouvrirRecherche('P-VEH')">Rechercher (badge / nom)</button>
-<button type="button" class="BTN BTN-SML" style="background:#455A64;color:#fff;width:100%;margin-top:8px" onclick="show('P-BIBLIO')">Bibliothèque véhicules</button>
-<button type="button" class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%;margin-top:8px" onclick="ajouterVehicule()">+ Ajouter au parc actif</button>
+<button type="button" id="BTN-EFFACER-BADGES" class="BTN BTN-SML" style="background:var(--bad);color:#fff;width:100%;margin-top:8px" onclick="effacerListesBadges()">Effacer parc et bibliothèque</button>
 </div>
 </div>
 
@@ -339,7 +339,7 @@ textarea{min-height:64px;resize:vertical}
 <div id="IMPORT-PREVIEW"></div>
 <div id="IMPORT-OPTS-BOX" class="IMPORT-OPTS HIDDEN">
 <label><input type="checkbox" id="IMPORT-BIBLIO" checked> Mettre à jour la <b>bibliothèque</b></label>
-<label><input type="checkbox" id="IMPORT-PARC"> Ajouter aussi au <b>parc actif</b> (ronde parking)</label>
+<label><input type="checkbox" id="IMPORT-PARC" checked> Ajouter aussi au <b>parc actif</b> (ronde parking)</label>
 <label><input type="checkbox" id="IMPORT-REMPLACER" checked> Remplacer les fiches existantes (même n° de badge)</label>
 <button type="button" class="BTN BTN-OK" style="width:100%;margin-top:12px" onclick="appliquerImportVeh()">Appliquer la mise à jour</button>
 </div>
@@ -348,7 +348,7 @@ textarea{min-height:64px;resize:vertical}
 
 <div id="P-BIBLIO" class="SCREEN HIDDEN">
 <div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P-VEH')">← Parc actif</button><span class="HDR-TITLE">Bibliothèque véhicules</span></div>
+<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P-OUTILS')">← Outils</button><span class="HDR-TITLE">Bibliothèque véhicules</span></div>
 </div>
 <div class="PAD">
 <p class="HINT">Répertoire permanent : badge, titulaire, véhicule, place. Ajoutez ici ou via le parc actif. Max <b id="BIBLIO-MAX-LBL">500</b> fiches.</p>
@@ -356,6 +356,7 @@ textarea{min-height:64px;resize:vertical}
 <button type="button" class="BTN BTN-SML" style="background:#546E7A;color:#fff;width:100%;margin-top:8px" onclick="ouvrirRecherche('P-BIBLIO')">Rechercher (badge / nom)</button>
 <button type="button" class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%;margin-top:8px" onclick="ajouterBiblioVeh()">+ Ajouter à la bibliothèque</button>
 <button type="button" class="BTN BTN-SML" style="background:#455A64;color:#fff;width:100%;margin-top:8px" onclick="syncParcVersBiblio()">Enregistrer tout le parc actif ici</button>
+<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff;width:100%;margin-top:8px" onclick="effacerBiblioVehSeule()">Effacer la bibliothèque</button>
 </div>
 </div>
 
@@ -534,14 +535,6 @@ function defaultBatiments(){
 function loadBat(){try{var b=JSON.parse(localStorage.getItem(BAT_KEY)||'[]');return b.length?b:defaultBatiments();}catch(e){return defaultBatiments();}}
 function saveBat(b){localStorage.setItem(BAT_KEY,JSON.stringify(b));}
 
-function defaultVehicules(){
- return[
-  {id:1,badge:'001',grade:'',nom:'',prenom:'',label:'VL commandement',type:'VL',spot:'A-01',unit:''},
-  {id:2,badge:'002',grade:'',nom:'',prenom:'',label:'VL liaison',type:'VL',spot:'A-02',unit:''},
-  {id:3,badge:'014',grade:'',nom:'',prenom:'',label:'Camion logistique',type:'Camion',spot:'B-03',unit:''},
-  {id:4,badge:'022',grade:'',nom:'',prenom:'',label:'VL visiteurs',type:'VL',spot:'V-05',unit:''}
- ];
-}
 function normaliserVeh(x){
  if(!x)return x;
  if(x.grade===undefined)x.grade='';
@@ -560,9 +553,8 @@ function formatVehPerson(v){
 function loadVeh(){
  try{
   var v=JSON.parse(localStorage.getItem(VEH_KEY)||'[]');
-  if(!v.length)return defaultVehicules();
-  return v.map(normaliserVeh);
- }catch(e){return defaultVehicules();}
+  return Array.isArray(v)?v.map(normaliserVeh):[];
+ }catch(e){return[];}
 }
 function saveVeh(v){localStorage.setItem(VEH_KEY,JSON.stringify(v));}
 function loadParam(){try{return JSON.parse(localStorage.getItem(PARAM_KEY)||'{}');}catch(e){return{};}}
@@ -1812,10 +1804,39 @@ function renderVehicules(){
   h+='<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff" onclick="supprVehicule('+i+')">Supprimer</button></div>';
  });
  var rest=MAX_VEH-v.length;
- document.getElementById('VEH-LIST').innerHTML=h||'<p class="HINT">Aucun véhicule. Ajoutez le parc.</p>';
- var addBtn=document.querySelector('#P-VEH .BTN-SML[onclick*="ajouterVehicule"]');
- if(addBtn)addBtn.textContent=rest>0?'+ Ajouter au parc actif ('+v.length+'/'+MAX_VEH+')':'Parc actif complet ('+MAX_VEH+' max)';
+ document.getElementById('VEH-LIST').innerHTML=h||'<p class="HINT">Aucun véhicule. Utilisez <b>+ Ajouter</b> ou <b>Importer Excel / CSV</b>.</p>';
+ var addBtn=document.getElementById('BTN-AJOUT-VEH');
+ if(addBtn)addBtn.textContent=rest>0?'+ Ajouter un véhicule ('+v.length+'/'+MAX_VEH+')':'Parc complet ('+MAX_VEH+' max)';
  if(addBtn)addBtn.disabled=rest<=0;
+ var clrBtn=document.getElementById('BTN-EFFACER-BADGES');
+ if(clrBtn)clrBtn.style.display=(v.length||loadBiblioVeh().length)?'block':'none';
+}
+function effacerParcVehSeul(){
+ if(!loadVeh().length){alert('Parc actif déjà vide.');return;}
+ if(!confirm('Effacer tous les véhicules du parc actif ?\n(La bibliothèque des badges est conservée.)'))return;
+ saveVeh([]);
+ try{localStorage.removeItem(RONDE_KEY);localStorage.removeItem('sg_ronde_courante');}catch(e){}
+ ronde=null;
+ renderVehicules();
+ alert('Parc actif effacé.');
+}
+function effacerBiblioVehSeule(){
+ if(!loadBiblioVeh().length){alert('Bibliothèque déjà vide.');return;}
+ if(!confirm('Effacer toute la bibliothèque (badges, grades, noms) ?\n(Le parc actif n\'est pas modifié.)'))return;
+ saveBiblioVeh([]);
+ renderBiblioVeh();
+ alert('Bibliothèque effacée.');
+}
+function effacerListesBadges(){
+ var nv=loadVeh().length,nb=loadBiblioVeh().length;
+ if(!nv&&!nb){alert('Aucune liste à effacer.');return;}
+ if(!confirm('Effacer le parc actif ('+nv+' véhicule(s)) et la bibliothèque ('+nb+' fiche(s)) ?\nTous les badges enregistrés seront supprimés.'))return;
+ if(!confirm('Confirmer la suppression définitive ?'))return;
+ saveVeh([]);saveBiblioVeh([]);
+ try{localStorage.removeItem(RONDE_KEY);localStorage.removeItem('sg_ronde_courante');}catch(e){}
+ ronde=null;
+ renderVehicules();renderBiblioVeh();
+ alert('Parc et bibliothèque effacés.');
 }
 function ajouterVehicule(){
  var v=loadVeh();
@@ -1902,10 +1923,10 @@ function syncParcVersBiblio(){
  alert(plein?n+' fiche(s) enregistrée(s). Bibliothèque pleine ('+MAX_BIBLIO_VEH+' max).':n+' fiche(s) enregistrée(s) dans la bibliothèque.');
 }
 var COL_VEH_IMPORT={
- badge:['badge','badges','numero badge','numéro badge','n badge','n° badge','n°','matricule','id','n° matricule'],
- grade:['grade','grades','grade militaire','gr','grade '],
- nom:['nom','name','nom de famille','famille'],
- prenom:['prenom','prénom','prenoms','prénoms','firstname','first name','prenom '],
+ badge:['badge','badges','numero badge','numéro badge','n badge','n° badge','n°','matricule','mat','id','n° matricule','n matricule','n° badge sg'],
+ grade:['grade','grades','grade militaire','gr','titre','rang'],
+ nom:['nom','name','nom de famille','famille','patronyme','nom patronymique'],
+ prenom:['prenom','prénom','prenoms','prénoms','firstname','first name','prenom usuel'],
  label:['vehicule','véhicule','vehicle','description','libelle','libellé','designation','désignation','modele','modèle'],
  type:['type','categorie','catégorie','category','famille vehicule'],
  spot:['place','parking','emplacement','spot','zone','localisation']
@@ -1928,12 +1949,21 @@ function detecterMapColonnesImport(entetes){
 function celluleImport(row,i){
  if(i===undefined||i<0||!row)return '';
  var v=row[i];
- return v===null||v===undefined?'':String(v).trim();
+ if(v===null||v===undefined)return '';
+ if(typeof v==='number'&&!isNaN(v)){
+  if(Number.isInteger(v))return String(v);
+  return String(v).trim();
+ }
+ return String(v).trim();
+}
+function formatBadgeImport(badge){
+ var s=String(badge||'').trim().replace(/\s+/g,'');
+ if(!s)return '';
+ if(/^\d+$/.test(s)&&s.length<3)s=('000'+s).slice(-3);
+ return s;
 }
 function ligneVersVehImport(row,map){
- var badge=celluleImport(row,map.badge);
- if(!badge)return null;
- badge=badge.replace(/\s+/g,'');
+ var badge=formatBadgeImport(celluleImport(row,map.badge));
  if(!badge)return null;
  return{
   badge:badge,
