@@ -469,6 +469,7 @@ textarea{min-height:64px;resize:vertical}
 <button class="BTN BTN-OK BTN-SML" onclick="saveParam();alert('Enregistré')">Enregistré ✓</button>
 <p class="HINT" id="DISC-HINT" style="margin-top:16px"></p>
 <button type="button" id="DISC-TOGGLE" class="BTN BTN-SML" style="width:100%;color:#fff"></button>
+<p class="HINT" id="APP-VERSION-LBL" style="margin-top:20px;text-align:center;font-size:.68em"></p>
 </div>
 </div>
 
@@ -493,6 +494,7 @@ textarea{min-height:64px;resize:vertical}
 
 <script src="insigne-embed.js"></script>
 <script>
+var APP_VERSION='v27';
 var VEH_KEY='sg_vehicules_v1',BIBLIO_VEH_KEY='sg_veh_biblio_v1',BAT_KEY='sg_batiments_v1',RONDE_KEY='sg_ronde_parking',RONDE_INC_KEY='sg_ronde_incendie',ARCH_KEY='sg_archives_v1',PARAM_KEY='sg_params_v1',THEME_KEY='sg_theme_v1',SG_KEY='sg_checklist_v1',SG_META_KEY='sg_checklist_meta_v1',SG_CUSTOM_KEY='sg_checklist_custom_v1',POSTE_KEY='sg_poste_v1',POSTE_HIST_KEY='sg_poste_hist_v1',DISCOVERY_KEY='sg_discovery_v1',MAX_ARCH=20,MAX_VEH=300,MAX_BIBLIO_VEH=500,MAX_POSTE_HIST=400,RONDE_TTL_MS=15*60*1000,DEFAULT_SITE='4° RIISC / SG';
 function loadTheme(){try{return localStorage.getItem(THEME_KEY)==='dark'?'dark':'light';}catch(e){return'light';}}
 function applyTheme(t){
@@ -1151,6 +1153,8 @@ function refreshDiscHint(){
  }
  if(oT)oT.textContent=on?'Masquer l\'aide à la découverte':'Réactiver l\'aide à la découverte';
  if(oD)oD.textContent=on?'Messages doux et reprise 15 min':'Réactiver les explications au démarrage';
+ var ver=document.getElementById('APP-VERSION-LBL');
+ if(ver)ver.textContent='Application '+APP_VERSION+' — badges visuels, import Excel';
 }
 function activerModeDecouverte(){localStorage.removeItem(DISCOVERY_KEY);refreshDiscHint();}
 function desactiverModeDecouverte(){localStorage.setItem(DISCOVERY_KEY,'off');refreshDiscHint();}
