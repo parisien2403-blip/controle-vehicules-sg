@@ -2,2293 +2,810 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Service Général — Parking & incendie</title>
-<meta name="theme-color" content="#1A5276" id="META-THEME-COLOR">
-<script>try{var _t=localStorage.getItem('sg_theme_v1');if(_t)document.documentElement.setAttribute('data-theme',_t);}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>BILAN SECOURISTE - 4° RIISC</title>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Service Général">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Secourisme">
+<meta name="application-name" content="Secourisme">
+<meta name="theme-color" content="#B71C1C">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="apple-touch-icon" href="logo.png">
+<link rel="icon" type="image/jpeg" href="logo.jpg">
+<link rel="apple-touch-icon" href="logo.jpg">
 <style>
-:root{--blue:#1A5276;--blue-d:#0E3A52;--ok:#2E7D32;--warn:#F57C00;--bad:#C62828;--bg:#ECEFF1;--card:#fff;--text:#1a1a1a;--muted:#666;--border:#ddd;--input-bg:#fff;--hint-bg:#fff;--st-bg:#f5f5f5;--spot-bg:#E3F2FD;--shadow:rgba(0,0,0,.08)}
-.BTN-THEME{position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:900;width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,.45);background:rgba(0,0,0,.4);color:#fff;font-size:1.4em;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;padding:0}
-.BTN-THEME:active{transform:scale(.94)}
-html[data-theme="dark"]{--bg:#0f1419;--card:#1c2430;--text:#e8eef4;--muted:#9aa8b8;--border:#3d4f63;--input-bg:#243044;--hint-bg:#1c2430;--st-bg:#243044;--spot-bg:#1a3a52;--shadow:rgba(0,0,0,.35);--blue-d:#5dade2}
-html[data-theme="dark"] .HINT{background:var(--hint-bg);color:var(--muted)}
-html[data-theme="dark"] label{color:var(--muted)}
-html[data-theme="dark"] input,html[data-theme="dark"] select,html[data-theme="dark"] textarea{background:var(--input-bg);border-color:var(--border);color:var(--text)}
-html[data-theme="dark"] .CARD{box-shadow:0 2px 10px var(--shadow)}
-html[data-theme="dark"] .CARD.prob{background:#2a1f1f}
-html[data-theme="dark"] .ST{background:var(--st-bg);border-color:var(--border);color:var(--text)}
-html[data-theme="dark"] .ST.on{background:#1a3a52;color:#90caf9}
-html[data-theme="dark"] .ST.on.ok{background:#1b3320;color:#81c784}
-html[data-theme="dark"] .ST.on.warn{background:#3d2e14;color:#ffb74d}
-html[data-theme="dark"] .ST.on.bad{background:#3d1f1f;color:#ef9a9a}
-html[data-theme="dark"] .SG-OPT{background:var(--st-bg);border-color:var(--border);color:var(--text)}
-html[data-theme="dark"] .SG-OPT.ras.on{background:#1a3a52;color:#90caf9}
-html[data-theme="dark"] .SG-OPT.pb.on{background:#3d1f1f;color:#ef9a9a}
-html[data-theme="dark"] .PROG,html[data-theme="dark"] .RECAP,html[data-theme="dark"] .ARCH,html[data-theme="dark"] .CHK,html[data-theme="dark"] .DT-BOX,html[data-theme="dark"] .FICHE-VEH{background:var(--card)}
-html[data-theme="dark"] .PROG-BAR,html[data-theme="dark"] .PHOTO-ROW img{border-color:var(--border)}
-html[data-theme="dark"] .ARCH-DEL{background:#3d1f1f}
-html[data-theme="dark"] .CHK{border-color:var(--border)}
-html[data-theme="dark"] .CHK.on{background:#1b3320}
-html[data-theme="dark"] .POSTE-ROLE{border-color:var(--border)}
-html[data-theme="dark"] .CR-ENVOI{border-color:var(--border)}
-html[data-theme="dark"] #P-OUTILS .OUTIL{background:var(--card)}
-html[data-theme="dark"] #P-OUTILS .OUTIL:active{background:var(--st-bg)}
-html[data-theme="dark"] #P-OUTILS .OUTIL-ICO{background:var(--st-bg)}
-html[data-theme="dark"] .SPOT{background:var(--spot-bg);color:#90caf9}
-html[data-theme="dark"] .IMPORT-TBL th,html[data-theme="dark"] .IMPORT-TBL td{border-color:var(--border)}
-html[data-theme="dark"] .IMPORT-TBL th{background:var(--st-bg)}
-html[data-theme="dark"] .IMPORT-WRAP{background:var(--card);border-color:var(--border)}
-html[data-theme="dark"] .BTN-THEME{border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.12)}
-html[data-theme="dark"] body{background:var(--bg)}
+:root{--red:#C62828;--red-d:#7f0000;--blue:#1565C0;--navy:#001a33;--ok:#2E7D32;--bg:#E8EAED;--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--text);padding-bottom:calc(20px + env(safe-area-inset-bottom))}
-.SCREEN{max-width:520px;margin:0 auto;min-height:100dvh}
+html{min-height:100%;min-height:100dvh}
+body{font-family:system-ui,sans-serif;margin:0;background:var(--bg);color:#1a1a1a;padding-bottom:calc(62px + var(--safe-bottom));min-height:100%;min-height:100dvh;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;touch-action:manipulation;overscroll-behavior:none}
+.SCREEN{max-width:520px;margin:0 auto;min-height:calc(100dvh - var(--safe-top) - var(--safe-bottom))}
+@media (display-mode:standalone),(display-mode:fullscreen){.SCREEN{max-width:none;width:100%}}
 .HIDDEN{display:none!important}
-#P0{background:linear-gradient(165deg,#0a0a0a 0%,#1a0505 35%,#8B0000 70%,#C62828 100%);color:#fff;text-align:center;padding:calc(20px + env(safe-area-inset-top)) 18px calc(24px + env(safe-area-inset-bottom));min-height:100dvh;display:flex;flex-direction:column;align-items:center}
-#P0 .P0-HERO{flex-shrink:0;margin:36px 0 20px;width:100%;max-width:340px}
-#P0 .BLASON{display:block;width:min(156px,52vw);height:auto;margin:0 auto 10px;filter:drop-shadow(0 0 12px rgba(255,255,255,.35))}
-#P0 .P0-SVC{font-size:1.15em;margin:8px 0 4px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
-#P0 .P0-SITE{display:inline-block;margin-top:8px;padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.28);font-size:.72em;font-weight:600;opacity:.95;max-width:100%}
-#P0 .HOME-BODY{width:100%;max-width:340px;flex:1;display:flex;flex-direction:column;justify-content:center;text-align:left}
-#P0 .HOME-LBL{font-size:.65em;font-weight:800;text-transform:uppercase;letter-spacing:.12em;opacity:.7;margin:0 0 8px 4px}
-#P0 .HOME-LBL+.HOME-LBL,.HOME-SEC+.HOME-SEC{margin-top:18px}
-#P0 .HOME-ACT{display:block;width:100%;margin:0 0 10px;padding:18px 16px;border:none;border-radius:16px;font-weight:800;font-size:.9em;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.28);text-align:left;line-height:1.25}
-#P0 .HOME-ACT .act-sub{display:block;font-size:.68em;font-weight:600;opacity:.85;margin-top:4px;text-transform:none;letter-spacing:0}
-#P0 .act-park{background:#fff;color:#0E3A52}
-#P0 .act-inc{background:linear-gradient(135deg,#ff8a80,#B71C1C);color:#fff}
-#P0 .act-poste{background:rgba(255,255,255,.14);color:#fff;border:2px solid rgba(255,255,255,.35)}
-#P0 .act-sg{background:rgba(66,165,245,.25);color:#fff;border:2px solid rgba(144,202,249,.5)}
-#P0 .HOME-FOOT{margin-top:auto;padding-top:16px;width:100%;max-width:340px}
-#P0 .HOME-CR{width:100%;margin-bottom:10px;padding:14px;border:none;border-radius:14px;background:rgba(255,255,255,.95);color:#0E3A52;font-weight:800;font-size:.82em;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-#P0 .HOME-FOOT-ROW{display:flex;gap:10px}
-#P0 .HOME-FOOT-ROW button{flex:1;padding:12px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.22);color:#fff;font-weight:700;font-size:.75em;cursor:pointer}
-#P0 .HOME-FOOT-ROW button:active{background:rgba(255,255,255,.12)}
-.CR-ENVOI{margin-top:18px;padding-top:16px;border-top:2px solid var(--border)}
-.CR-ENVOI .BTN{margin:8px 0 0;width:100%;max-width:none;border-radius:12px}
-#P-OUTILS .OUTIL{display:flex;align-items:center;gap:14px;width:100%;margin:0 0 10px;padding:16px;border:none;border-radius:14px;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;text-align:left;font:inherit;color:var(--text)}
-#P-OUTILS .OUTIL:active{background:#f5f5f5}
-#P-OUTILS .OUTIL-ICO{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.35em;flex-shrink:0;background:#ECEFF1}
-#P-OUTILS .OUTIL-T{font-weight:800;font-size:.88em;line-height:1.25}
-#P-OUTILS .OUTIL-D{font-size:.72em;color:var(--muted);margin-top:3px;font-weight:500}
-.BADGE-N.inc{background:#B71C1C}
-.APP-HDR{background:var(--blue-d);color:#fff;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+#P0,#P-RESUME{background:radial-gradient(circle at 50% 30%,var(--red-d),var(--navy) 75%);color:#fff;text-align:center;padding:calc(32px + var(--safe-top)) 20px calc(40px + var(--safe-bottom));min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.SEC-LOGO{width:200px;height:auto;margin-bottom:22px;filter:drop-shadow(0 0 15px rgba(255,255,255,.4))}
+#P0 h1,#P-RESUME h1{font-size:1.45em;margin:4px 0;text-transform:uppercase}
+#P0 .P0-UNIT,#P-RESUME .P0-UNIT{font-size:1.45em;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin:0 0 16px;line-height:1.25;max-width:320px}
+.APP-HDR{background:var(--red-d);color:#fff;padding:calc(10px + var(--safe-top)) calc(14px + var(--safe-right)) 10px calc(14px + var(--safe-left));position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.25)}
 .HDR-TOP{display:flex;align-items:center;gap:10px}
-.HDR-TITLE{flex:1;font-weight:800;font-size:.9em;text-transform:uppercase}
-.BTN-BACK{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:8px 12px;font-weight:700;font-size:.76em;cursor:pointer}
-.PAD{padding:14px 12px 28px}
-.BTN{display:block;width:100%;max-width:360px;margin:12px auto 0;padding:15px 18px;border:none;border-radius:50px;font-weight:800;font-size:.85em;text-transform:uppercase;cursor:pointer}
-.BTN-PRI{background:#fff;color:var(--blue-d)}
-.BTN-SEC{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.45)}
-.BTN-OK{background:var(--ok);color:#fff}
-.BTN-WARN{background:var(--warn);color:#fff}
-.BTN-SML{padding:10px 14px;font-size:.72em;margin-top:8px;width:auto;display:inline-block;border-radius:12px}
-.BTN-SML:disabled{opacity:.45;cursor:not-allowed}
-.HINT{font-size:.74em;color:var(--muted);line-height:1.45;margin:0 0 12px;padding:10px 12px;background:var(--hint-bg);border-radius:10px;border-left:4px solid var(--blue)}
-label{display:block;font-size:.7em;font-weight:800;text-transform:uppercase;color:var(--muted);margin:12px 0 4px}
-input,select,textarea{width:100%;padding:12px;border:2px solid var(--border);border-radius:10px;font-size:16px;background:var(--input-bg);color:var(--text)}
-textarea{min-height:64px;resize:vertical}
-.CARD{background:var(--card);border-radius:14px;padding:14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:2px solid transparent}
-.CARD.prob{border-color:var(--bad);background:#FFF5F5}
-.CARD.ok{border-color:var(--ok)}
-.CARD-HDR{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:10px}
-.BADGE-N{background:var(--blue);color:#fff;font-weight:900;font-size:1.1em;padding:8px 14px;border-radius:10px;min-width:52px;text-align:center}
-.CARD-T{font-weight:800;font-size:.9em;line-height:1.3}
-.CARD-M{font-size:.72em;color:var(--muted);margin-top:4px}
-.SPOT{display:inline-block;background:#E3F2FD;color:var(--blue-d);font-weight:800;font-size:.72em;padding:4px 10px;border-radius:8px;margin-top:6px}
-.STATUS-ROW{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.ST{padding:12px 6px;border:2px solid var(--border);border-radius:10px;background:var(--st-bg);font-weight:800;font-size:.68em;text-transform:uppercase;cursor:pointer;text-align:center;color:var(--text)}
-.ST.on{border-color:var(--blue);background:#E3F2FD;color:var(--blue-d)}
-.ST.on.ok{border-color:var(--ok);background:#E8F5E9;color:var(--ok)}
-.ST.on.warn{border-color:var(--warn);background:#FFF3E0;color:#E65100}
-.ST.on.bad{border-color:var(--bad);background:#FFEBEE;color:var(--bad)}
-.PHOTO-ROW{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;align-items:center}
-.PHOTO-ROW img{max-width:80px;max-height:80px;border-radius:8px;object-fit:cover;border:2px solid #ddd}
-.BTN-PHOTO{background:var(--blue);color:#fff;border:none;padding:10px 14px;border-radius:10px;font-weight:700;font-size:.72em;cursor:pointer}
-.PROG{background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:14px;border-left:4px solid var(--blue)}
-.PROG-BAR{height:8px;background:#ddd;border-radius:4px;overflow:hidden;margin-top:8px}
-.PROG-FILL{height:100%;background:var(--ok);transition:width .3s}
-.RECAP{background:#fff;border-radius:12px;padding:14px;font-size:.82em;line-height:1.55;white-space:pre-wrap;border-left:5px solid var(--blue);margin:12px 0}
-.ARCH{background:#fff;border-radius:10px;padding:12px;margin-bottom:8px;border-left:4px solid var(--blue);font-size:.8em}
-.ARCH-HDR{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px}
-.ARCH-HDR b{flex:1;margin:0;line-height:1.35}
-.ARCH-DEL{flex-shrink:0;width:38px;height:38px;border:none;border-radius:10px;background:#FFEBEE;color:var(--bad);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
-.ARCH-DEL:active{background:#ffcdd2}
-.ARCH-DEL .ico{width:20px;height:20px}
-.ARCH-DEL .ico *{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.ARCH-ACT{margin-top:8px}
-.CHK{display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border-radius:10px;margin-bottom:8px;cursor:pointer;border:2px solid #eee}
-.CHK.on{border-color:var(--ok);background:#E8F5E9}
-.CHK input{width:22px;height:22px}
-.SG-ITEM{margin-bottom:12px}
-.SG-TITLE{font-weight:800;font-size:.88em;margin-bottom:8px;line-height:1.3}
-.SG-CHOIX{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.SG-OPT{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 8px;border:2px solid var(--border);border-radius:10px;background:var(--st-bg);font-weight:800;font-size:.72em;text-transform:uppercase;cursor:pointer;text-align:center;color:var(--text)}
-.SG-OPT input{position:absolute;opacity:0;width:0;height:0}
-.SG-OPT.ras.on{border-color:var(--blue);background:#E3F2FD;color:var(--blue-d)}
-.SG-OPT.pb.on{border-color:var(--bad);background:#FFEBEE;color:var(--bad)}
-.SG-ITEM .CARD.ok{border-color:transparent;background:var(--card)}
-.DT-BOX{background:var(--card);border-radius:12px;padding:12px 14px;margin-bottom:14px;border-left:4px solid var(--blue)}
-.POSTE-ROLE{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.POSTE-ROLE:last-child{border-bottom:none}
-.POSTE-ROLE-T{font-weight:800;font-size:.78em;text-transform:uppercase;color:var(--blue-d);margin-bottom:8px}
-.POSTE-HIST{margin-top:12px}
-.SG-OBS-Wrap{margin-top:10px}
-.SG-OBS-Wrap label{font-size:.65em;margin:0 0 4px}
-.SG-OBS-Wrap textarea{min-height:56px;font-size:15px}
-#CAM-OVERLAY{position:fixed;inset:0;z-index:600;background:#000;display:flex;flex-direction:column}
-#CAM-OVERLAY.HIDDEN{display:none!important}
-#CAM-VIDEO{flex:1;width:100%;object-fit:cover;background:#000}
-.CAM-BAR{display:flex;gap:10px;padding:calc(12px + env(safe-area-inset-bottom)) 16px calc(16px + env(safe-area-inset-bottom));background:rgba(0,0,0,.85);justify-content:center;flex-wrap:wrap}
-.CAM-BAR button{padding:14px 22px;border:none;border-radius:12px;font-weight:800;font-size:.85em;cursor:pointer}
-.CAM-SNAP{background:var(--ok);color:#fff;flex:1;max-width:200px}
-.CAM-CANCEL{background:#444;color:#fff}
-#REMIND-OVERLAY{position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.82);display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom))}
-#REMIND-OVERLAY.HIDDEN{display:none!important}
-.REMIND-BOX{width:100%;max-width:380px;text-align:center}
-.REMIND-TITLE{font-size:1.2em;font-weight:800;color:#fff;margin:0 0 12px;text-transform:uppercase;letter-spacing:.04em;line-height:1.3}
-.REMIND-MSG{font-size:.95em;color:rgba(255,255,255,.92);line-height:1.45;margin:0 0 28px}
-.REMIND-BTN{display:block;width:100%;margin:14px 0 0;padding:20px 18px;border:none;border-radius:16px;font-weight:800;font-size:.92em;text-transform:uppercase;letter-spacing:.03em;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.4)}
-.REMIND-BTN.continue.park{background:#fff;color:#0E3A52}
-.REMIND-BTN.continue.inc{background:linear-gradient(135deg,#ff8a80,#B71C1C);color:#fff}
-.REMIND-BTN.continue.sg{background:linear-gradient(135deg,#42A5F5,#1565C0);color:#fff}
-.REMIND-BTN.menu{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.55)}
-.REMIND-BTN.abandon{background:rgba(255,255,255,.1);color:#ffcdd2;border:2px solid rgba(255,180,180,.45)}
-.REMIND-NOTE{font-size:.78em;color:rgba(255,255,255,.8);line-height:1.45;margin:-8px 0 20px;font-weight:500;text-transform:none}
-.REMIND-NOTE.HIDDEN{display:none!important}
-.SEARCH-INP{margin-bottom:14px}
-.FICHE-VEH{background:#fff;border-radius:16px;padding:20px 16px;margin-bottom:12px;border-left:5px solid var(--blue);text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-.FICHE-VEH .BADGE-N{font-size:1.35em;padding:12px 20px;margin:0 auto 12px;display:inline-block}
-.FICHE-VEH .FICHE-PERS{font-size:1.12em;font-weight:800;margin:0 0 10px;color:var(--blue-d);line-height:1.35}
-.FICHE-VEH .FICHE-L{font-size:.85em;color:var(--muted);line-height:1.45;margin:4px 0}
-.BTN-RONDE-SEARCH{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 14px;margin:0 0 10px;border:none;border-radius:14px;background:var(--blue);color:#fff;font-weight:800;font-size:.88em;text-transform:uppercase;cursor:pointer;box-shadow:0 4px 14px rgba(26,82,118,.35)}
-.BTN-RONDE-SEARCH.inc{background:linear-gradient(135deg,#ff8a80,#B71C1C);box-shadow:0 4px 14px rgba(183,28,28,.35)}
-#RONDE-INC-SEARCH-PANEL{margin-bottom:14px}
-#RONDE-INC-SEARCH-PANEL.HIDDEN{display:none!important}
-#RONDE-INC-QUICK{margin-top:8px}
-#RONDE-INC-QUICK .RONDE-FOCUS{border-width:3px;box-shadow:0 4px 16px rgba(183,28,28,.25)}
-.BTN-RONDE-SEARCH .ico{width:22px;height:22px}
-.BTN-RONDE-SEARCH .ico *{stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round}
-#RONDE-SEARCH-PANEL{margin-bottom:14px}
-#RONDE-SEARCH-PANEL.HIDDEN{display:none!important}
-#RONDE-QUICK{margin-top:8px}
-#RONDE-QUICK .RONDE-FOCUS{border-width:3px;box-shadow:0 4px 16px rgba(26,82,118,.2)}
-.RONDE-PICK{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.RONDE-PICK .BTN-SML{margin:0;flex:1 1 45%;min-width:120px}
-.IMPORT-TBL{width:100%;border-collapse:collapse;font-size:.72em}
-.IMPORT-TBL th,.IMPORT-TBL td{border:1px solid #ddd;padding:6px 4px;text-align:left}
-.IMPORT-TBL th{background:#ECEFF1;font-weight:800;position:sticky;top:0}
-.IMPORT-WRAP{max-height:50vh;overflow:auto;margin:12px 0;border-radius:10px;border:1px solid #ddd;background:#fff}
-.IMPORT-OPTS{margin:12px 0}
-.IMPORT-OPTS label{display:flex;align-items:center;gap:8px;font-size:.78em;text-transform:none;font-weight:600;color:var(--text);margin:8px 0}
-.IMPORT-OPTS input{width:18px;height:18px}
+.BTN-BACK{background:rgba(255,255,255,.15);border:none;color:#fff;border-radius:8px;padding:8px 12px;font-weight:bold;font-size:.8em;cursor:pointer}
+.HDR-TITLE{flex:1;font-weight:800;font-size:1em;text-transform:uppercase}
+.CHK-BOX{width:26px;height:26px;flex-shrink:0;border:3px solid currentColor;border-radius:5px;display:flex;align-items:center;justify-content:center;box-sizing:border-box;font-size:18px;font-weight:900;line-height:1}
+.CHK-BAR.on .CHK-BOX::after{content:'✕'}
+.CHK-BAR{display:flex;align-items:center;gap:10px;background:var(--red-d);border:2px solid var(--red);border-radius:10px;padding:12px 14px;margin-bottom:14px;cursor:pointer;color:#fff}
+.CHK-BAR.on{background:#fff;border-color:var(--red);color:var(--red-d)}
+.CHK-BAR-T{font-size:.82em;font-weight:800;line-height:1.35;color:inherit}
+.CHK-BAR-D{font-size:.72em;color:rgba(255,255,255,.88);font-weight:600;margin-top:2px}
+.CHK-BAR.on .CHK-BAR-D{color:#666}
+input.inp-off,textarea.inp-off{background:#eee;color:#888;pointer-events:none}
+.BTN-ICON-H{background:none;border:none;color:#fff;font-size:1.25em;cursor:pointer}
+.HUB-PAD{padding:14px 12px 80px}
+.HUB-STATUS-LBL{font-size:.65em;font-weight:800;text-transform:uppercase;color:#888;margin-bottom:4px;letter-spacing:.5px}
+.HUB-STATUS{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:.78em;border-left:4px solid var(--blue);line-height:1.45}
+.HUB-STATUS.empty{border-left-color:#ccc;color:#666;font-style:italic}
+.HUB-HINT{text-align:center;font-size:.8em;color:#555;margin-bottom:12px;font-weight:600}
+.HUB-GRID{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.TILE{background:#fff;border-radius:16px;border:none;padding:20px 12px;cursor:pointer;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1);position:relative}
+.TILE-STEP{position:absolute;top:8px;left:8px;background:var(--blue);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.62em;font-weight:900;line-height:22px;z-index:1}
+.TILE-DONE .TILE-STEP{background:var(--ok)}
+.TILE-NEXT{box-shadow:0 0 0 3px var(--blue),0 2px 14px rgba(21,101,192,.35)}
+.HUB-ORDER{background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:.72em;line-height:1.55;border-left:4px solid var(--blue)}
+.HUB-ORDER b{color:var(--blue)}
+.BTN-NEXT{margin-top:16px}
+.TILE:active{transform:scale(.96)}
+.TILE-ICO{font-size:2.6em;display:block;margin-bottom:8px}
+.TILE-LBL{font-size:.72em;font-weight:800;text-transform:uppercase;color:#333}
+.TILE-URG{border:3px solid var(--red);background:#FFF5F5}
+.BADGE{position:absolute;top:8px;right:8px;width:10px;height:10px;border-radius:50%;background:#ccc}
+.BADGE.ok{background:var(--ok)}.BADGE.alert{background:var(--red)}
+.SUBTABS{display:flex;background:#fff;border-bottom:2px solid #ddd;overflow-x:auto;position:sticky;top:48px;z-index:90}
+.SUBTAB{flex:1;padding:12px 8px;border:none;background:transparent;font-weight:bold;font-size:.72em;text-transform:uppercase;color:#777;cursor:pointer;border-bottom:3px solid transparent}
+.SUBTAB.on{color:var(--blue);border-bottom-color:var(--blue);background:#F0F7FF}
+.PANEL{padding:14px 12px 90px}
+label{display:block;font-weight:700;font-size:.72em;color:#555;margin:14px 0 5px;text-transform:uppercase}
+input,select,textarea{width:100%;padding:13px;border:2px solid #ccc;border-radius:10px;font-size:16px;background:#fff;margin-bottom:4px;-webkit-appearance:none}
+textarea{min-height:70px;resize:vertical;font-family:inherit}
+.CHOICES{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.CHOICE{padding:14px 10px;border:2px solid #ccc;border-radius:10px;background:#f7f7f7;font-weight:700;font-size:.8em;cursor:pointer;text-align:center;flex:1;min-width:calc(50% - 6px)}
+.CHOICE.on{background:var(--blue);color:#fff;border-color:#0D47A1}
+.CHOICE.red.on{background:var(--red);border-color:var(--red-d);color:#fff}
+.CHOICE.wide-btn{min-width:100%;text-align:left;line-height:1.35;padding:14px 12px}
+.CHOICE.wide-btn small{display:block;font-weight:600;opacity:.85;margin-top:2px}
+.BIG-URG{display:grid;gap:8px}
+.BU{display:flex;align-items:center;gap:12px;padding:14px;border:2px solid #ddd;border-radius:12px;background:#fafafa;cursor:pointer;text-align:left}
+.BU.on{border-color:var(--red);background:#FFEBEE}
+.BU-ICO{font-size:1.6em}
+ .BU-TXT{font-size:.85em;font-weight:700;line-height:1.3}
+ .BU-D{font-size:.72em;color:#666;font-weight:400}
+.TALKIE{background:#0d0d0d;color:#69F0AE;border:3px solid var(--red);border-radius:14px;padding:18px;font-size:1.1em;line-height:1.55;font-weight:600;white-space:pre-wrap;max-height:55vh;overflow-y:auto}
+.TALKIE-CTL{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;justify-content:center}
+.TALKIE-CTL .BTN{flex:1;min-width:138px;margin:0}
+.BTN{display:block;width:100%;padding:15px;border:none;border-radius:10px;font-weight:800;font-size:.88em;text-transform:uppercase;cursor:pointer;margin-top:10px}
+.BTN-PRI{background:var(--red);color:#fff}
+.BTN-SEC{background:#546E7A;color:#fff}
+.BTN-BLU{background:var(--blue);color:#fff}
+.BTN-ORG{background:#F39C12;color:#fff}
+.BTN-WHITE{background:#fff;color:var(--navy)}
+.BTN-SML{display:inline-block;width:auto;padding:10px 16px;font-size:.78em;margin:0 6px 8px 0}
+.BIB-PAD{padding:14px 12px 80px}
+.BIB-ITEM{background:#fff;border-radius:10px;border-left:4px solid var(--blue);padding:12px;margin-bottom:10px;cursor:pointer;box-shadow:0 1px 6px rgba(0,0,0,.08)}
+.BIB-HDR{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-weight:800;font-size:.8em}
+.BIB-META{font-size:.72em;color:#666;font-weight:600;margin-top:4px}
+.BIB-DEL{background:var(--red);color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:.72em;font-weight:800;cursor:pointer;flex-shrink:0}
+.BIB-TXT{background:#0d0d0d;color:#69F0AE;border-radius:8px;padding:12px;font-size:.82em;line-height:1.5;white-space:pre-wrap;margin-top:10px;display:none}
+.BIB-ITEM.open .BIB-TXT{display:block}
+.BIB-EMPTY{text-align:center;color:#666;font-size:.85em;padding:24px 12px;font-style:italic}
+#P0 .BTN-SEC,#P-RESUME .BTN-SEC{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.35)}
+.RESUME-HINT{font-size:.92em;opacity:.92;margin:10px 0 14px;max-width:320px;line-height:1.45}
+.RESUME-SUM{background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.28);border-radius:12px;padding:14px 16px;max-width:320px;width:100%;margin:0 auto 22px;font-size:.86em;line-height:1.55;text-align:left}
+.BOTTOM-NAV{position:fixed;bottom:0;left:0;right:0;background:var(--red-d);display:flex;z-index:200;padding-bottom:var(--safe-bottom);padding-left:var(--safe-left);padding-right:var(--safe-right)}
+.BNAV{flex:1;padding:12px 4px;border:none;background:transparent;color:rgba(255,255,255,.7);font-size:.62em;font-weight:800;text-transform:uppercase;cursor:pointer}
+.BNAV.on{color:#fff;background:rgba(255,255,255,.12)}
+.BNAV-ICO{display:block;font-size:1.35em;margin-bottom:2px}
+.FLOAT-SAMU{position:fixed;bottom:calc(68px + var(--safe-bottom));right:calc(14px + var(--safe-right));background:var(--red);color:#fff;border:3px solid #fff;border-radius:50px;padding:14px 20px;font-weight:900;font-size:.78em;cursor:pointer;z-index:150;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+.CHRONO{position:fixed;top:calc(58px + var(--safe-top));right:calc(12px + var(--safe-right));z-index:250;background:var(--navy);color:#fff;font-family:ui-monospace,monospace;font-weight:900;font-size:1.05em;padding:7px 13px;border-radius:20px;border:2px solid rgba(255,255,255,.35);box-shadow:0 2px 10px rgba(0,0,0,.25);pointer-events:none;letter-spacing:.04em}
+.CHRONO.done{background:var(--ok);border-color:#fff}
+body.dark .CHRONO{background:#0d47a1}
+body.dark .CHRONO.done{background:#1B5E20}
+.SECT-HINT{font-size:.74em;color:#666;margin:0 0 12px;line-height:1.4}
+.CONST-GRID{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;margin-bottom:8px}
+.CONST-GRID label{margin-top:10px}
+.CONST-GRID input{margin-bottom:6px}
+.BODY-MAP{text-align:center;background:#fff;border:2px solid #ddd;border-radius:12px;padding:10px 6px 6px;margin-bottom:8px}
+.BODY-SVG{max-width:200px;width:55%;height:auto;touch-action:manipulation;display:block;margin:0 auto}
+.BODY-ZONE{fill:rgba(21,101,192,.15);stroke:var(--blue);stroke-width:1.2;cursor:pointer}
+.BODY-ZONE.on{fill:rgba(198,40,40,.55);stroke:var(--red);stroke-width:2.5}
+.BODY-ZONE.sel{fill:rgba(21,101,192,.35);stroke:var(--blue);stroke-width:3;stroke-dasharray:4 2}
+.ZONE-PICK{background:#F0F7FF;border:2px solid var(--blue);border-radius:10px;padding:12px;margin:10px 0}
+.ZONE-LIST{margin:6px 0 10px;line-height:1.8}
+.ZONE-TAG{display:inline-flex;align-items:center;gap:4px;background:#FFEBEE;border:1px solid var(--red);color:var(--red-d);border-radius:6px;padding:3px 8px;margin:2px;font-size:.72em;font-weight:800}
+.ZONE-TAG-X{background:var(--red);color:#fff;border:none;border-radius:4px;padding:2px 6px;font-size:.85em;cursor:pointer;font-weight:900;line-height:1}
+body.dark{background:#0a0a0a;color:#FFD700}
+body.dark .BODY-MAP{background:#161616;border-color:#444}
+body.dark .BODY-ZONE{fill:rgba(21,101,192,.25);stroke:#64B5F6}
+body.dark .BODY-ZONE.on{fill:rgba(198,40,40,.6);stroke:#EF5350}
+body.dark .BODY-ZONE.sel{fill:rgba(21,101,192,.4);stroke:#64B5F6}
+body.dark .ZONE-PICK{background:#1a2744;border-color:#64B5F6}
+body.dark .ZONE-TAG{background:#3E0000;border-color:#EF5350;color:#FFCDD2}
+body.dark .TILE,body.dark .HUB-STATUS,body.dark input,body.dark select,body.dark textarea{background:#161616;border-color:#444;color:#FFD700}
+body.dark .CHOICE,body.dark .BU{background:#1a1a1a;border-color:#444;color:#FFD700}
+body.dark .HUB-ORDER{background:#161616;border-color:#64B5F6}
+body.dark .BIB-ITEM{background:#161616;border-color:#64B5F6}
+body.dark .BIB-META{color:#aaa}
 </style>
 </head>
 <body>
 
-<button type="button" id="BTN-THEME" class="BTN-THEME" onclick="toggleTheme()" aria-label="Passer en mode sombre" title="Mode clair / sombre">☀️</button>
-
 <div id="P0" class="SCREEN">
-<div class="P0-HERO">
-<img id="IMG-INSIGNE" src="phonix.png" class="BLASON" alt="4° RIISC">
-<p class="P0-SVC">Service Général</p>
-<p class="P0-SITE" id="P0-SITE">4° RIISC / SG</p>
-</div>
-<div class="HOME-BODY">
-<p class="HOME-LBL">Garde</p>
-<div class="HOME-SEC">
-<button type="button" class="HOME-ACT act-poste" onclick="show('P-POSTE')">Composition du poste<span class="act-sub">OP, chef de poste, plantons</span></button>
-</div>
-<p class="HOME-LBL">Rondes</p>
-<div class="HOME-SEC">
-<button type="button" class="HOME-ACT act-park" onclick="nouvelleRonde()">Ronde parking<span class="act-sub">Contrôle des véhicules sur site</span></button>
-<button type="button" class="HOME-ACT act-inc" onclick="nouvelleRondeInc()">Ronde incendie<span class="act-sub">Bâtiments, issues, extincteurs</span></button>
-</div>
-<p class="HOME-LBL">Contrôle</p>
-<div class="HOME-SEC">
-<button type="button" class="HOME-ACT act-sg" onclick="show('P-SG')">Check-list SG<span class="act-sub">Points RAS / PB — inclus au rapport parking</span></button>
-</div>
-</div>
-<div class="HOME-FOOT">
-<button type="button" class="HOME-CR" onclick="menuEnvoiCrGarde()">📄 Envoyer le CR (PDF / mail)</button>
-<div class="HOME-FOOT-ROW">
-<button type="button" onclick="show('P-ARCH')">Historique</button>
-<button type="button" onclick="show('P-OUTILS')">Outils &amp; réglages</button>
-</div>
-</div>
+<img src="phonix.png" class="SEC-LOGO" alt="Blason 4° RIISC">
+<p class="P0-UNIT">Cellule Secourisme du 4° RIISC</p>
+<h1>Bilan Secouriste</h1>
+<button class="BTN BTN-WHITE" style="max-width:280px;margin-top:24px" onclick="nouveau()">▶ NOUVEAU BILAN</button>
+<button id="BTN-RES" class="BTN BTN-BLU HIDDEN" style="max-width:280px;margin-top:10px" onclick="ouvrirHub()">↩ REPRENDRE</button>
+<button class="BTN BTN-SEC" style="max-width:280px;margin-top:10px" onclick="ouvrirBib()">📚 Bibliothèque CR talkie <span id="BIB-COUNT-P0"></span></button>
 </div>
 
-<div id="P-OUTILS" class="SCREEN HIDDEN">
+<div id="P-RESUME" class="SCREEN HIDDEN">
+<img src="phonix.png" class="SEC-LOGO" alt="Blason 4° RIISC">
+<p class="P0-UNIT">Cellule Secourisme du 4° RIISC</p>
+<h1>Bilan en cours</h1>
+<p class="RESUME-HINT">La tablette a retrouvé un bilan commencé.<br>Que voulez-vous faire ?</p>
+<div id="RESUME-SUM" class="RESUME-SUM">—</div>
+<button class="BTN BTN-WHITE" style="max-width:280px" onclick="reprendre()">↩ CONTINUER LE BILAN</button>
+<button class="BTN BTN-SEC" style="max-width:280px;margin-top:12px" onclick="nouveauDepuisResume()">▶ NOUVEAU BILAN</button>
+</div>
+
+<div id="P-BIB" class="SCREEN HIDDEN">
 <div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Outils &amp; réglages</span></div>
+<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">📚 CR talkie</span><button class="BTN-ICON-H" onclick="toggleTheme()">🌙</button></div>
 </div>
-<div class="PAD">
-<p class="HINT" style="margin-top:0">Parc, bâtiments, recherche titulaire et paramètres de l'application.</p>
-<button type="button" class="OUTIL" onclick="ouvrirRecherche('P-OUTILS')"><span class="OUTIL-ICO">🔍</span><span><span class="OUTIL-T">Rechercher un titulaire</span><span class="OUTIL-D">Badge, nom ou prénom</span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-VEH')"><span class="OUTIL-ICO">🚗</span><span><span class="OUTIL-T">Parc véhicules</span><span class="OUTIL-D">Ajouter, importer Excel, ronde parking</span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-BIBLIO')"><span class="OUTIL-ICO">📋</span><span><span class="OUTIL-T">Bibliothèque badges</span><span class="OUTIL-D">Tous les profils importés ou saisis</span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-BAT')"><span class="OUTIL-ICO">🏢</span><span><span class="OUTIL-T">Bâtiments</span><span class="OUTIL-D">Liste pour la ronde incendie</span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-SG-ACT')"><span class="OUTIL-ICO">📝</span><span><span class="OUTIL-T">Personnaliser la check-list</span><span class="OUTIL-D">Ajouter ou retirer des points SG</span></span></button>
-<button type="button" class="OUTIL" id="OUTIL-DISC" onclick="toggleModeDecouverte()"><span class="OUTIL-ICO">💡</span><span><span class="OUTIL-T" id="OUTIL-DISC-T">Aide à la découverte</span><span class="OUTIL-D" id="OUTIL-DISC-D"></span></span></button>
-<button type="button" class="OUTIL" onclick="show('P-PARAM')"><span class="OUTIL-ICO">⚙️</span><span><span class="OUTIL-T">Paramètres</span><span class="OUTIL-D">Site, responsable, e-mail, WhatsApp</span></span></button>
-</div>
+<div class="BIB-PAD" id="BIB-LIST"></div>
 </div>
 
-<div id="P-RONDE" class="SCREEN HIDDEN">
+<div id="P-HUB" class="SCREEN HIDDEN">
 <div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="quitterRonde()">← Accueil</button><span class="HDR-TITLE">Ronde en cours</span></div>
+<div class="HDR-TOP"><span class="HDR-TITLE">Bilan en cours</span><button class="BTN-ICON-H" onclick="toggleTheme()">🌙</button><button class="BTN-ICON-H" onclick="if(confirm('Effacer?'))reset()">🗑</button></div>
 </div>
-<div class="PAD">
-<div class="PROG" id="RONDE-PROG"></div>
-<div class="DT-BOX">
-<label for="RONDE-DT-HORO">Date et heure de la ronde</label>
-<input type="datetime-local" id="RONDE-DT-HORO" onchange="majRondeParkingDt()">
-</div>
-<button type="button" class="BTN-RONDE-SEARCH" id="BTN-RONDE-SEARCH" onclick="toggleRondeSearchPanel()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Rechercher badge ou nom</button>
-<div id="RONDE-SEARCH-PANEL" class="HIDDEN">
-<label for="RONDE-SEARCH-Q" style="margin:0 0 4px">Recherche rapide</label>
-<input type="search" id="RONDE-SEARCH-Q" class="SEARCH-INP" placeholder="Ex. 014, DUPONT, Jean…" autocomplete="off" oninput="rechercheRondeParking()">
-<button type="button" class="BTN BTN-SML" style="display:block;margin:8px auto 0;background:#eee;color:#333" onclick="fermerRondeSearchPanel()">Fermer la recherche</button>
-<div id="RONDE-QUICK"></div>
-</div>
-<p class="HINT" style="margin-top:4px">Ou parcourez la liste : badge, place, statut <b>Conforme</b> / <b>Mauvaise place</b> / <b>Absent</b> / <b>Autre</b> — photo si écart.</p>
-<div id="RONDE-LIST"></div>
-<button class="BTN BTN-OK" onclick="finRonde()">✓ Terminer et rapport</button>
+<div class="HUB-PAD">
+<p class="HUB-HINT" id="HUB-HINT">—</p>
+<div class="HUB-ORDER" id="HUB-ORDER"></div>
+<div class="HUB-STATUS-LBL">Résumé (se met à jour tout seul)</div>
+<div class="HUB-STATUS" id="HUB-STATUS">—</div>
+<div class="HUB-GRID" id="HUB-GRID"></div>
 </div>
 </div>
 
-<div id="P-RAPPORT" class="SCREEN HIDDEN">
+<div id="P-MOD" class="SCREEN HIDDEN">
 <div class="APP-HDR">
-<div class="HDR-TOP"><button type="button" class="BTN-BACK" id="RAPPORT-BACK" onclick="retourRapport()">← Accueil</button><span class="HDR-TITLE">Rapport de ronde</span></div>
+<div class="HDR-TOP"><button class="BTN-BACK" onclick="ouvrirHub()">← Hub</button><span class="HDR-TITLE" id="MOD-TITLE">—</span><button class="BTN-ICON-H" onclick="toggleTheme()">🌙</button></div>
 </div>
-<div class="PAD">
-<div class="RECAP" id="RAPPORT-TXT"></div>
-<button class="BTN BTN-OK" onclick="partagerWhatsAppPdf()">💬 WhatsApp avec PDF</button>
-<button class="BTN BTN-SML" style="display:block;margin:12px auto;background:#25D366;color:#fff" onclick="partagerWhatsApp()">💬 WhatsApp (texte seul)</button>
-<button class="BTN BTN-SML" style="display:block;margin:12px auto" onclick="copierRapport()">📋 Copier le texte</button>
-<button class="BTN BTN-SML" style="display:block;margin:12px auto;background:var(--blue);color:#fff" onclick="partagerPhotos()">📷 Partager les photos (anomalies)</button>
-<button type="button" class="BTN BTN-SML" style="display:block;margin:12px auto;background:#455A64;color:#fff" onclick="envoyerRapportPdf()">📄 PDF (effectif du poste + horaires)</button>
-<button type="button" class="BTN BTN-SML" style="display:block;margin:12px auto;background:var(--ok);color:#fff" onclick="envoyerRapportEmail()">✉️ E-mail PDF (effectif + horaires)</button>
-<button type="button" class="BTN BTN-OK" style="display:block;margin:16px auto 0;width:100%;max-width:360px" onclick="rapportTermineEtMenu()">✓ C'est terminé — retour au menu</button>
-<p class="HINT" style="text-align:center;margin-top:8px">Confirme la fin de la ronde : elle ne sera plus proposée à la réouverture de l'application.</p>
-</div>
+<div class="SUBTABS HIDDEN" id="SUBTABS"></div>
+<div class="PANEL" id="MOD-PANEL"></div>
 </div>
 
-<div id="P-RONDE-INC" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="quitterRondeInc()">← Accueil</button><span class="HDR-TITLE">Ronde incendie</span></div>
+<div id="BNAV" class="BOTTOM-NAV HIDDEN">
+<button class="BNAV on" onclick="ouvrirHub()"><span class="BNAV-ICO">⊞</span>Hub</button>
+<button class="BNAV" onclick="ouvrirMod('samu')"><span class="BNAV-ICO">📻</span>SAMU</button>
 </div>
-<div class="PAD">
-<div class="PROG" id="RONDE-INC-PROG"></div>
-<div class="DT-BOX" style="border-left-color:#B71C1C">
-<label for="RONDE-INC-DT-HORO">Date et heure de la ronde incendie</label>
-<input type="datetime-local" id="RONDE-INC-DT-HORO" onchange="majRondeIncDt()">
-</div>
-<button type="button" class="BTN-RONDE-SEARCH inc" id="BTN-RONDE-INC-SEARCH" onclick="toggleRondeIncSearchPanel()"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Rechercher code ou bâtiment</button>
-<div id="RONDE-INC-SEARCH-PANEL" class="HIDDEN">
-<label for="RONDE-INC-SEARCH-Q" style="margin:0 0 4px">Recherche rapide</label>
-<input type="search" id="RONDE-INC-SEARCH-Q" class="SEARCH-INP" placeholder="Ex. A, administratif, Nord…" autocomplete="off" oninput="rechercheRondeIncendie()">
-<button type="button" class="BTN BTN-SML" style="display:block;margin:8px auto 0;background:#eee;color:#333" onclick="fermerRondeIncSearchPanel()">Fermer la recherche</button>
-<div id="RONDE-INC-QUICK"></div>
-</div>
-<p class="HINT" style="margin-top:4px">Ou parcourez la liste : statuts <b>Conforme</b>, <b>Extincteur / BAES</b>, <b>Issue / sortie</b>, <b>Autre</b> — photo si écart.</p>
-<div id="RONDE-INC-LIST"></div>
-<button class="BTN BTN-OK" onclick="finRondeInc()">✓ Terminer et rapport</button>
-</div>
-</div>
+<button id="FLOAT-SAMU" class="FLOAT-SAMU HIDDEN" onclick="ouvrirMod('samu')">📻 SAMU</button>
+<div id="CHRONO" class="CHRONO HIDDEN">⏱ 00:00</div>
 
-<div id="P-BAT" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Bâtiments</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Liste des bâtiments à contrôler en <b>ronde incendie</b>. Ajoutez ou retirez selon votre site.</p>
-<div id="BAT-LIST"></div>
-<button class="BTN BTN-SML" style="background:#B71C1C;color:#fff;width:100%" onclick="ajouterBatiment()">+ Ajouter un bâtiment</button>
-</div>
-</div>
-
-<div id="P-VEH" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Parc véhicules</span></div>
-</div>
-<div class="PAD">
-<p class="HINT"><b>Parc actif</b> : véhicules contrôlés en ronde parking (max <b id="VEH-MAX-LBL">300</b>). Liste vide au départ — ajoutez un véhicule ou importez un fichier Excel/CSV (badge, grade, nom, prénom).</p>
-<div id="VEH-LIST"></div>
-<button type="button" id="BTN-AJOUT-VEH" class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%;margin-top:8px" onclick="ajouterVehicule()">+ Ajouter un véhicule</button>
-<button type="button" class="BTN BTN-SML" style="background:#2E7D32;color:#fff;width:100%;margin-top:8px" onclick="show('P-IMPORT-VEH')">📥 Importer Excel / CSV</button>
-<button type="button" id="BTN-EFFACER-BADGES" class="BTN BTN-SML" style="background:var(--bad);color:#fff;width:100%;margin-top:8px" onclick="effacerListesBadges()">Effacer parc et bibliothèque</button>
-</div>
-</div>
-
-<div id="P-IMPORT-VEH" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P-VEH')">← Parc véhicules</button><span class="HDR-TITLE">Import Excel / CSV</span></div>
-</div>
-<div class="PAD">
-<p class="HINT" style="margin-top:0">Fichier <b>.xlsx</b>, <b>.xls</b> ou <b>.csv</b> avec au minimum la colonne <b>Badge</b>. Colonnes reconnues : Grade, Nom, Prénom, Véhicule, Type, Place (séparateur <b>;</b> ou <b>,</b> en CSV).</p>
-<input type="file" id="VEH-IMPORT-FILE" accept=".csv,.xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel,text/csv" class="HIDDEN">
-<button type="button" class="BTN BTN-SML" style="width:100%;background:var(--blue);color:#fff" onclick="document.getElementById('VEH-IMPORT-FILE').click()">Choisir un fichier</button>
-<button type="button" class="BTN BTN-SML" style="width:100%;margin-top:8px;background:#546E7A;color:#fff" onclick="telechargerModeleVeh()">Télécharger un modèle CSV</button>
-<p class="HINT" id="IMPORT-FICHIER-NOM" style="display:none"></p>
-<div id="IMPORT-PREVIEW"></div>
-<div id="IMPORT-OPTS-BOX" class="IMPORT-OPTS HIDDEN">
-<label><input type="checkbox" id="IMPORT-BIBLIO" checked> Mettre à jour la <b>bibliothèque</b></label>
-<label><input type="checkbox" id="IMPORT-PARC" checked> Ajouter aussi au <b>parc actif</b> (ronde parking)</label>
-<label><input type="checkbox" id="IMPORT-REMPLACER" checked> Remplacer les fiches existantes (même n° de badge)</label>
-<button type="button" class="BTN BTN-OK" style="width:100%;margin-top:12px" onclick="appliquerImportVeh()">Appliquer la mise à jour</button>
-</div>
-</div>
-</div>
-
-<div id="P-BIBLIO" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P-OUTILS')">← Outils</button><span class="HDR-TITLE">Bibliothèque véhicules</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Répertoire permanent : badge, titulaire, véhicule, place. Ajoutez ici ou via le parc actif. Max <b id="BIBLIO-MAX-LBL">500</b> fiches.</p>
-<div id="BIBLIO-LIST"></div>
-<button type="button" class="BTN BTN-SML" style="background:#546E7A;color:#fff;width:100%;margin-top:8px" onclick="ouvrirRecherche('P-BIBLIO')">Rechercher (badge / nom)</button>
-<button type="button" class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%;margin-top:8px" onclick="ajouterBiblioVeh()">+ Ajouter à la bibliothèque</button>
-<button type="button" class="BTN BTN-SML" style="background:#455A64;color:#fff;width:100%;margin-top:8px" onclick="syncParcVersBiblio()">Enregistrer tout le parc actif ici</button>
-<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff;width:100%;margin-top:8px" onclick="effacerBiblioVehSeule()">Effacer la bibliothèque</button>
-</div>
-</div>
-
-<div id="P-SEARCH" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button type="button" class="BTN-BACK" id="SEARCH-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Recherche</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Tapez un <b>numéro de badge</b>, un <b>nom</b> ou un <b>prénom</b> — la fiche titulaire s'affiche (bibliothèque + parc actif).</p>
-<label for="VEH-SEARCH-Q">Rechercher</label>
-<input type="search" id="VEH-SEARCH-Q" class="SEARCH-INP" placeholder="Ex. 014, DUPONT, Jean…" autocomplete="off" oninput="filtrerRechercheVeh()">
-<div id="VEH-SEARCH-RESULTS"></div>
-</div>
-</div>
-
-<div id="P-SG" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Contrôles SG</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Pour chaque point : <b>RAS</b> ou <b>PB</b> — rappuyez sur le même bouton pour repasser en <b>gris</b> (non renseigné). Les contrôles apparaissent dans le rapport parking.</p>
-<div class="DT-BOX">
-<label for="SG-DATETIME">Date et heure du contrôle SG</label>
-<input type="datetime-local" id="SG-DATETIME" onchange="saveSgMeta()">
-</div>
-<div id="SG-LIST"></div>
-<button class="BTN BTN-SML" style="display:block;margin:12px auto;background:var(--blue);color:#fff" onclick="show('P-SG-ACT')">📝 Mes actions (ajouter / retirer)</button>
-<button class="BTN BTN-OK" onclick="saveSg();alert('Enregistré.')">Enregistrer la check-list</button>
-<button type="button" class="BTN BTN-SML" style="display:block;margin:12px auto;width:100%;max-width:360px;background:var(--bad);color:#fff" onclick="effacerChecklistSg()">Effacer les choix et commentaires</button>
-</div>
-</div>
-
-<div id="P-SG-ACT" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P-SG')">← Check-list</button><span class="HDR-TITLE">Mes actions SG</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Ajoutez vos propres points de contrôle (en plus de la liste de base). Ils apparaîtront dans la check-list.</p>
-<div id="SG-ACT-LIST"></div>
-<button class="BTN BTN-SML" style="background:var(--blue);color:#fff;width:100%" onclick="ajouterActionSg()">+ Ajouter une action</button>
-</div>
-</div>
-
-<div id="P-ARCH" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Historique</span></div>
-</div>
-<div class="PAD">
-<p class="HINT" id="ARCH-HINT">Rondes terminées avec « Terminer et rapport » (stockées sur cet appareil).</p>
-<div id="ARCH-LIST"></div>
-<button type="button" id="ARCH-CLEAR" class="BTN BTN-SML" style="display:none;margin-top:16px;width:100%;background:var(--bad);color:#fff" onclick="effacerHistorique()">Effacer tout l'historique</button>
-</div>
-</div>
-
-<div id="P-POSTE" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Poste de sécurité</span></div>
-</div>
-<div class="PAD">
-<p class="HINT">Composition du poste de sécurité — <b>4° RIISC</b>. Enregistrez la garde du jour puis retrouvez une composition par date.</p>
-<label>Date de garde</label>
-<input type="date" id="POSTE-DATE-GARDE" onchange="syncPosteDate()">
-<div id="POSTE-ROLES"></div>
-<button type="button" class="BTN BTN-OK" onclick="enregistrerPoste()">Enregistrer la composition</button>
-<button type="button" class="BTN BTN-SML" style="width:100%;margin-top:10px;background:var(--bad);color:#fff" onclick="effacerEffectifPoste()">Effacer l'effectif du poste</button>
-<div class="CR-ENVOI">
-<p class="HINT" style="margin:0 0 8px;padding:8px 10px">Compte-rendu PDF avec <b>effectif du poste</b> et <b>horaires</b> des rondes du jour.</p>
-<button type="button" class="BTN BTN-SML" style="background:#455A64;color:#fff" onclick="if(preparerCrGardePourEnvoi())envoyerRapportPdf()">📄 Télécharger le CR (PDF)</button>
-<button type="button" class="BTN BTN-SML" style="background:var(--ok);color:#fff" onclick="if(preparerCrGardePourEnvoi())envoyerRapportEmail()">✉️ Envoyer le CR par e-mail</button>
-<button type="button" class="BTN BTN-SML" style="background:#25D366;color:#fff" onclick="if(preparerCrGardePourEnvoi())partagerWhatsAppPdf()">💬 WhatsApp (PDF)</button>
-</div>
-<div class="DT-BOX POSTE-HIST" style="margin-top:16px;border-left-color:#5D4037">
-<label for="POSTE-SEARCH-DATE">Retrouver une garde par date</label>
-<input type="date" id="POSTE-SEARCH-DATE">
-<button type="button" class="BTN BTN-SML" style="width:100%;margin-top:8px;background:#5D4037;color:#fff" onclick="chercherPosteParDate()">Afficher cette date</button>
-<div id="POSTE-HIST-RESULT"></div>
-</div>
-</div>
-</div>
-
-<div id="P-PARAM" class="SCREEN HIDDEN">
-<div class="APP-HDR">
-<div class="HDR-TOP"><button class="BTN-BACK" onclick="show('P0')">← Accueil</button><span class="HDR-TITLE">Paramètres</span></div>
-</div>
-<div class="PAD">
-<label>Site / unité</label>
-<input id="PRM-SITE" placeholder="4° RIISC / SG" oninput="saveParam()">
-<label>Responsable (rapport)</label>
-<input id="PRM-RESP" placeholder="ADC GOURDET — Service général" oninput="saveParam()">
-<label>Téléphone WhatsApp (optionnel, indicatif +33)</label>
-<input id="PRM-TEL" type="tel" placeholder="33612345678" oninput="saveParam()">
-<label>E-mail destinataire des CR (PDF)</label>
-<input id="PRM-EMAIL" type="email" placeholder="exemple@armee.fr" oninput="saveParam()">
-<p class="HINT" style="margin-top:4px">Utilisé pour préremplir l'envoi du compte-rendu PDF par e-mail.</p>
-<button class="BTN BTN-OK BTN-SML" onclick="saveParam();alert('Enregistré')">Enregistré ✓</button>
-<p class="HINT" id="DISC-HINT" style="margin-top:16px"></p>
-<button type="button" id="DISC-TOGGLE" class="BTN BTN-SML" style="width:100%;color:#fff"></button>
-</div>
-</div>
-
-<div id="CAM-OVERLAY" class="HIDDEN">
-<video id="CAM-VIDEO" playsinline webkit-playsinline muted autoplay></video>
-<div class="CAM-BAR">
-<button type="button" class="CAM-SNAP" onclick="capturerPhoto()">📷 Prendre la photo</button>
-<button type="button" class="CAM-CANCEL" onclick="fermerCamera()">Annuler</button>
-</div>
-</div>
-<input type="file" id="CAM-FALLBACK" accept="image/*" capture="environment" style="display:none">
-
-<div id="REMIND-OVERLAY" class="HIDDEN" role="dialog" aria-modal="true">
-<div class="REMIND-BOX">
-<p class="REMIND-TITLE" id="REMIND-TITLE">Ronde en cours</p>
-<p class="REMIND-MSG" id="REMIND-MSG"></p>
-<p class="REMIND-NOTE HIDDEN" id="REMIND-NOTE"></p>
-<button type="button" class="REMIND-BTN continue park" id="REMIND-CONT" onclick="rappelContinuer()">Continuer la ronde</button>
-<button type="button" class="REMIND-BTN menu" id="REMIND-MENU" onclick="rappelMenu()">Retour au menu principal</button>
-</div>
-</div>
-
-<script src="insigne-embed.js"></script>
 <script>
-var VEH_KEY='sg_vehicules_v1',BIBLIO_VEH_KEY='sg_veh_biblio_v1',BAT_KEY='sg_batiments_v1',RONDE_KEY='sg_ronde_parking',RONDE_INC_KEY='sg_ronde_incendie',ARCH_KEY='sg_archives_v1',PARAM_KEY='sg_params_v1',THEME_KEY='sg_theme_v1',SG_KEY='sg_checklist_v1',SG_META_KEY='sg_checklist_meta_v1',SG_CUSTOM_KEY='sg_checklist_custom_v1',POSTE_KEY='sg_poste_v1',POSTE_HIST_KEY='sg_poste_hist_v1',DISCOVERY_KEY='sg_discovery_v1',MAX_ARCH=20,MAX_VEH=300,MAX_BIBLIO_VEH=500,MAX_POSTE_HIST=400,RONDE_TTL_MS=15*60*1000,DEFAULT_SITE='4° RIISC / SG';
-function loadTheme(){try{return localStorage.getItem(THEME_KEY)==='dark'?'dark':'light';}catch(e){return'light';}}
-function applyTheme(t){
- t=t==='dark'?'dark':'light';
- document.documentElement.setAttribute('data-theme',t);
- var btn=document.getElementById('BTN-THEME');
- if(btn){
-  btn.textContent=t==='dark'?'🌙':'☀️';
-  btn.setAttribute('aria-label',t==='dark'?'Passer en mode clair':'Passer en mode sombre');
-  btn.title=t==='dark'?'Mode sombre — passer en clair':'Mode clair — passer en sombre';
- }
- var meta=document.getElementById('META-THEME-COLOR');
- if(meta)meta.content=t==='dark'?'#0f1419':'#1A5276';
-}
-function toggleTheme(){
- var t=loadTheme()==='dark'?'light':'dark';
- try{localStorage.setItem(THEME_KEY,t);}catch(e){}
- applyTheme(t);
-}
-var POSTE_ROLES=[
- {id:'op',l:'Officier de Permanence'},
- {id:'chef',l:'Chef de Poste'},
- {id:'p1',l:'Planton 1'},
- {id:'p2',l:'Planton 2'}
+var KEY='secourisme_eleve_v1',ARCHIVE_KEY='secourisme_archive_v1',TALKIE_KEY='sec_talkie',TALKIE_MSG='Kodi ici unité, parlez.',MAX_ARCHIVE=15,modActif=null,zoneActif=null,chronoIv=null,talkieCtx=null,talkieNodes=[];
+var HUB=[
+ {id:'contexte',ico:'📍',lbl:'Contexte'},
+ {id:'urgences',ico:'🚨',lbl:'Urgences'},
+ {id:'etat',ico:'❤️',lbl:'Pouls & constantes'},
+ {id:'victime',ico:'👤',lbl:'Victime'},
+ {id:'gestes',ico:'🩹',lbl:'Gestes'},
+ {id:'samu',ico:'📻',lbl:'SAMU (15)'}
 ];
-window._lastRapportType='';
-var STATUTS=[
- {id:'ok',l:'Conforme',cls:'ok'},
- {id:'mauvaise_place',l:'Mauvaise place',cls:'warn'},
- {id:'absent',l:'Absent',cls:'bad'},
- {id:'autre',l:'Autre',cls:'bad'}
-];
-var STATUTS_INC=[
- {id:'ok',l:'Conforme',cls:'ok'},
- {id:'extincteur',l:'Extincteur / BAES',cls:'warn'},
- {id:'issue',l:'Issue / sortie',cls:'bad'},
- {id:'autre',l:'Autre',cls:'bad'}
-];
-var SG_ITEMS=[
- {id:'eclairage',l:'Éclairage parking OK'},
- {id:'proprete',l:'Propreté parking / déchets'},
- {id:'reserves',l:'Zone livraison libre'}
-];
-var ronde=null,rondeInc=null;
-var _camMode='park';
-var _rondeFocusId=null,_rondeIncFocusId=null;
-
-function defaultBatiments(){
- return[
-  {id:1,code:'A',label:'Bâtiment administratif',zone:'Nord',notes:''},
-  {id:2,code:'B',label:'Bâtiment technique',zone:'Est',notes:''},
-  {id:3,code:'C',label:'Garage / atelier',zone:'Sud',notes:''}
- ];
-}
-function loadBat(){try{var b=JSON.parse(localStorage.getItem(BAT_KEY)||'[]');return b.length?b:defaultBatiments();}catch(e){return defaultBatiments();}}
-function saveBat(b){localStorage.setItem(BAT_KEY,JSON.stringify(b));}
-
-function normaliserVeh(x){
- if(!x)return x;
- if(x.grade===undefined)x.grade='';
- if(x.nom===undefined)x.nom='';
- if(x.prenom===undefined)x.prenom='';
- return x;
-}
-function formatVehPerson(v){
- var g=(v.grade||'').trim(),p=(v.prenom||'').trim(),n=(v.nom||'').trim();
- if(!g&&!p&&!n)return '';
- var s=g;
- if(p)s+=(s?' ':'')+p;
- if(n)s+=(s?' ':'')+n.toUpperCase();
- return s;
-}
-function loadVeh(){
- try{
-  var v=JSON.parse(localStorage.getItem(VEH_KEY)||'[]');
-  return Array.isArray(v)?v.map(normaliserVeh):[];
- }catch(e){return[];}
-}
-function saveVeh(v){localStorage.setItem(VEH_KEY,JSON.stringify(v));}
-function loadParam(){try{return JSON.parse(localStorage.getItem(PARAM_KEY)||'{}');}catch(e){return{};}}
-function saveParam(){
- localStorage.setItem(PARAM_KEY,JSON.stringify({
-  site:document.getElementById('PRM-SITE').value.trim(),
-  resp:document.getElementById('PRM-RESP').value.trim(),
-  tel:document.getElementById('PRM-TEL').value.trim().replace(/\D/g,''),
-  email:document.getElementById('PRM-EMAIL')?document.getElementById('PRM-EMAIL').value.trim():''
- }));
- refreshP0();
-}
-function toDatetimeLocalValue(d){
- if(!d)d=new Date();
- var x=d instanceof Date?d:new Date(d);
- if(isNaN(x.getTime()))x=new Date();
- var p=function(n){return String(n).padStart(2,'0');};
- return x.getFullYear()+'-'+p(x.getMonth()+1)+'-'+p(x.getDate())+'T'+p(x.getHours())+':'+p(x.getMinutes());
-}
-function fmtDateHeureFr(isoOrLocal){
- if(!isoOrLocal)return '—';
- var x=new Date(isoOrLocal);
- if(isNaN(x.getTime())&&String(isoOrLocal).indexOf('T')>0){
-  var p=String(isoOrLocal).split('T');
-  return fmtDateFr(p[0])+' '+p[1].substring(0,5);
- }
- return isNaN(x.getTime())?String(isoOrLocal):x.toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});
-}
-function fmtDateFr(ymd){
- if(!ymd)return '—';
- var p=ymd.split('-');
- if(p.length!==3)return ymd;
- return p[2]+'/'+p[1]+'/'+p[0];
-}
-function loadSgMeta(){try{return JSON.parse(localStorage.getItem(SG_META_KEY)||'{}');}catch(e){return{};}}
-function saveSgMeta(){
- var m=loadSgMeta();
- var el=document.getElementById('SG-DATETIME');
- if(el)m.horodatage=el.value||toDatetimeLocalValue(new Date());
- localStorage.setItem(SG_META_KEY,JSON.stringify(m));
-}
-function syncSgDatetime(){
- var el=document.getElementById('SG-DATETIME');
- if(!el)return;
- var m=loadSgMeta();
- el.value=m.horodatage||toDatetimeLocalValue(new Date());
-}
-function majRondeParkingDt(){
- if(!ronde)return;
- var el=document.getElementById('RONDE-DT-HORO');
- if(!el||!el.value)return;
- ronde.debut=new Date(el.value).toISOString();
- saveRonde();
-}
-function syncRondeParkingDt(){
- var el=document.getElementById('RONDE-DT-HORO');
- if(!el||!ronde)return;
- el.value=toDatetimeLocalValue(ronde.debut||new Date());
-}
-function majRondeIncDt(){
- if(!rondeInc)return;
- var el=document.getElementById('RONDE-INC-DT-HORO');
- if(!el||!el.value)return;
- rondeInc.debut=new Date(el.value).toISOString();
- saveRondeInc();
-}
-function syncRondeIncDt(){
- var el=document.getElementById('RONDE-INC-DT-HORO');
- if(!el||!rondeInc)return;
- el.value=toDatetimeLocalValue(rondeInc.debut||new Date());
-}
-function loadPoste(){try{return JSON.parse(localStorage.getItem(POSTE_KEY)||'null');}catch(e){return null;}}
-function savePosteCourant(p){localStorage.setItem(POSTE_KEY,JSON.stringify(p));}
-function loadPosteHist(){try{var h=JSON.parse(localStorage.getItem(POSTE_HIST_KEY)||'[]');return Array.isArray(h)?h:[];}catch(e){return[];}}
-function savePosteHist(h){localStorage.setItem(POSTE_HIST_KEY,JSON.stringify(h.slice(0,MAX_POSTE_HIST)));}
-function personnePosteStr(p){
- if(!p)return '—';
- var g=(p.grade||'').trim(),pr=(p.prenom||'').trim(),n=(p.nom||'').trim(),s=g;
- if(pr)s+=(s?' ':'')+pr;
- if(n)s+=(s?' ':'')+n.toUpperCase();
- return s||'—';
-}
-function renderPoste(){
- var p=loadPoste(),dg=document.getElementById('POSTE-DATE-GARDE');
- if(dg)dg.value=(p&&p.dateGarde)||toDatetimeLocalValue(new Date()).slice(0,10);
- var h='';
- POSTE_ROLES.forEach(function(r){
-  var x=p&&p.roles?p.roles[r.id]:{};
-  x=x||{};
-  h+='<div class="POSTE-ROLE"><div class="POSTE-ROLE-T">'+esc(r.l)+'</div>';
-  h+='<label>Grade</label><input id="poste-'+r.id+'-g" value="'+esc(x.grade||'')+'" oninput="syncPosteCourantDraft()">';
-  h+='<label>Nom</label><input id="poste-'+r.id+'-n" value="'+esc(x.nom||'')+'" oninput="syncPosteCourantDraft()">';
-  h+='<label>Prénom</label><input id="poste-'+r.id+'-p" value="'+esc(x.prenom||'')+'" oninput="syncPosteCourantDraft()">';
-  h+='</div>';
- });
- document.getElementById('POSTE-ROLES').innerHTML=h;
- document.getElementById('POSTE-HIST-RESULT').innerHTML='';
-}
-function lirePosteDraft(){
- var dg=document.getElementById('POSTE-DATE-GARDE'),roles={};
- POSTE_ROLES.forEach(function(r){
-  roles[r.id]={
-   grade:(document.getElementById('poste-'+r.id+'-g')||{}).value||'',
-   nom:(document.getElementById('poste-'+r.id+'-n')||{}).value||'',
-   prenom:(document.getElementById('poste-'+r.id+'-p')||{}).value||''
-  };
- });
- return{dateGarde:dg?dg.value||toDatetimeLocalValue(new Date()).slice(0,10):'',roles:roles,majLe:new Date().toISOString()};
-}
-function syncPosteCourantDraft(){savePosteCourant(lirePosteDraft());}
-function syncPosteDate(){syncPosteCourantDraft();}
-function enregistrerPoste(){
- var p=lirePosteDraft();
- savePosteCourant(p);
- var hist=loadPosteHist().filter(function(x){return x.dateGarde!==p.dateGarde;});
- hist.unshift(p);
- savePosteHist(hist);
- alert('Composition enregistrée pour le '+fmtDateFr(p.dateGarde)+'.');
-}
-function effacerEffectifPoste(){
- var dg=document.getElementById('POSTE-DATE-GARDE'),ymd=dg?dg.value||dateGardeCourante():dateGardeCourante();
- if(!confirm('Effacer l\'effectif du poste (OP, chef de poste, plantons) pour le '+fmtDateFr(ymd)+' ?\n\nLa composition enregistrée pour cette date sera aussi retirée de l\'historique.'))return;
- var roles={};
- POSTE_ROLES.forEach(function(r){roles[r.id]={grade:'',nom:'',prenom:''};});
- savePosteCourant({dateGarde:ymd,roles:roles,majLe:new Date().toISOString()});
- var hist=loadPosteHist().filter(function(x){return x.dateGarde!==ymd;});
- savePosteHist(hist);
- renderPoste();
- alert('Effectif effacé pour le '+fmtDateFr(ymd)+'.');
-}
-function afficherPosteComposition(p){
- var h='<p class="HINT" style="margin-bottom:8px"><b>Garde du '+esc(fmtDateFr(p.dateGarde))+'</b> — enregistrée le '+esc(fmtDateHeureFr(p.majLe))+'</p>';
- POSTE_ROLES.forEach(function(r){
-  var x=p.roles[r.id]||{};
-  h+='<div class="CARD"><b>'+esc(r.l)+'</b><br>'+esc(personnePosteStr(x))+'</div>';
- });
- document.getElementById('POSTE-HIST-RESULT').innerHTML=h;
-}
-function chercherPosteParDate(){
- var d=document.getElementById('POSTE-SEARCH-DATE').value;
- if(!d){alert('Choisissez une date.');return;}
- var p=loadPosteHist().find(function(x){return x.dateGarde===d;});
- if(!p){document.getElementById('POSTE-HIST-RESULT').innerHTML='<p class="HINT">Aucune composition pour le '+esc(fmtDateFr(d))+'.</p>';return;}
- afficherPosteComposition(p);
-}
-function blocPostePourRapport(dateRef){
- var ymd=dateRef?String(dateRef).slice(0,10):'';
- var p=loadPosteHist().find(function(x){return x.dateGarde===ymd})||loadPoste();
- if(!p||!p.roles)return '';
- var L=['—— COMPOSITION DU POSTE (4° RIISC) ——','Date de garde : '+fmtDateFr(p.dateGarde)];
- POSTE_ROLES.forEach(function(r){L.push('• '+r.l+' : '+personnePosteStr(p.roles[r.id]));});
- return L.join('\n')+'\n';
-}
-function dateGardeCourante(){
- var p=loadPoste();
- if(p&&p.dateGarde)return p.dateGarde;
- return toDatetimeLocalValue(new Date()).slice(0,10);
-}
-function parseHorairesTxt(txt){
- var debut='',fin='';
- (txt||'').split('\n').forEach(function(ln){
-  if(/^Début ronde\s*:/i.test(ln))debut=ln.replace(/^Début ronde\s*:\s*/i,'').trim();
-  if(/^Fin ronde\s*:/i.test(ln))fin=ln.replace(/^Fin ronde\s*:\s*/i,'').trim();
- });
- return{debut:debut,fin:fin};
-}
-function horairesDepuisArch(a){
- if(a.debut)return{debut:a.debut,fin:a.fin||'',iso:true};
- var p=parseHorairesTxt(a.txt||'');
- return{debut:p.debut,fin:p.fin,iso:false};
-}
-function dateArchEntry(a){
- if(a.dateGarde)return a.dateGarde;
- if(a.debut&&String(a.debut).indexOf('T')>0)return String(a.debut).slice(0,10);
- return '';
-}
-function archivesDuJour(ymd){
- return loadArch().filter(function(a){
-  if(dateArchEntry(a)===ymd)return true;
-  var h=horairesDepuisArch(a);
-  if(h.iso&&String(h.debut).slice(0,10)===ymd)return true;
-  return false;
- });
-}
-function collecterHorairesGarde(ymd){
- var rows=[],seen={};
- function add(label,debutVal,finVal,enCours){
-  var key=label+'|'+(debutVal||'');
-  if(seen[key])return;
-  seen[key]=1;
-  var debut=enCours&&!debutVal?'—':(debutVal?(/T/.test(String(debutVal))?fmtDateHeureFr(debutVal):debutVal):'—');
-  var fin=enCours&&!finVal?'En cours':(finVal?(/T/.test(String(finVal))?fmtDateHeureFr(finVal):finVal):'—');
-  var sort=/T/.test(String(debutVal||''))?new Date(debutVal).getTime():Date.now();
-  rows.push({label:label,debut:debut,fin:fin,sort:sort});
- }
- var meta=loadSgMeta();
- if(meta.horodatage&&String(meta.horodatage).slice(0,10)===ymd)add('Check-list SG',meta.horodatage,'',false);
- if(ronde&&String(ronde.debut||'').slice(0,10)===ymd)add('Ronde parking'+(ronde.fin?'':' (en cours)'),ronde.debut,ronde.fin,!ronde.fin);
- if(rondeInc&&String(rondeInc.debut||'').slice(0,10)===ymd)add('Ronde incendie'+(rondeInc.fin?'':' (en cours)'),rondeInc.debut,rondeInc.fin,!rondeInc.fin);
- loadArch().forEach(function(a){
-  if(dateArchEntry(a)!==ymd)return;
-  var h=horairesDepuisArch(a),lbl=a.type==='incendie'?'Ronde incendie (archivée)':'Ronde parking (archivée)';
-  if(h.iso)add(lbl,h.debut,h.fin,false);
-  else if(h.debut)add(lbl,h.debut,h.fin,false);
- });
- rows.sort(function(x,y){return x.sort-y.sort;});
- return rows;
-}
-function blocEnTeteGarde(ymd){
- var L=[];
- var poste=blocPostePourRapport((ymd||dateGardeCourante())+'T12:00:00');
- if(poste)L.push(poste.trim());
- else L.push('—— COMPOSITION DU POSTE (4° RIISC) ——\nDate de garde : '+fmtDateFr(ymd)+'\n(non renseignée)');
- L.push('');
- L.push('');
- L.push('—— HORAIRES DES RONDES ——');
- var hrs=collecterHorairesGarde(ymd);
- if(!hrs.length)L.push('Aucun horaire enregistré pour cette date.');
- else hrs.forEach(function(h){L.push('• '+h.label+' : début '+h.debut+' — fin '+h.fin);});
- return L.join('\n');
-}
-function corpsSansPosteDuplique(txt){
- return(txt||'').replace(/—— COMPOSITION DU POSTE[\s\S]*?(?=\n——|\nDébut ronde|\nRésumé|\n— Fin|$)/,'').trim();
-}
-function texteEnrichiPourPdf(corps,ymd){
- ymd=ymd||dateGardeCourante();
- return blocEnTeteGarde(ymd)+'\n\n'+corpsSansPosteDuplique(corps);
-}
-function getTextePdfCr(){
- var corps=window._lastRapport||'';
- if(window._lastRapportType==='garde')return corps;
- return texteEnrichiPourPdf(corps,dateGardeCourante());
-}
-function buildCrGardeComplet(){
- var ymd=dateGardeCourante(),p=loadParam(),L=[];
- L.push('COMPTE-RENDU DE GARDE — SERVICE GÉNÉRAL');
- L.push((p.site||DEFAULT_SITE)+(p.resp?' — '+p.resp:''));
- L.push('');
- L.push(blocEnTeteGarde(ymd));
- var arch=archivesDuJour(ymd);
- if(arch.length){
-  L.push('');
-  L.push('—— DÉTAIL DES RONDES ——');
-  arch.forEach(function(a,i){
-   if(i)L.push('');
-   L.push(corpsSansPosteDuplique(a.txt||''));
-  });
- }else{
-  L.push('');
-  L.push('—— DÉTAIL ——');
-  L.push('Aucune ronde terminée archivée. Les horaires ci-dessus reprennent les contrôles en cours ou la check-list SG.');
- }
- return L.join('\n');
-}
-function preparerCrGardePourEnvoi(){
- var poste=loadPoste()||loadPosteHist().find(function(x){return x.dateGarde===dateGardeCourante();});
- if(!poste||!POSTE_ROLES.some(function(r){var x=poste.roles[r.id]||{};return(x.nom||'').trim()||(x.prenom||'').trim();})){
-  if(!confirm('La composition du poste n\'est pas renseignée. Envoyer le CR quand même ?'))return false;
- }
- window._lastRapport=buildCrGardeComplet();
- window._lastRapportType='garde';
- window._lastPhotos=[];
- return true;
-}
-function menuEnvoiCrGarde(){
- if(!preparerCrGardePourEnvoi())return;
- var c=prompt('Envoi du CR de garde :\n1 = Télécharger PDF\n2 = E-mail\n3 = WhatsApp (PDF)','1');
- if(c==='2')envoyerRapportEmail();
- else if(c==='3')partagerWhatsAppPdf();
- else envoyerRapportPdf();
-}
-function mailSubject(){
- if(window._lastRapportType==='garde')return 'CR de garde — 4° RIISC / SG';
- if(window._lastRapportType==='incendie')return 'CR ronde INCENDIE — 4° RIISC / SG';
- if(window._lastRapportType==='parking')return 'CR ronde PARKING — 4° RIISC / SG';
- return 'Compte-rendu — 4° RIISC / SG';
-}
-function mailCorps(){
- var t=window._lastRapportType,pj='le compte-rendu';
- if(t==='garde')pj='le compte-rendu de garde (effectif du poste, horaires des rondes et détail des contrôles)';
- else if(t==='incendie')pj='le CR de la ronde INCENDIE (effectif du poste et horaires inclus)';
- else if(t==='parking')pj='le CR de la ronde parking et contrôles SG (effectif du poste et horaires inclus)';
- return 'Bonjour,\n\nVeuillez trouver ci-joint '+pj+'.\n\nCordialement,\n'+(loadParam().resp||'Service Général');
-}
-function getInsigneDataUrl(){
- if(window.INSIGNE_DATA_URL)return window.INSIGNE_DATA_URL;
- var el=document.getElementById('IMG-INSIGNE');
- if(el&&el.src&&el.src.indexOf('data:')===0)return el.src;
- return null;
-}
-function appliquerSrcInsigne(){
- var el=document.getElementById('IMG-INSIGNE');
- if(!el)return;
- if(window.INSIGNE_DATA_URL)el.src=window.INSIGNE_DATA_URL;
- else el.src='phonix.png';
-}
-function chargerInsignePdf(cb){
- var data=getInsigneDataUrl();
- if(data){cb(data);return;}
- var el=document.getElementById('IMG-INSIGNE');
- if(!el){cb(null);return;}
- function done(){
-  if(el.naturalWidth>0&&el.src.indexOf('data:')===0)cb(el.src);
-  else if(el.naturalWidth>0){
-   try{
-    var c=document.createElement('canvas');
-    c.width=el.naturalWidth;c.height=el.naturalHeight;
-    c.getContext('2d').drawImage(el,0,0);
-    cb(c.toDataURL('image/png'));
-   }catch(e){cb(null);}
-  }else cb(null);
- }
- if(el.complete)done();
- else{el.onload=done;el.onerror=function(){cb(null);};}
-}
-function dessinerInsigneEntetePdf(doc,insigne,pageW,m,hdrH){
- if(!insigne)return;
- hdrH=hdrH||30;
- var marge=3,sz=Math.max(10,Math.min(24,hdrH-marge*2));
- var ix=pageW-m-sz-marge,iy=(hdrH-sz)/2;
- var fmt=String(insigne).indexOf('data:image/jpeg')===0?'JPEG':'PNG';
- try{doc.addImage(insigne,fmt,ix,iy,sz,sz);}catch(e){
-  try{doc.addImage(insigne,'PNG',ix,iy,sz,sz);}catch(e2){}
- }
-}
-function dessinerSignaturesPdf(doc,m,pageW,H,yContenu){
- var sigBlock=30,foot=10,gap=4,colW=(pageW-2*m-2*gap)/3,sigTop=H-foot-sigBlock;
- var titres=[
-  "Signature de l'Officier\nde permanence",
-  'Signature du\nChef SG',
-  'Signature du\nC2'
- ];
- doc.setPage(doc.internal.getNumberOfPages());
- var placeDispo=sigTop-yContenu;
- if(placeDispo<sigBlock+2){
-  doc.addPage();
-  yContenu=m;
- }
- doc.setPage(doc.internal.getNumberOfPages());
- sigTop=H-foot-sigBlock;
- doc.setDrawColor(80,80,80);doc.setLineWidth(0.3);
- var boxH=18;
- for(var i=0;i<3;i++){
-  var x=m+i*(colW+gap);
-  doc.rect(x,sigTop,colW,boxH);
-  doc.line(x+3,sigTop+13,x+colW-3,sigTop+13);
-  doc.setFont('helvetica','normal');doc.setFontSize(6);doc.setTextColor(45,45,45);
-  doc.splitTextToSize(titres[i],colW-4).forEach(function(ln,idx){
-   doc.text(ln,x+colW/2,sigTop+boxH+4+idx*2.8,{align:'center'});
-  });
- }
-}
-function genererPdfBlob(titre,texte){
- if(!window.jspdf||!window.jspdf.jsPDF)throw new Error('PDF indisponible');
- return new Promise(function(resolve,reject){
-  chargerInsignePdf(function(insigne){
-   try{
-    var doc=new window.jspdf.jsPDF({unit:'mm',format:'a4'});
-    var m=14,pageW=doc.internal.pageSize.getWidth(),hdrH=30,w=pageW-m*2-28,H=doc.internal.pageSize.getHeight();
-    var foot=10,sigReserve=32,y=0,p=loadParam(),textW=w+28;
-    function limiteContenu(){return H-foot-sigReserve;}
-    function newPage(){doc.addPage();y=m;}
-    function ensure(h){if(y+h>limiteContenu())newPage();}
-    doc.setFillColor(14,58,118);doc.rect(0,0,pageW,hdrH,'F');
-    dessinerInsigneEntetePdf(doc,insigne,pageW,m,hdrH);
-    doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');doc.setFontSize(14);
-    doc.text('4° RIISC — Service Général',m,12,{maxWidth:w});
-    doc.setFontSize(10);doc.text(String(titre||'Compte-rendu'),m,22,{maxWidth:w});
-    y=hdrH+6;doc.setTextColor(40,40,40);doc.setFont('helvetica','normal');doc.setFontSize(8.5);
-    doc.text((p.site||DEFAULT_SITE),m,y);y+=4;
-    doc.setFontSize(8);doc.text('Généré le '+new Date().toLocaleString('fr-FR'),m,y);y+=6;
-    doc.setDrawColor(200,200,200);doc.line(m,y,m+textW,y);y+=5;
-    String(texte||'').split('\n').forEach(function(ln){
-     var raw=ln||'';
-     if(!raw.trim()){ensure(3);y+=3;return;}
-     var isHdr=/^——/.test(raw.trim()),isTitle=/^[A-ZÉÈÊÀÂÎÔÛÇ0-9°]/.test(raw)&&raw.length<80&&!/^•/.test(raw);
-     ensure(isHdr?8:5);
-     if(isHdr){
-      doc.setFont('helvetica','bold');doc.setFontSize(9.5);doc.setTextColor(14,58,118);
-      doc.splitTextToSize(raw.trim(),textW).forEach(function(pg){doc.text(pg,m,y);y+=4.2;});
-      y+=1;doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(40,40,40);
-      return;
-     }
-     if(isTitle&&raw.trim().length>3){
-      doc.setFont('helvetica','bold');doc.setFontSize(9);
-      doc.splitTextToSize(raw,textW).forEach(function(pg){doc.text(pg,m,y);y+=4;});
-      doc.setFont('helvetica','normal');doc.setFontSize(8.5);
-      return;
-     }
-     doc.splitTextToSize(raw,textW).forEach(function(pg){ensure(4);doc.text(pg,m,y);y+=3.8;});
-    });
-    dessinerSignaturesPdf(doc,m,pageW,H,y);
-    var pages=doc.internal.getNumberOfPages();
-    for(var i=1;i<=pages;i++){
-     doc.setPage(i);
-     doc.setFontSize(8);doc.setTextColor(120,120,120);
-     doc.text('4° RIISC / SG — page '+i+'/'+pages,m,H-foot);
-    }
-    resolve(doc.output('blob'));
-   }catch(e){reject(e);}
-  });
- });
-}
-async function partagerWhatsAppPdf(){
- var corps=mailCorps(),sujet=mailSubject();
- try{
-  var blob=await genererPdfBlob(sujet,getTextePdfCr());
-  var fname='CR-'+(window._lastRapportType||'ronde')+'.pdf';
-  var file=new File([blob],fname,{type:'application/pdf'});
-  if(navigator.share){
-   try{
-    if(navigator.canShare&&navigator.canShare({files:[file]})){
-     await navigator.share({title:sujet,text:corps,files:[file]});
-     return;
-    }
-   }catch(ignoreShare){}
-  }
-  var a=document.createElement('a'),url=URL.createObjectURL(blob);
-  a.href=url;a.download=fname;a.click();
-  setTimeout(function(){URL.revokeObjectURL(url);partagerWhatsApp();},500);
-  alert('PDF enregistré. WhatsApp s\'ouvre avec le texte : joignez le PDF au message.');
- }catch(e){alert('WhatsApp PDF : '+e.message);}
-}
-async function envoyerRapportPdf(){
- try{
-  var blob=await genererPdfBlob(mailSubject(),getTextePdfCr());
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;a.download='CR-'+((window._lastRapportType)||'ronde')+'-'+Date.now()+'.pdf';
-  a.click();setTimeout(function(){URL.revokeObjectURL(url);},2000);
- }catch(e){alert('PDF : '+e.message);}
-}
-async function envoyerRapportEmail(){
- var p=loadParam(),email=p.email||'';
- if(!email){email=prompt('Adresse e-mail du destinataire :',email)||'';if(!email)return;p.email=email.trim();document.getElementById('PRM-EMAIL').value=p.email;saveParam();}
- var sujet=mailSubject(),corps=mailCorps();
- try{
-  var blob=await genererPdfBlob(sujet,getTextePdfCr());
-  var fname='CR-'+(window._lastRapportType||'ronde')+'.pdf';
-  var file=new File([blob],fname,{type:'application/pdf'});
-  if(navigator.share){
-   try{
-    if(navigator.canShare&&navigator.canShare({files:[file]})){
-     await navigator.share({files:[file],title:sujet,text:corps});
-     return;
-    }
-   }catch(e){}
-  }
-  var a=document.createElement('a');
-  var url=URL.createObjectURL(blob);
-  a.href=url;a.download=fname;a.click();
-  setTimeout(function(){URL.revokeObjectURL(url);window.location.href='mailto:'+encodeURIComponent(email)+'?subject='+encodeURIComponent(sujet)+'&body='+encodeURIComponent(corps+'\n\n(Pièce jointe : enregistrez le PDF téléchargé puis joignez-le au mail.)');},400);
- }catch(e){alert('E-mail : '+e.message);}
-}
-function loadSgCustom(){try{var c=JSON.parse(localStorage.getItem(SG_CUSTOM_KEY)||'[]');return Array.isArray(c)?c:[];}catch(e){return[];}}
-function saveSgCustom(c){localStorage.setItem(SG_CUSTOM_KEY,JSON.stringify(c));}
-function getAllSgItems(){return SG_ITEMS.concat(loadSgCustom());}
-function loadSg(){try{return JSON.parse(localStorage.getItem(SG_KEY)||'{}');}catch(e){return{};}}
-function getSgEntry(sg,id){
- var v=sg[id];
- if(v&&typeof v==='object'&&(v.s==='ras'||v.s==='pb'||v.s==='ecart'))return{s:v.s==='ecart'?'pb':v.s,obs:(v.obs||'').trim()};
- if(v===true)return{s:'pb',obs:''};
- return{s:'',obs:''};
-}
-function saveSg(){
- var o={};
- getAllSgItems().forEach(function(it){
-  var ras=document.getElementById('sg-ras-'+it.id),pb=document.getElementById('sg-pb-'+it.id),obs=document.getElementById('sg-obs-'+it.id);
-  var s='';
-  if(ras&&ras.checked)s='ras';
-  else if(pb&&pb.checked)s='pb';
-  if(s)o[it.id]={s:s,obs:obs?obs.value.trim():''};
- });
- saveSgMeta();
- localStorage.setItem(SG_KEY,JSON.stringify(o));
-}
-function sgPrep(id,mode){
- var el=document.getElementById(mode==='ras'?'sg-ras-'+id:'sg-pb-'+id);
- if(el)el.dataset.sgWas=el.checked?'1':'0';
-}
-function sgClear(id){
- var ras=document.getElementById('sg-ras-'+id),pb=document.getElementById('sg-pb-'+id),wrap=document.getElementById('sg-obs-wrap-'+id),card=document.getElementById('sg-item-'+id),obs=document.getElementById('sg-obs-'+id);
- if(ras){ras.checked=false;delete ras.dataset.sgWas;ras.parentElement.classList.remove('on');}
- if(pb){pb.checked=false;delete pb.dataset.sgWas;pb.parentElement.classList.remove('on');}
- if(wrap)wrap.classList.add('HIDDEN');
- if(card){card.classList.remove('ok','prob');}
- if(obs)obs.value='';
- saveSg();
-}
-function effacerChecklistSg(){
- if(!confirm('Effacer tous les choix (RAS / PB) et les commentaires de la check-list SG ?'))return;
- localStorage.setItem(SG_KEY,'{}');
- renderSg();
- alert('Check-list effacée.');
-}
-function sgTap(id,mode){
- var el=document.getElementById(mode==='ras'?'sg-ras-'+id:'sg-pb-'+id);
- if(!el)return;
- if(el.dataset.sgWas==='1'){el.checked=false;delete el.dataset.sgWas;sgClear(id);return;}
- delete el.dataset.sgWas;
- var other=document.getElementById(mode==='ras'?'sg-pb-'+id:'sg-ras-'+id);
- if(other){other.checked=false;delete other.dataset.sgWas;other.parentElement.classList.remove('on');}
- sgChoisir(id,mode);
-}
-function sgChoisir(id,mode){
- var ras=document.getElementById('sg-ras-'+id),pb=document.getElementById('sg-pb-'+id),wrap=document.getElementById('sg-obs-wrap-'+id),card=document.getElementById('sg-item-'+id);
- if(ras){ras.checked=mode==='ras';ras.parentElement.classList.toggle('on',mode==='ras');}
- if(pb){pb.checked=mode==='pb';pb.parentElement.classList.toggle('on',mode==='pb');}
- if(wrap)wrap.classList.toggle('HIDDEN',mode!=='pb');
- if(card){card.classList.remove('ok','prob');if(mode==='pb')card.classList.add('prob');}
- saveSg();
-}
-function loadArch(){try{var a=JSON.parse(localStorage.getItem(ARCH_KEY)||'[]');return Array.isArray(a)?a:[];}catch(e){return[];}}
-function saveArch(a){
- var list=a.slice(0,MAX_ARCH);
- try{localStorage.setItem(ARCH_KEY,JSON.stringify(list));return true;}catch(e){return false;}
-}
-function ajouterArch(entry){
- var arch=loadArch();
- arch.unshift(entry);
- if(saveArch(arch))return true;
- entry=Object.assign({},entry,{photos:undefined,photoCount:entry.photoCount||0});
- arch[0]=entry;
- if(saveArch(arch))return true;
- while(arch.length>1){arch.pop();if(saveArch(arch))return true;}
+function stepDone(id){
+ if(!B)return false;
+ var v=B.v;
+ if(id==='contexte')return !!(B.ctx.LIEU&&B.ctx.RELEVEUR);
+ if(id==='urgences')return !!v.AVPU;
+ if(id==='etat')return !!(v.RESPI&&v.POULS&&v.HEMO);
+ if(id==='victime')return !!(v.INCONNUE||v.NOM||Object.keys(v.ZONES||{}).length);
+ if(id==='gestes')return B.GESTES.length>0||!!B.v.SANS_GESTE;
+ if(id==='samu')return stepDone('contexte')&&stepDone('urgences')&&stepDone('etat');
  return false;
 }
-
-var SCREENS=['P0','P-OUTILS','P-RONDE','P-RONDE-INC','P-RAPPORT','P-VEH','P-IMPORT-VEH','P-BIBLIO','P-SEARCH','P-BAT','P-SG','P-SG-ACT','P-ARCH','P-POSTE','P-PARAM'];
-window._importVehRows=[];
-var _searchRetour='P0';
-var _rapportRetour='P0';
-function setRapportRetour(screen){
- _rapportRetour=screen||'P0';
- var btn=document.getElementById('RAPPORT-BACK');
- if(btn)btn.textContent=_rapportRetour==='P-ARCH'?'← Historique':'← Accueil';
+function nextStepId(){
+ for(var i=0;i<HUB.length;i++)if(!stepDone(HUB[i].id))return HUB[i].id;
+ return 'samu';
 }
-function retourRapport(){show(_rapportRetour);}
-var _rappel={onCont:null,onMenu:null};
-function show(id){
- SCREENS.forEach(function(p){document.getElementById(p).classList.toggle('HIDDEN',p!==id);});
- if(id==='P-ARCH')renderArch();
- if(id==='P-VEH')renderVehicules();
- if(id==='P-BIBLIO')renderBiblioVeh();
- if(id==='P-IMPORT-VEH')initEcranImportVeh();
- if(id==='P-SEARCH')initRechercheVeh();
- if(id==='P-PARAM'||id==='P-OUTILS')refreshDiscHint();
- if(id==='P-SG'){syncSgDatetime();renderSg();}
- if(id==='P-POSTE')renderPoste();
- if(id==='P-RONDE')syncRondeParkingDt();
- if(id==='P-RONDE-INC')syncRondeIncDt();
+function hubStepNum(id){for(var i=0;i<HUB.length;i++)if(HUB[i].id===id)return i+1;return 0;}
+function btnSuivant(){
+ if(!modActif||modActif==='samu')return '';
+ var n=hubStepNum(modActif);
+ return '<button type="button" class="BTN BTN-BLU BTN-NEXT" onclick="suivant()">Étape suivante → ('+(n+1)+'/6)</button>';
 }
-function refreshDiscHint(){
- var on=isDiscoveryMode(),el=document.getElementById('DISC-HINT'),btn=document.getElementById('DISC-TOGGLE');
- var oT=document.getElementById('OUTIL-DISC-T'),oD=document.getElementById('OUTIL-DISC-D');
- if(el){
-  el.innerHTML=on?'Mode <b>découverte</b> actif : messages d\'aide et reprise de ronde 15 min.':'Mode découverte <b>désactivé</b> : pas de messages d\'aide à l\'ouverture.';
- }
- if(btn){
-  btn.textContent=on?'Masquer l\'aide à la découverte':'Réactiver l\'aide à la découverte';
-  btn.style.background=on?'#455A64':'var(--blue)';
- }
- if(oT)oT.textContent=on?'Masquer l\'aide à la découverte':'Réactiver l\'aide à la découverte';
- if(oD)oD.textContent=on?'Messages doux et reprise 15 min':'Réactiver les explications au démarrage';
+function suivant(){
+ var i=HUB.findIndex(function(h){return h.id===modActif;});
+ if(i>=0&&i<HUB.length-1)ouvrirMod(HUB[i+1].id);
+ else ouvrirMod('samu');
 }
-function activerModeDecouverte(){localStorage.removeItem(DISCOVERY_KEY);refreshDiscHint();}
-function desactiverModeDecouverte(){localStorage.setItem(DISCOVERY_KEY,'off');refreshDiscHint();}
-function toggleModeDecouverte(){
- if(isDiscoveryMode()){desactiverModeDecouverte();alert('Aide découverte désactivée.');}
- else{activerModeDecouverte();alert('Aide découverte réactivée.');}
-}
-function hideRappel(){document.getElementById('REMIND-OVERLAY').classList.add('HIDDEN');}
-function isDiscoveryMode(){return localStorage.getItem(DISCOVERY_KEY)!=='off';}
-function touchRondeHorodatage(r){if(r)r.savedAt=Date.now();return r;}
-function rondeEstExpiree(r){if(!r||!r.savedAt)return false;return Date.now()-r.savedAt>RONDE_TTL_MS;}
-function showRappel(cfg){
- document.getElementById('REMIND-TITLE').textContent=cfg.title||'En cours';
- document.getElementById('REMIND-MSG').textContent=cfg.msg||'';
- var btn=document.getElementById('REMIND-CONT'),mbtn=document.getElementById('REMIND-MENU'),note=document.getElementById('REMIND-NOTE');
- btn.textContent=cfg.labelContinue||'Continuer le contrôle';
- btn.className='REMIND-BTN continue '+(cfg.theme||'sg');
- if(mbtn){
-  mbtn.textContent=cfg.labelMenu||'Retour au menu principal';
-  mbtn.className='REMIND-BTN menu'+(cfg.menuClass?' '+cfg.menuClass:'');
- }
- if(note){
-  if(cfg.note){note.textContent=cfg.note;note.classList.remove('HIDDEN');}
-  else{note.textContent='';note.classList.add('HIDDEN');}
- }
- _rappel.onCont=cfg.onContinue||null;
- _rappel.onMenu=cfg.onMenu||null;
- document.getElementById('REMIND-OVERLAY').classList.remove('HIDDEN');
-}
-function rappelQuitterRonde(type){
- var park=type==='park';
- if(park?!ronde:!rondeInc){show('P0');return;}
- if(park)saveRonde();else saveRondeInc();
- if(isDiscoveryMode()){
-  showRappel({
-   title:park?'Ronde parking':'Ronde incendie',
-   msg:'Que souhaitez-vous faire ?',
-   labelContinue:'Continuer la ronde',
-   labelMenu:'Abandonner la ronde',
-   menuClass:'abandon',
-   theme:park?'park':'inc',
-   note:'Si vous quittez sans abandonner, la reprise reste possible 15 minutes sur cet appareil (mode découverte).',
-   onContinue:function(){if(park){renderRonde();show('P-RONDE');}else{renderRondeInc();show('P-RONDE-INC');}},
-   onMenu:function(){if(park)clearRondeParking();else clearRondeInc();show('P0');}
-  });
- }else{
-  showRappel({
-   title:park?'Ronde parking':'Ronde incendie',
-   msg:'La progression est enregistrée sur cet appareil.',
-   labelContinue:park?'Continuer la ronde parking':'Continuer la ronde incendie',
-   labelMenu:'Retour au menu',
-   theme:park?'park':'inc',
-   onContinue:function(){if(park){renderRonde();show('P-RONDE');}else{renderRondeInc();show('P-RONDE-INC');}},
-   onMenu:function(){show('P0');}
-  });
- }
-}
-function rapportTermineEtMenu(){
- clearRondeParking();
- clearRondeInc();
- fermerRondeSearchPanel();
- fermerRondeIncSearchPanel();
- setDiscoveryOff();
- hideRappel();
- show('P0');
-}
-function rappelContinuer(){var f=_rappel.onCont;hideRappel();if(f)f();}
-function rappelMenu(){var f=_rappel.onMenu;hideRappel();if(f)f();else show('P0');}
-
-function refreshP0(){
- var p=loadParam(),el=document.getElementById('P0-SITE');
- if(el)el.textContent=p.site||DEFAULT_SITE;
-}
-
-function nouvelleRonde(){
- var veh=loadVeh();
- _rondeFocusId=null;
- ronde={id:Date.now(),debut:new Date().toISOString(),savedAt:Date.now(),checks:veh.map(function(v){return{vehicleId:v.id,status:'',comment:'',photo:null};})};
- localStorage.setItem(RONDE_KEY,JSON.stringify(ronde));
- fermerRondeSearchPanel();
- renderRonde();
- syncRondeParkingDt();
- show('P-RONDE');
-}
-function quitterRonde(){rappelQuitterRonde('park');}
-function saveRonde(){if(ronde){touchRondeHorodatage(ronde);localStorage.setItem(RONDE_KEY,JSON.stringify(ronde));}}
-function clearRondeParking(){
- localStorage.removeItem(RONDE_KEY);
- localStorage.removeItem('sg_ronde_courante');
- ronde=null;
-}
-function clearRondeInc(){
- localStorage.removeItem(RONDE_INC_KEY);
- rondeInc=null;
-}
-function rondeDansArch(rc,type){
- if(!rc)return false;
- return loadArch().some(function(a){return a.type===type&&String(a.id)===String(rc.id);});
-}
-function rondeParkingTerminee(rc){
- if(!rc||!rc.checks||!rc.checks.length)return false;
- return rc.checks.every(function(c){return !!c.status;});
-}
-function loadRondeCourante(){
- try{
-  var r=JSON.parse(localStorage.getItem(RONDE_KEY)||'null');
-  if(!r)r=JSON.parse(localStorage.getItem('sg_ronde_courante')||'null');
-  if(!r)return null;
-  if(!r.savedAt)r.savedAt=Date.now();
-  if(rondeEstExpiree(r)){clearRondeParking();return null;}
-  if(rondeDansArch(r,'parking')){clearRondeParking();return null;}
-  return r;
- }catch(e){return null;}
-}
-function getCheck(vid){return ronde.checks.find(function(c){return c.vehicleId===vid;});}
-var _rondeSearchBtnOuv='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Rechercher badge ou nom';
-var _rondeSearchBtnFerm='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Masquer la recherche';
-function fermerRondeSearchPanel(){
- var pan=document.getElementById('RONDE-SEARCH-PANEL'),inp=document.getElementById('RONDE-SEARCH-Q'),btn=document.getElementById('BTN-RONDE-SEARCH');
- if(pan)pan.classList.add('HIDDEN');
- if(inp)inp.value='';
- renderRondeQuickPanel(null);
- if(btn)btn.innerHTML=_rondeSearchBtnOuv;
-}
-function toggleRondeSearchPanel(){
- var pan=document.getElementById('RONDE-SEARCH-PANEL'),inp=document.getElementById('RONDE-SEARCH-Q'),btn=document.getElementById('BTN-RONDE-SEARCH');
- if(!pan)return;
- if(!pan.classList.contains('HIDDEN')){fermerRondeSearchPanel();return;}
- pan.classList.remove('HIDDEN');
- if(btn)btn.innerHTML=_rondeSearchBtnFerm;
- if(inp){inp.value='';renderRondeQuickPanel(null);setTimeout(function(){inp.focus();},80);}
-}
-function htmlRondeVehBloc(v,c,focus){
- var st=c?c.status:'',cls=st==='ok'?'ok':(st?'prob':'');
- var pers=formatVehPerson(v);
- var h='<div class="CARD '+cls+(focus?' RONDE-FOCUS':'')+'"><div class="CARD-HDR"><div class="BADGE-N">'+esc(v.badge)+'</div><div><div class="CARD-T">'+esc(v.label)+'</div>'+(pers?'<div class="CARD-M" style="font-weight:700;color:var(--text)">'+esc(pers)+'</div>':'')+'<div class="CARD-M">'+esc(v.type)+(v.unit?' · '+esc(v.unit):'')+'</div><span class="SPOT">Place : '+esc(v.spot)+'</span></div></div>';
- h+='<div class="STATUS-ROW">';
- STATUTS.forEach(function(s){
-  h+='<button type="button" class="ST'+(st===s.id?' on '+s.cls:'')+'" onclick="setStatus('+v.id+',\''+s.id+'\')">'+s.l+'</button>';
- });
- h+='</div>';
- if(st&&st!=='ok'){
-  h+='<label style="margin-top:10px">Commentaire</label><textarea placeholder="Ex. mauvaise place, badge illisible…" oninput="setComment('+v.id+',this.value)">'+esc(c?c.comment:'')+'</textarea>';
-  h+='<div class="PHOTO-ROW">';
-  if(c&&c.photo)h+='<img src="'+c.photo+'" alt="photo">';
-  h+='<button type="button" class="BTN-PHOTO" onclick="openCamera('+v.id+',\'park\')">📷 Prendre une photo</button>';
-  h+='</div>';
- }
- h+='</div>';
- return h;
-}
-function renderRondeQuickPanel(vid){
- var el=document.getElementById('RONDE-QUICK');
- if(!el)return;
- if(!vid){el.innerHTML='';_rondeFocusId=null;return;}
- var v=loadVeh().find(function(x){return x.id===vid;});
- if(!v){el.innerHTML='';return;}
- _rondeFocusId=vid;
- var c=getCheck(vid);
- el.innerHTML=htmlRondeVehBloc(v,c,true);
-}
-function selectRondeVeh(vid){
- renderRondeQuickPanel(vid);
- var inp=document.getElementById('RONDE-SEARCH-Q');
- if(inp){var v=loadVeh().find(function(x){return x.id===vid;});if(v)inp.value=v.badge;}
-}
-function rechercheRondeParking(){
- var el=document.getElementById('RONDE-QUICK'),inp=document.getElementById('RONDE-SEARCH-Q');
- if(!el||!inp)return;
- var q=(inp.value||'').trim().toLowerCase();
- if(!q){renderRondeQuickPanel(null);return;}
- var hits=loadVeh().filter(function(v){return vehCorrespondRecherche(v,q);});
- if(!hits.length){el.innerHTML='<p class="HINT">Aucun véhicule du parc actif pour « '+esc(q)+' ».</p>';_rondeFocusId=null;return;}
- if(hits.length===1){renderRondeQuickPanel(hits[0].id);return;}
- var h='<p class="HINT" style="margin-bottom:8px">'+hits.length+' véhicules trouvés :</p><div class="RONDE-PICK">';
- hits.forEach(function(v){
-  var pers=formatVehPerson(v);
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--blue);color:#fff" onclick="selectRondeVeh('+v.id+')">'+esc(v.badge)+(pers?' — '+esc(pers):'')+'</button>';
- });
- h+='</div>';
- el.innerHTML=h;
- _rondeFocusId=null;
-}
-function setStatus(vid,st){
- var c=getCheck(vid);if(!c)return;
- c.status=st;saveRonde();renderRonde();
- if(_rondeFocusId===vid)renderRondeQuickPanel(vid);
-}
-function setComment(vid,val){var c=getCheck(vid);if(c){c.comment=val;saveRonde();if(_rondeFocusId===vid)renderRondeQuickPanel(vid);}}
-var _camVid=null,_camStream=null;
-
-function compressImageToCheck(c,dataUrl,after){
- var img=new Image();
- img.onload=function(){
-  var cv=document.createElement('canvas'),mx=900,ratio=Math.min(1,mx/img.width,mx/img.height);
-  cv.width=img.width*ratio;cv.height=img.height*ratio;
-  cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
-  c.photo=cv.toDataURL('image/jpeg',0.75);
-  if(after)after();
- };
- img.src=dataUrl;
-}
-function afterPhotoSaved(){
- if(_camMode==='inc'){saveRondeInc();renderRondeInc();if(_rondeIncFocusId!=null)renderRondeIncQuickPanel(_rondeIncFocusId);}
- else{saveRonde();renderRonde();if(_rondeFocusId!=null)renderRondeQuickPanel(_rondeFocusId);}
-}
-
-function onPhoto(id,input){
- var c=_camMode==='inc'?getCheckInc(id):getCheck(id);
- if(!c||!input.files||!input.files[0])return;
- var f=input.files[0];
- if(f.size>2500000){alert('Photo trop lourde (max ~2,5 Mo). Refaites une photo plus légère.');return;}
- var r=new FileReader();
- r.onload=function(){compressImageToCheck(c,r.result,afterPhotoSaved);};
- r.readAsDataURL(f);
- input.value='';
-}
-
-function fermerCamera(){
- var ov=document.getElementById('CAM-OVERLAY'),vid=document.getElementById('CAM-VIDEO');
- if(_camStream){_camStream.getTracks().forEach(function(t){t.stop();});_camStream=null;}
- if(vid)vid.srcObject=null;
- ov.classList.add('HIDDEN');
- _camVid=null;
-}
-
-function openCamera(id,mode){
- _camVid=id;
- _camMode=mode||'park';
- if(!window.isSecureContext||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
-  var fb=document.getElementById('CAM-FALLBACK');
-  fb.onchange=function(){onPhoto(id,fb);};
-  fb.click();
-  return;
- }
- var ov=document.getElementById('CAM-OVERLAY'),video=document.getElementById('CAM-VIDEO');
- ov.classList.remove('HIDDEN');
- var opts={video:{facingMode:{ideal:'environment'},width:{ideal:1920},height:{ideal:1080}},audio:false};
- navigator.mediaDevices.getUserMedia(opts).then(function(stream){
-  _camStream=stream;
-  video.srcObject=stream;
-  return video.play();
- }).catch(function(){
-  fermerCamera();
-  var fb=document.getElementById('CAM-FALLBACK');
-  fb.onchange=function(){onPhoto(id,fb);};
-  fb.click();
- });
-}
-
-function capturerPhoto(){
- if(_camVid==null)return;
- var c=_camMode==='inc'?getCheckInc(_camVid):getCheck(_camVid);
- if(!c)return;
- var video=document.getElementById('CAM-VIDEO');
- if(!video.videoWidth){alert('Caméra pas prête. Réessayez.');return;}
- var cv=document.createElement('canvas');
- cv.width=video.videoWidth;cv.height=video.videoHeight;
- cv.getContext('2d').drawImage(video,0,0);
- fermerCamera();
- compressImageToCheck(c,cv.toDataURL('image/jpeg',0.85),afterPhotoSaved);
-}
-
-function renderRonde(){
- if(!ronde){ronde=loadRondeCourante();if(!ronde){show('P0');return;}}
- var veh=loadVeh(),done=0,prob=0;
- ronde.checks.forEach(function(c){if(c.status){done++;if(c.status!=='ok')prob++;}});
- var pct=veh.length?Math.round(100*done/veh.length):0;
- document.getElementById('RONDE-PROG').innerHTML='<div class="PROG-T" style="font-size:.72em;font-weight:800;text-transform:uppercase;color:#555">Progression</div><div class="PROG-BAR"><div class="PROG-FILL" style="width:'+pct+'%"></div></div><div style="font-size:.78em;margin-top:6px">'+done+' / '+veh.length+' véhicules · '+prob+' écart(s)</div>';
- var h='';
- veh.forEach(function(v){
-  var c=getCheck(v.id);
-  h+=htmlRondeVehBloc(v,c,v.id===_rondeFocusId);
- });
- document.getElementById('RONDE-LIST').innerHTML=h;
-}
-
-function buildRapport(r){
- var p=loadParam(),veh=loadVeh(),sg=loadSg(),meta=loadSgMeta(),L=[];
- L.push('RONDE PARKING — SERVICE GÉNÉRAL');
- L.push((p.site||DEFAULT_SITE)+' — '+(p.resp||'Responsable SG'));
- L.push('Début ronde : '+fmtDateHeureFr(r.debut));
- if(r.fin)L.push('Fin ronde : '+fmtDateHeureFr(r.fin));
- var poste=blocPostePourRapport(r.debut);
- if(poste)L.push(poste);
- if(meta.horodatage)L.push('Contrôle SG : '+fmtDateHeureFr(meta.horodatage));
- L.push('');
- var ok=0,ecarts=[];
- r.checks.forEach(function(c){
-  var v=veh.find(function(x){return x.id===c.vehicleId;});
-  if(!v)return;
-  if(c.status==='ok')ok++;
-  else if(c.status)ecarts.push({v:v,c:c});
- });
- L.push('Résumé : '+ok+' conforme(s) · '+ecarts.length+' écart(s) sur '+veh.length+' véhicules');
- L.push('');
- if(ecarts.length){
-  L.push('—— ÉCARTS ——');
-  ecarts.forEach(function(e){
-   var s=STATUTS.find(function(x){return x.id===e.c.status;});
-   var pers=formatVehPerson(e.v);
-   L.push('• Badge '+e.v.badge+(pers?' — '+pers:'')+' — '+e.v.label+' (place prévue : '+e.v.spot+')');
-   L.push('  Statut : '+(s?s.l:e.c.status));
-   if(e.c.comment)L.push('  Note : '+e.c.comment);
-   if(e.c.photo)L.push('  Photo : jointe dans l\'application');
-  });
-  L.push('');
- }
- var sgLines=[];
- getAllSgItems().forEach(function(it){
-  var e=getSgEntry(sg,it.id);
-  if(!e.s)return;
-  if(e.s==='ras')sgLines.push('• '+it.l+' : RAS');
-  else sgLines.push('• '+it.l+' : PB'+(e.obs?'\n  Obs. : '+e.obs:''));
- });
- if(sgLines.length){
-  L.push('—— AUTRES CONTRÔLES SG ——');
-  sgLines.forEach(function(ln){L.push(ln);});
-  L.push('');
- }
- L.push('— Fin du rapport —');
- return L.join('\n');
-}
-
-function finRonde(){
- if(!ronde)return;
- majRondeParkingDt();
- var rest=ronde.checks.filter(function(c){return !c.status;});
- if(rest.length&&!confirm(rest.length+' véhicule(s) sans statut. Terminer quand même ?'))return;
- ronde.fin=new Date().toISOString();
- var txt=buildRapport(ronde);
- var photos=ronde.checks.filter(function(c){return c.photo;}).map(function(c){return c.photo;});
- ronde.rapport=txt;
- if(!ajouterArch({id:ronde.id,type:'parking',h:new Date().toLocaleString('fr-FR')+' — Parking',txt:txt,debut:ronde.debut,fin:ronde.fin,dateGarde:String(ronde.debut||'').slice(0,10),photoCount:photos.length})){
-  alert('Rapport généré, mais l\'historique n\'a pas pu être enregistré (mémoire du téléphone pleine).');
- }
- renderArch();
- clearRondeParking();
- document.getElementById('RAPPORT-TXT').textContent=txt;
- window._lastRapport=txt;
- window._lastPhotos=photos;
- window._lastRapportType='parking';
- setRapportRetour('P0');
- show('P-RAPPORT');
-}
-
-function copierRapport(){
- var t=window._lastRapport||'';
- if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){alert('Rapport copié — collez-le dans WhatsApp.');});
- else prompt('Copiez :',t);
-}
-function partagerWhatsApp(){
- var p=loadParam(),t=encodeURIComponent(window._lastRapport||'');
- var tel=p.tel||'';
- var url=tel?'https://wa.me/'+tel+'?text='+t:'https://wa.me/?text='+t;
- window.open(url,'_blank');
-}
-async function partagerPhotos(){
- var photos=window._lastPhotos||[];
- if(!photos.length){alert('Aucune photo dans cette ronde.');return;}
- if(navigator.share&&navigator.canShare){
-  try{
-   var files=await Promise.all(photos.map(async function(data,i){
-    var res=await fetch(data);var b=await res.blob();
-    return new File([b],'parking-'+(i+1)+'.jpg',{type:'image/jpeg'});
-   }));
-   if(navigator.canShare({files:files}))return navigator.share({title:'Photos parking SG',files:files});
-  }catch(e){}
- }
- alert('Sur votre téléphone : ouvrez la galerie ou rejoignez les photos au message WhatsApp après avoir copié le rapport.');
-}
-
-function nouvelleRondeInc(){
- var bat=loadBat();
- if(!bat.length){alert('Ajoutez au moins un bâtiment dans « Bâtiments ».');show('P-BAT');return;}
- _rondeIncFocusId=null;
- rondeInc={id:Date.now(),debut:new Date().toISOString(),savedAt:Date.now(),checks:bat.map(function(b){return{buildingId:b.id,status:'',comment:'',photo:null};})};
- localStorage.setItem(RONDE_INC_KEY,JSON.stringify(rondeInc));
- fermerRondeIncSearchPanel();
- renderRondeInc();
- syncRondeIncDt();
- show('P-RONDE-INC');
-}
-function quitterRondeInc(){rappelQuitterRonde('inc');}
-function saveRondeInc(){if(rondeInc){touchRondeHorodatage(rondeInc);localStorage.setItem(RONDE_INC_KEY,JSON.stringify(rondeInc));}}
-function loadRondeIncCourante(){
- try{
-  var r=JSON.parse(localStorage.getItem(RONDE_INC_KEY)||'null');
-  if(!r)return null;
-  if(!r.savedAt)r.savedAt=Date.now();
-  if(rondeEstExpiree(r)){clearRondeInc();return null;}
-  if(rondeDansArch(r,'incendie')){clearRondeInc();return null;}
-  return r;
- }catch(e){return null;}
-}
-function rondeIncendieTerminee(rc){
- if(!rc||!rc.checks||!rc.checks.length)return false;
- return rc.checks.every(function(c){return !!c.status;});
-}
-function getCheckInc(bid){return rondeInc.checks.find(function(c){return c.buildingId===bid;});}
-var _rondeIncSearchBtnOuv='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Rechercher code ou bâtiment';
-var _rondeIncSearchBtnFerm='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Masquer la recherche';
-function fermerRondeIncSearchPanel(){
- var pan=document.getElementById('RONDE-INC-SEARCH-PANEL'),inp=document.getElementById('RONDE-INC-SEARCH-Q'),btn=document.getElementById('BTN-RONDE-INC-SEARCH');
- if(pan)pan.classList.add('HIDDEN');
- if(inp)inp.value='';
- renderRondeIncQuickPanel(null);
- if(btn)btn.innerHTML=_rondeIncSearchBtnOuv;
-}
-function toggleRondeIncSearchPanel(){
- var pan=document.getElementById('RONDE-INC-SEARCH-PANEL'),inp=document.getElementById('RONDE-INC-SEARCH-Q'),btn=document.getElementById('BTN-RONDE-INC-SEARCH');
- if(!pan)return;
- if(!pan.classList.contains('HIDDEN')){fermerRondeIncSearchPanel();return;}
- pan.classList.remove('HIDDEN');
- if(btn)btn.innerHTML=_rondeIncSearchBtnFerm;
- if(inp){inp.value='';renderRondeIncQuickPanel(null);setTimeout(function(){inp.focus();},80);}
-}
-function batCorrespondRecherche(b,q){
- return (b.code||'').toLowerCase().indexOf(q)>=0
-  || (b.label||'').toLowerCase().indexOf(q)>=0
-  || (b.zone||'').toLowerCase().indexOf(q)>=0
-  || (b.notes||'').toLowerCase().indexOf(q)>=0;
-}
-function htmlRondeIncBloc(b,c,focus){
- var st=c?c.status:'',cls=st==='ok'?'ok':(st?'prob':'');
- var h='<div class="CARD '+cls+(focus?' RONDE-FOCUS':'')+'"><div class="CARD-HDR"><div class="BADGE-N inc">'+esc(b.code)+'</div><div><div class="CARD-T">'+esc(b.label)+'</div><div class="CARD-M">Zone : '+esc(b.zone||'—')+(b.notes?' · '+esc(b.notes):'')+'</div></div></div>';
- h+='<div class="STATUS-ROW">';
- STATUTS_INC.forEach(function(s){
-  h+='<button type="button" class="ST'+(st===s.id?' on '+s.cls:'')+'" onclick="setStatusInc('+b.id+',\''+s.id+'\')">'+s.l+'</button>';
- });
- h+='</div>';
- if(st&&st!=='ok'){
-  h+='<label style="margin-top:10px">Commentaire</label><textarea placeholder="Ex. extincteur manquant, issue encombrée…" oninput="setCommentInc('+b.id+',this.value)">'+esc(c?c.comment:'')+'</textarea>';
-  h+='<div class="PHOTO-ROW">';
-  if(c&&c.photo)h+='<img src="'+c.photo+'" alt="photo">';
-  h+='<button type="button" class="BTN-PHOTO" style="background:#B71C1C" onclick="openCamera('+b.id+',\'inc\')">📷 Prendre une photo</button>';
-  h+='</div>';
- }
- h+='</div>';
- return h;
-}
-function renderRondeIncQuickPanel(bid){
- var el=document.getElementById('RONDE-INC-QUICK');
- if(!el)return;
- if(!bid){el.innerHTML='';_rondeIncFocusId=null;return;}
- var b=loadBat().find(function(x){return x.id===bid;});
- if(!b){el.innerHTML='';return;}
- _rondeIncFocusId=bid;
- el.innerHTML=htmlRondeIncBloc(b,getCheckInc(bid),true);
-}
-function selectRondeIncBat(bid){
- renderRondeIncQuickPanel(bid);
- var inp=document.getElementById('RONDE-INC-SEARCH-Q'),b=loadBat().find(function(x){return x.id===bid;});
- if(inp&&b)inp.value=b.code;
-}
-function rechercheRondeIncendie(){
- var el=document.getElementById('RONDE-INC-QUICK'),inp=document.getElementById('RONDE-INC-SEARCH-Q');
- if(!el||!inp)return;
- var q=(inp.value||'').trim().toLowerCase();
- if(!q){renderRondeIncQuickPanel(null);return;}
- var hits=loadBat().filter(function(b){return batCorrespondRecherche(b,q);});
- if(!hits.length){el.innerHTML='<p class="HINT">Aucun bâtiment pour « '+esc(q)+' ».</p>';_rondeIncFocusId=null;return;}
- if(hits.length===1){renderRondeIncQuickPanel(hits[0].id);return;}
- var h='<p class="HINT" style="margin-bottom:8px">'+hits.length+' bâtiments trouvés :</p><div class="RONDE-PICK">';
- hits.forEach(function(b){
-  h+='<button type="button" class="BTN BTN-SML" style="background:#B71C1C;color:#fff" onclick="selectRondeIncBat('+b.id+')">'+esc(b.code)+' — '+esc(b.label)+'</button>';
- });
- h+='</div>';
- el.innerHTML=h;
- _rondeIncFocusId=null;
-}
-function setStatusInc(bid,st){
- var c=getCheckInc(bid);if(!c)return;
- c.status=st;saveRondeInc();renderRondeInc();
- if(_rondeIncFocusId===bid)renderRondeIncQuickPanel(bid);
-}
-function setCommentInc(bid,val){
- var c=getCheckInc(bid);
- if(c){c.comment=val;saveRondeInc();if(_rondeIncFocusId===bid)renderRondeIncQuickPanel(bid);}
-}
-
-function renderRondeInc(){
- if(!rondeInc){rondeInc=loadRondeIncCourante();if(!rondeInc){show('P0');return;}}
- var bat=loadBat(),done=0,prob=0;
- rondeInc.checks.forEach(function(c){if(c.status){done++;if(c.status!=='ok')prob++;}});
- var pct=bat.length?Math.round(100*done/bat.length):0;
- document.getElementById('RONDE-INC-PROG').innerHTML='<div class="PROG-T" style="font-size:.72em;font-weight:800;text-transform:uppercase;color:#555">Progression incendie</div><div class="PROG-BAR"><div class="PROG-FILL" style="width:'+pct+'%"></div></div><div style="font-size:.78em;margin-top:6px">'+done+' / '+bat.length+' bâtiments · '+prob+' écart(s)</div>';
- var h='';
- bat.forEach(function(b){
-  h+=htmlRondeIncBloc(b,getCheckInc(b.id),b.id===_rondeIncFocusId);
- });
- document.getElementById('RONDE-INC-LIST').innerHTML=h;
-}
-
-function buildRapportInc(r){
- var p=loadParam(),bat=loadBat(),L=[];
- L.push('RONDE INCENDIE — SERVICE GÉNÉRAL');
- L.push((p.site||DEFAULT_SITE)+' — '+(p.resp||'Responsable SG'));
- L.push('Début ronde : '+fmtDateHeureFr(r.debut));
- if(r.fin)L.push('Fin ronde : '+fmtDateHeureFr(r.fin));
- var poste=blocPostePourRapport(r.debut);
- if(poste)L.push(poste);
- L.push('');
- var ok=0,ecarts=[];
- r.checks.forEach(function(c){
-  var b=bat.find(function(x){return x.id===c.buildingId;});
-  if(!b)return;
-  if(c.status==='ok')ok++;
-  else if(c.status)ecarts.push({b:b,c:c});
- });
- L.push('Résumé : '+ok+' conforme(s) · '+ecarts.length+' écart(s) sur '+bat.length+' bâtiments');
- L.push('');
- if(ecarts.length){
-  L.push('—— ÉCARTS INCENDIE ——');
-  ecarts.forEach(function(e){
-   var s=STATUTS_INC.find(function(x){return x.id===e.c.status;});
-   L.push('• Bât. '+e.b.code+' — '+e.b.label+' (zone '+e.b.zone+')');
-   L.push('  Statut : '+(s?s.l:e.c.status));
-   if(e.c.comment)L.push('  Note : '+e.c.comment);
-   if(e.c.photo)L.push('  Photo : jointe dans l\'application');
-  });
-  L.push('');
- }
- L.push('— Fin du rapport —');
- return L.join('\n');
-}
-
-function finRondeInc(){
- if(!rondeInc)return;
- majRondeIncDt();
- var rest=rondeInc.checks.filter(function(c){return !c.status;});
- if(rest.length&&!confirm(rest.length+' bâtiment(s) sans statut. Terminer quand même ?'))return;
- rondeInc.fin=new Date().toISOString();
- var txt=buildRapportInc(rondeInc);
- var photos=rondeInc.checks.filter(function(c){return c.photo;}).map(function(c){return c.photo;});
- if(!ajouterArch({id:rondeInc.id,type:'incendie',h:new Date().toLocaleString('fr-FR')+' — Incendie',txt:txt,debut:rondeInc.debut,fin:rondeInc.fin,dateGarde:String(rondeInc.debut||'').slice(0,10),photoCount:photos.length})){
-  alert('Rapport généré, mais l\'historique n\'a pas pu être enregistré (mémoire du téléphone pleine).');
- }
- renderArch();
- clearRondeInc();
- document.getElementById('RAPPORT-TXT').textContent=txt;
- window._lastRapport=txt;
- window._lastPhotos=photos;
- window._lastRapportType='incendie';
- setRapportRetour('P0');
- show('P-RAPPORT');
-}
-
-function renderBatiments(){
- var b=loadBat(),h='';
- b.forEach(function(x,i){
-  h+='<div class="CARD"><div class="CARD-HDR"><div class="BADGE-N inc">'+esc(x.code)+'</div><div><div class="CARD-T">'+esc(x.label)+'</div><div class="CARD-M">Zone : '+esc(x.zone||'—')+'</div></div></div>';
-  h+='<button type="button" class="BTN BTN-SML" style="background:#eee;color:#333" onclick="editBatiment('+i+')">Modifier</button> ';
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff" onclick="supprBatiment('+i+')">Supprimer</button></div>';
- });
- document.getElementById('BAT-LIST').innerHTML=h||'<p class="HINT">Aucun bâtiment. Ajoutez-en un.</p>';
-}
-function ajouterBatiment(){
- var c=prompt('Code bâtiment (ex. A, B2) :');if(!c)return;
- var l=prompt('Nom du bâtiment :')||'Bâtiment';
- var z=prompt('Zone (ex. Nord, Caserne…) :')||'—';
- var n=prompt('Remarque (optionnel) :')||'';
- var b=loadBat();
- b.push({id:Date.now(),code:c.trim(),label:l.trim(),zone:z.trim(),notes:n.trim()});
- saveBat(b);renderBatiments();
-}
-function editBatiment(i){
- var b=loadBat(),x=b[i];if(!x)return;
- x.code=prompt('Code :',x.code)||x.code;
- x.label=prompt('Nom :',x.label)||x.label;
- x.zone=prompt('Zone :',x.zone)||x.zone;
- x.notes=prompt('Remarque :',x.notes)||x.notes;
- saveBat(b);renderBatiments();
-}
-function supprBatiment(i){
- if(!confirm('Supprimer ce bâtiment ?'))return;
- var b=loadBat();b.splice(i,1);saveBat(b);renderBatiments();
-}
-
-function loadBiblioVeh(){try{var b=JSON.parse(localStorage.getItem(BIBLIO_VEH_KEY)||'[]');return Array.isArray(b)?b.map(normaliserVeh):[];}catch(e){return[];}}
-function saveBiblioVeh(b){localStorage.setItem(BIBLIO_VEH_KEY,JSON.stringify(b.slice(0,MAX_BIBLIO_VEH)));}
-function vehDataFrom(x){
- return{badge:(x.badge||'').trim(),grade:(x.grade||'').trim(),nom:(x.nom||'').trim(),prenom:(x.prenom||'').trim(),label:(x.label||'').trim(),type:(x.type||'').trim(),spot:(x.spot||'').trim()};
-}
-function enregistrerDansBiblio(x){
- var d=vehDataFrom(x);
- if(!d.badge)return false;
- var b=loadBiblioVeh(),i=b.findIndex(function(e){return e.badge===d.badge;});
- if(i>=0)b[i]=Object.assign({},b[i],d);
+function renderHubHint(){
+ var next=nextStepId(),done=HUB.filter(function(h){return stepDone(h.id);}).length;
+ var hint=document.getElementById('HUB-HINT'),ord=document.getElementById('HUB-ORDER');
+ if(!hint||!ord)return;
+ if(done===HUB.length)hint.innerHTML='✅ Bilan prêt — <b>📻 SAMU</b> pour transmettre'+(B.chronoStart?' · ⏱ '+chronoFmt(chronoMs()):'');
  else{
-  if(b.length>=MAX_BIBLIO_VEH)return false;
-  b.push(Object.assign({id:Date.now()},d));
+  var h=HUB.find(function(x){return x.id===next;});
+  hint.innerHTML='Prochaine étape : <b>'+(h?h.ico+' '+h.lbl:'')+'</b> · '+done+'/'+HUB.length+' faites';
  }
- saveBiblioVeh(b);
- return true;
+ ord.innerHTML='<b>Ordre PSE du releveur</b><br>1 Contexte → 2 Urgences (AVPU) → 3 Pouls & constantes → 4 Victime → 5 Gestes → 6 SAMU';
 }
-function initBiblioVeh(){
- if(loadBiblioVeh().length)return;
- loadVeh().forEach(function(v){enregistrerDansBiblio(v);});
+var URG=[
+ {id:'AC',ico:'💔',t:'Arrêt cardiaque',d:''},
+ {id:'OBST',ico:'🤐',t:'Obstruction VA',d:'voies aériennes'},
+ {id:'HEMO',ico:'🩸',t:'Hémorragie sévère',d:''},
+ {id:'INCONSC',ico:'😵',t:'Inconscience',d:''},
+ {id:'DETRESSE',ico:'😮‍💨',t:'Détresse respiratoire',d:''}
+];
+var GESTES=[
+ {id:'PLS',l:'PLS (position latérale de sécurité)'},
+ {id:'RCP-DEA',l:'RCP + DEA (massage cardiaque et chocs du défibrillateur)'},
+ {id:'Maintien',l:'Maintien (tête, membre — éviter aggravation)'},
+ {id:'Attelle',l:'Attelle (rigide ou coussin d\'air — bras, jambe)'},
+ {id:'Echarpe',l:'Écharpe (immobilisation membre supérieur)'},
+ {id:'Couverture survie',l:'Couverture de survie (urgences thermiques)'},
+ {id:'Brancard',l:'Brancard (évacuation victime)'},
+ {id:'Pansement',l:'Pansement'},
+ {id:'Compression',l:'Compression'},
+ {id:'Garrot',l:'Garrot'},
+ {id:'Surveillance',l:'Surveillance'},
+ {id:'O2',l:'O₂ (oxygène)'}
+];
+var CIRCS=[
+ {v:'Chute',l:'Chute'},
+ {v:'Malaise',l:'Malaise'},
+ {v:'AVP',l:'AVP (accident de la voie publique)'},
+ {v:'Arrêt cardiaque',l:'Arrêt cardiaque'},
+ {v:'Sport / exercice',l:'Sport / exercice'},
+ {v:'Autre',l:'Autre'}
+];
+var AVPU_OPTS=[
+ {v:'A',t:'A — Alert',d:'(Alerte — victime éveillée, consciente)'},
+ {v:'V',t:'V — Verbal',d:'(Verbal — répond quand on lui parle)'},
+ {v:'P',t:'P — Pain',d:'(Pain — réagit uniquement à la douleur)'},
+ {v:'U',t:'U — Unresponsive',d:'(Unresponsive — ne réagit plus du tout)'}
+];
+var POULS_OPTS=[
+ {v:'PSR',t:'Perçu, symétrique et régulier',d:'(normal — cas le plus fréquent)'},
+ {v:'FRAPPE',t:'Frappé',d:'(fort et rapide — le pouls « frappe » sous les doigts)'},
+ {v:'ABSENT',t:'Absent',d:'(aucun pouls palpable)'},
+ {v:'NON',t:'Non perçu',d:'(impossible à palper)'}
+];
+var BODY_ZONES=[
+ {id:'TETE',l:'Tête',e:'ellipse',a:{cx:50,cy:20,rx:15,ry:17}},
+ {id:'COU',l:'Cou',e:'rect',a:{x:44,y:36,width:12,height:10},rx:2},
+ {id:'THORAX',l:'Thorax',e:'rect',a:{x:30,y:47,width:40,height:32},rx:4},
+ {id:'ABDOMEN',l:'Abdomen',e:'rect',a:{x:32,y:79,width:36,height:28},rx:4},
+ {id:'BASSIN',l:'Bassin',e:'rect',a:{x:34,y:107,width:32,height:14},rx:3},
+ {id:'BRAS_G',l:'Bras gauche',e:'rect',a:{x:10,y:48,width:16,height:50},rx:6},
+ {id:'BRAS_D',l:'Bras droit',e:'rect',a:{x:74,y:48,width:16,height:50},rx:6},
+ {id:'JAMBE_G',l:'Jambe gauche',e:'rect',a:{x:34,y:121,width:14,height:52},rx:5},
+ {id:'JAMBE_D',l:'Jambe droite',e:'rect',a:{x:52,y:121,width:14,height:52},rx:5},
+ {id:'PIED_G',l:'Pied gauche',e:'ellipse',a:{cx:41,cy:180,rx:11,ry:7}},
+ {id:'PIED_D',l:'Pied droit',e:'ellipse',a:{cx:59,cy:180,rx:11,ry:7}}
+];
+var PLAIE_OPTS=[
+ {id:'OUVERTE',l:'Plaie ouverte'},
+ {id:'FERMEE',l:'Plaie fermée'},
+ {id:'CONTUSION',l:'Contusion'},
+ {id:'BRULURE',l:'Brûlure'},
+ {id:'DEFORM',l:'Déformation (fracture ?)'},
+ {id:'DOULEUR',l:'Douleur sans signe visible'}
+];
+
+function emptyB(){return{
+ ctx:{RELEVEUR:'',HEURE:'',LIEU:'',CIRC:'',CIRC_TXT:'',NB_V:1},
+ v:{INCONNUE:false,NOM:'',PRENOM:'',AGE:'',PLAINTES:'',ALLERG:'',URG:{},AVPU:'',POSITION:'',
+    RESPI:'',POULS:'',HEMO:'',HEMO_LOC:'',FC:'',FR:'',TA:'',SPO2:'',GLYC:'',TEMP:'',LESIONS:'',ZONES:{},SANS_GESTE:false},
+ GESTES:[]};}
+
+function load(){try{var s=localStorage.getItem(KEY);B=s?JSON.parse(s):null;if(B){migratePouls();migrateZones();migrateGestes();syncInconnueUrg();if(B.v&&B.v.HEMO==='Stigmates'){B.v.HEMO='Non';B.v.HEMO_LOC='';}if(B.GESTES)B.GESTES=B.GESTES.filter(function(g){return g!=='Alerte 15/112';});}}catch(e){B=null;}}
+function startChrono(){if(!B)return;B.chronoStart=Date.now();B.chronoEnd=null;}
+function stopChrono(){if(B&&!B.chronoEnd&&B.chronoStart)B.chronoEnd=Date.now();save();}
+function chronoMs(){if(!B||!B.chronoStart)return 0;var end=B.chronoEnd||Date.now();return Math.max(0,end-B.chronoStart);}
+function chronoFmt(ms){var t=Math.floor(ms/1000),m=Math.floor(t/60);t=t%60;return String(m).padStart(2,'0')+':'+String(t).padStart(2,'0');}
+function updateChronoUI(){
+ var el=document.getElementById('CHRONO');if(!el)return;
+ if(!B||!B.chronoStart){el.classList.add('HIDDEN');return;}
+ el.classList.remove('HIDDEN');el.classList.toggle('done',!!B.chronoEnd);
+ el.textContent='⏱ '+chronoFmt(chronoMs());
 }
-function parcContientBadge(badge){
- return loadVeh().some(function(v){return v.badge===badge;});
-}
-function getTousVehiculesRef(){
- var map={},out=[];
- loadBiblioVeh().forEach(function(v){
-  if(!v.badge)return;
-  map[v.badge]=Object.assign({auParc:parcContientBadge(v.badge)},normaliserVeh(v));
-  out.push(map[v.badge]);
- });
- loadVeh().forEach(function(v){
-  if(!v.badge)return;
-  if(map[v.badge])map[v.badge]=Object.assign({},map[v.badge],normaliserVeh(v),{auParc:true});
-  else{map[v.badge]=Object.assign({auParc:true},normaliserVeh(v));out.push(map[v.badge]);}
- });
- return out;
-}
-function vehCorrespondRecherche(v,q){
- if(!q)return false;
- var pers=formatVehPerson(v).toLowerCase();
- return (v.badge||'').toLowerCase().indexOf(q)>=0
-  || pers.indexOf(q)>=0
-  || (v.nom||'').toLowerCase().indexOf(q)>=0
-  || (v.prenom||'').toLowerCase().indexOf(q)>=0
-  || (v.grade||'').toLowerCase().indexOf(q)>=0
-  || (v.label||'').toLowerCase().indexOf(q)>=0;
-}
-function htmlFicheVeh(v){
- var pers=formatVehPerson(v);
- var persHtml=pers?'<p class="FICHE-PERS">'+esc(pers)+'</p>':'<p class="FICHE-PERS" style="color:var(--muted)">Titulaire non renseigné</p>';
- return '<div class="FICHE-VEH"><div class="BADGE-N">'+esc(v.badge)+'</div>'+persHtml
-  +'<p class="FICHE-L">'+esc(v.label||'—')+'</p>'
-  +'<p class="FICHE-L">'+esc(v.type||'—')+(v.spot?' · Place '+esc(v.spot):'')+'</p>'
-  +(v.auParc?'<p class="FICHE-L" style="color:var(--ok);font-weight:800">Au parc actif (ronde parking)</p>':'<p class="FICHE-L">Hors parc actif</p>')
-  +'</div>';
-}
-function ouvrirRecherche(retour){
- _searchRetour=retour||'P0';
- show('P-SEARCH');
-}
-function initRechercheVeh(){
- var back=document.getElementById('SEARCH-BACK'),inp=document.getElementById('VEH-SEARCH-Q');
- if(back){
-  back.textContent=_searchRetour==='P-VEH'?'← Parc actif':(_searchRetour==='P-BIBLIO'?'← Bibliothèque':(_searchRetour==='P-OUTILS'?'← Outils':'← Accueil'));
-  back.onclick=function(){show(_searchRetour);};
- }
- if(inp){inp.value='';filtrerRechercheVeh();setTimeout(function(){inp.focus();},100);}
-}
-function filtrerRechercheVeh(){
- var el=document.getElementById('VEH-SEARCH-RESULTS'),inp=document.getElementById('VEH-SEARCH-Q');
- if(!el)return;
- var q=inp?(inp.value||'').trim().toLowerCase():'';
- if(!q){el.innerHTML='<p class="HINT">Saisissez au moins une lettre ou un chiffre.</p>';return;}
- var hits=getTousVehiculesRef().filter(function(v){return vehCorrespondRecherche(v,q);});
- if(!hits.length){el.innerHTML='<p class="HINT">Aucun véhicule ou titulaire trouvé pour « '+esc(q)+' ».</p>';return;}
- if(hits.length===1)el.innerHTML=htmlFicheVeh(hits[0]);
- else el.innerHTML='<p class="HINT" style="margin-bottom:10px">'+hits.length+' résultat(s) — touchez pour affiner la recherche.</p>'+hits.map(htmlFicheVeh).join('');
-}
-function saisirVehiculeComplet(x){
- var b=prompt('Numéro de badge (ex. 014) :',x.badge||'');if(!b||!b.trim())return false;
- x.badge=b.trim();
- saisirTitulaireVeh(x);
- x.label=prompt('Description véhicule (ex. VL logistique) :',x.label||'')||'Véhicule';
- x.spot=prompt('Place attribuée (ex. B-03) :',x.spot||'')||'—';
- x.type=prompt('Type (VL, Camion…) :',x.type||'')||'VL';
- x.label=x.label.trim();x.spot=x.spot.trim();x.type=x.type.trim();
- return true;
-}
-function saisirTitulaireVeh(x){
- x.grade=prompt('Grade (ex. ADC, LT, CPL…) :',x.grade||'')||'';
- x.nom=prompt('Nom :',x.nom||'')||'';
- x.prenom=prompt('Prénom :',x.prenom||'')||'';
- x.grade=x.grade.trim();x.nom=x.nom.trim();x.prenom=x.prenom.trim();
-}
-function renderVehicules(){
- var v=loadVeh(),h='';
- var lbl=document.getElementById('VEH-MAX-LBL');
- if(lbl)lbl.textContent=MAX_VEH;
- v.forEach(function(x,i){
-  var pers=formatVehPerson(x);
-  h+='<div class="CARD"><div class="CARD-HDR"><div class="BADGE-N">'+esc(x.badge)+'</div><div><div class="CARD-T">'+esc(x.label)+'</div>'+(pers?'<div class="CARD-M" style="font-weight:700;color:var(--text)">'+esc(pers)+'</div>':'')+'<div class="CARD-M">'+esc(x.type)+' · Place '+esc(x.spot)+'</div></div></div>';
-  h+='<button type="button" class="BTN BTN-SML" style="background:#eee;color:#333" onclick="editVehicule('+i+')">Modifier</button> ';
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff" onclick="supprVehicule('+i+')">Supprimer</button></div>';
- });
- var rest=MAX_VEH-v.length;
- document.getElementById('VEH-LIST').innerHTML=h||'<p class="HINT">Aucun véhicule. Utilisez <b>+ Ajouter</b> ou <b>Importer Excel / CSV</b>.</p>';
- var addBtn=document.getElementById('BTN-AJOUT-VEH');
- if(addBtn)addBtn.textContent=rest>0?'+ Ajouter un véhicule ('+v.length+'/'+MAX_VEH+')':'Parc complet ('+MAX_VEH+' max)';
- if(addBtn)addBtn.disabled=rest<=0;
- var clrBtn=document.getElementById('BTN-EFFACER-BADGES');
- if(clrBtn)clrBtn.style.display=(v.length||loadBiblioVeh().length)?'block':'none';
-}
-function effacerParcVehSeul(){
- if(!loadVeh().length){alert('Parc actif déjà vide.');return;}
- if(!confirm('Effacer tous les véhicules du parc actif ?\n(La bibliothèque des badges est conservée.)'))return;
- saveVeh([]);
- try{localStorage.removeItem(RONDE_KEY);localStorage.removeItem('sg_ronde_courante');}catch(e){}
- ronde=null;
- renderVehicules();
- alert('Parc actif effacé.');
-}
-function effacerBiblioVehSeule(){
- if(!loadBiblioVeh().length){alert('Bibliothèque déjà vide.');return;}
- if(!confirm('Effacer toute la bibliothèque (badges, grades, noms) ?\n(Le parc actif n\'est pas modifié.)'))return;
- saveBiblioVeh([]);
- renderBiblioVeh();
- alert('Bibliothèque effacée.');
-}
-function effacerListesBadges(){
- var nv=loadVeh().length,nb=loadBiblioVeh().length;
- if(!nv&&!nb){alert('Aucune liste à effacer.');return;}
- if(!confirm('Effacer le parc actif ('+nv+' véhicule(s)) et la bibliothèque ('+nb+' fiche(s)) ?\nTous les badges enregistrés seront supprimés.'))return;
- if(!confirm('Confirmer la suppression définitive ?'))return;
- saveVeh([]);saveBiblioVeh([]);
- try{localStorage.removeItem(RONDE_KEY);localStorage.removeItem('sg_ronde_courante');}catch(e){}
- ronde=null;
- renderVehicules();renderBiblioVeh();
- alert('Parc et bibliothèque effacés.');
-}
-function ajouterVehicule(){
- var v=loadVeh();
- if(v.length>=MAX_VEH){alert('Parc complet : maximum '+MAX_VEH+' véhicules.');return;}
- var x={id:Date.now(),badge:'',grade:'',nom:'',prenom:'',label:'',type:'VL',spot:'—',unit:''};
- if(!saisirVehiculeComplet(x))return;
- v.push(x);
- saveVeh(v);
- if(!enregistrerDansBiblio(x))alert('Ajouté au parc. Bibliothèque pleine ('+MAX_BIBLIO_VEH+' max) : fiche non dupliquée.');
- renderVehicules();
-}
-function editVehicule(i){
- var v=loadVeh(),x=v[i];if(!x)return;
- if(!saisirVehiculeComplet(x))return;
- saveVeh(v);
- enregistrerDansBiblio(x);
- renderVehicules();
-}
-function supprVehicule(i){
- if(!confirm('Retirer ce véhicule du parc actif ?\n(La fiche reste dans la bibliothèque.)'))return;
- var v=loadVeh();v.splice(i,1);saveVeh(v);renderVehicules();
-}
-function renderBiblioVeh(){
- var b=loadBiblioVeh(),h='',lbl=document.getElementById('BIBLIO-MAX-LBL');
- if(lbl)lbl.textContent=MAX_BIBLIO_VEH;
- b.forEach(function(x,i){
-  var pers=formatVehPerson(x),dansParc=parcContientBadge(x.badge);
-  h+='<div class="CARD"><div class="CARD-HDR"><div class="BADGE-N">'+esc(x.badge)+'</div><div><div class="CARD-T">'+esc(x.label)+'</div>'+(pers?'<div class="CARD-M" style="font-weight:700;color:var(--text)">'+esc(pers)+'</div>':'')+'<div class="CARD-M">'+esc(x.type)+' · Place '+esc(x.spot)+(dansParc?' · <span style="color:var(--ok)">au parc</span>':'')+'</div></div></div>';
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--ok);color:#fff" onclick="biblioVersParc('+i+')"'+(dansParc?' disabled':'')+'>→ Parc actif</button> ';
-  h+='<button type="button" class="BTN BTN-SML" style="background:#eee;color:#333" onclick="editBiblioVeh('+i+')">Modifier</button> ';
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff" onclick="supprBiblioVeh('+i+')">Supprimer</button></div>';
- });
- document.getElementById('BIBLIO-LIST').innerHTML=h||'<p class="HINT">Bibliothèque vide. Ajoutez des fiches ou synchronisez depuis le parc actif.</p>';
- var addB=document.querySelector('#P-BIBLIO .BTN-SML[onclick*="ajouterBiblioVeh"]');
- if(addB){addB.textContent=b.length<MAX_BIBLIO_VEH?'+ Ajouter à la bibliothèque ('+b.length+'/'+MAX_BIBLIO_VEH+')':'Bibliothèque pleine ('+MAX_BIBLIO_VEH+' max)';addB.disabled=b.length>=MAX_BIBLIO_VEH;}
-}
-function ajouterBiblioVeh(){
- if(loadBiblioVeh().length>=MAX_BIBLIO_VEH){alert('Bibliothèque pleine : '+MAX_BIBLIO_VEH+' fiches max.');return;}
- var x={id:Date.now(),badge:'',grade:'',nom:'',prenom:'',label:'',type:'VL',spot:'—'};
- if(!saisirVehiculeComplet(x))return;
- if(!enregistrerDansBiblio(x)){alert('Impossible d\'enregistrer.');return;}
- renderBiblioVeh();
- if(confirm('Ajouter aussi ce véhicule au parc actif (ronde parking) ?'))biblioVersParcParBadge(x.badge);
-}
-function editBiblioVeh(i){
- var b=loadBiblioVeh(),x=b[i];if(!x)return;
- var oldBadge=x.badge;
- if(!saisirVehiculeComplet(x))return;
- if(oldBadge!==x.badge&&b.some(function(e,j){return j!==i&&e.badge===x.badge;})){alert('Ce numéro de badge existe déjà dans la bibliothèque.');return;}
- b[i]=Object.assign({},x,vehDataFrom(x));
- saveBiblioVeh(b);
- var v=loadVeh(),pv=v.find(function(e){return e.badge===oldBadge;});
- if(pv){Object.assign(pv,vehDataFrom(x),{id:pv.id,unit:pv.unit||''});saveVeh(v);renderVehicules();}
- renderBiblioVeh();
-}
-function supprBiblioVeh(i){
- if(!confirm('Supprimer cette fiche de la bibliothèque ?\n(Le parc actif n\'est pas modifié.)'))return;
- var b=loadBiblioVeh();b.splice(i,1);saveBiblioVeh(b);renderBiblioVeh();
-}
-function biblioVersParcParBadge(badge){
- var b=loadBiblioVeh().find(function(x){return x.badge===badge;});
- if(!b)return;
- var i=loadBiblioVeh().indexOf(b);
- if(i>=0)biblioVersParc(i);
-}
-function biblioVersParc(i){
- var b=loadBiblioVeh(),x=b[i];if(!x)return;
- if(parcContientBadge(x.badge)){alert('Badge '+x.badge+' déjà dans le parc actif.');return;}
- var v=loadVeh();
- if(v.length>=MAX_VEH){alert('Parc actif complet ('+MAX_VEH+' max).');return;}
- v.push({id:Date.now(),unit:'',grade:x.grade,nom:x.nom,prenom:x.prenom,badge:x.badge,label:x.label,type:x.type,spot:x.spot});
- saveVeh(v);renderVehicules();renderBiblioVeh();
- alert('Véhicule badge '+x.badge+' ajouté au parc actif.');
-}
-function syncParcVersBiblio(){
- var v=loadVeh();
- if(!v.length){alert('Parc actif vide.');return;}
- var n=0,plein=false;
- v.forEach(function(x){
-  if(enregistrerDansBiblio(x))n++;
-  else plein=true;
- });
- renderBiblioVeh();
- alert(plein?n+' fiche(s) enregistrée(s). Bibliothèque pleine ('+MAX_BIBLIO_VEH+' max).':n+' fiche(s) enregistrée(s) dans la bibliothèque.');
-}
-var COL_VEH_IMPORT={
- badge:['badge','badges','numero badge','numéro badge','n badge','n° badge','n°','matricule','mat','id','n° matricule','n matricule','n° badge sg'],
- grade:['grade','grades','grade militaire','gr','titre','rang'],
- nom:['nom','name','nom de famille','famille','patronyme','nom patronymique'],
- prenom:['prenom','prénom','prenoms','prénoms','firstname','first name','prenom usuel'],
- label:['vehicule','véhicule','vehicle','description','libelle','libellé','designation','désignation','modele','modèle'],
- type:['type','categorie','catégorie','category','famille vehicule'],
- spot:['place','parking','emplacement','spot','zone','localisation']
-};
-function normaliserEnteteImport(h){
- return String(h||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
-}
-function detecterMapColonnesImport(entetes){
- var map={},u=-1;
- entetes.forEach(function(raw,i){
-  var h=normaliserEnteteImport(raw);
-  if(!h)return;
-  Object.keys(COL_VEH_IMPORT).forEach(function(k){
-   if(map[k]!==undefined)return;
-   if(COL_VEH_IMPORT[k].some(function(a){return h===normaliserEnteteImport(a)||h.indexOf(normaliserEnteteImport(a))===0;}))map[k]=i;
-  });
- });
- return map;
-}
-function celluleImport(row,i){
- if(i===undefined||i<0||!row)return '';
- var v=row[i];
- if(v===null||v===undefined)return '';
- if(typeof v==='number'&&!isNaN(v)){
-  if(Number.isInteger(v))return String(v);
-  return String(v).trim();
- }
- return String(v).trim();
-}
-function formatBadgeImport(badge){
- var s=String(badge||'').trim().replace(/\s+/g,'');
- if(!s)return '';
- if(/^\d+$/.test(s)&&s.length<3)s=('000'+s).slice(-3);
- return s;
-}
-function ligneVersVehImport(row,map){
- var badge=formatBadgeImport(celluleImport(row,map.badge));
- if(!badge)return null;
- return{
-  badge:badge,
-  grade:celluleImport(row,map.grade),
-  nom:celluleImport(row,map.nom),
-  prenom:celluleImport(row,map.prenom),
-  label:celluleImport(row,map.label)||'Véhicule',
-  type:celluleImport(row,map.type)||'VL',
-  spot:celluleImport(row,map.spot)||'—'
- };
-}
-function parseRowsBrutesImport(matrix){
- if(!matrix||!matrix.length)return [];
- var start=0,map=null,i,r;
- for(i=0;i<Math.min(matrix.length,15);i++){
-  r=matrix[i];
-  if(!r||!r.length)continue;
-  map=detecterMapColonnesImport(r);
-  if(map.badge!==undefined){start=i+1;break;}
- }
- if(map===null||map.badge===undefined)return [];
- var out=[],seen={};
- for(i=start;i<matrix.length;i++){
-  r=matrix[i];
-  if(!r||!r.some(function(c){return c!==''&&c!=null;}))continue;
-  var v=ligneVersVehImport(r,map);
-  if(!v)continue;
-  if(seen[v.badge])continue;
-  seen[v.badge]=1;
-  out.push(v);
- }
- return out;
-}
-function lireCsvTexteImport(text){
- var sep=';',lines=text.replace(/\r\n/g,'\n').replace(/\r/g,'\n').split('\n').filter(function(l){return l.trim();});
- if(!lines.length)return [];
- var first=lines[0];
- if((first.split(';').length<2)&&(first.split(',').length>=2))sep=',';
- return lines.map(function(ln){
-  var row=[],cur='',q=false,i,ch;
-  for(i=0;i<ln.length;i++){
-   ch=ln[i];
-   if(ch==='"'){q=!q;continue;}
-   if(ch===sep&&!q){row.push(cur.trim());cur='';continue;}
-   cur+=ch;
-  }
-  row.push(cur.trim());
-  return row;
- });
-}
-function parserFichierVehImport(file,cb){
- if(!file){cb([]);return;}
- var name=(file.name||'').toLowerCase();
- var reader=new FileReader();
- reader.onerror=function(){alert('Lecture du fichier impossible.');cb([]);};
- if(name.endsWith('.csv')||file.type==='text/csv'){
-  reader.onload=function(){
-   try{cb(parseRowsBrutesImport(lireCsvTexteImport(reader.result||'')));}catch(e){alert('CSV : '+e.message);cb([]);}
-  };
-  reader.readAsText(file,'UTF-8');
-  return;
- }
- if(!window.XLSX){
-  alert('Module Excel non chargé. Réessayez avec un fichier CSV ou rechargez l\'application.');
-  cb([]);
-  return;
- }
- reader.onload=function(){
-  try{
-   var wb=window.XLSX.read(reader.result,{type:'array'});
-   var sheet=wb.Sheets[wb.SheetNames[0]];
-   var matrix=window.XLSX.utils.sheet_to_json(sheet,{header:1,defval:''});
-   cb(parseRowsBrutesImport(matrix));
-  }catch(e){alert('Excel : '+e.message);cb([]);}
- };
- reader.readAsArrayBuffer(file);
-}
-function afficherApercuImportVeh(rows,fichierNom){
- window._importVehRows=rows||[];
- var prev=document.getElementById('IMPORT-PREVIEW'),opts=document.getElementById('IMPORT-OPTS-BOX'),nom=document.getElementById('IMPORT-FICHIER-NOM');
- if(!rows.length){
-  if(prev)prev.innerHTML='<p class="HINT">Aucune ligne valide (badge obligatoire). Vérifiez les en-têtes de colonnes.</p>';
-  if(opts)opts.classList.add('HIDDEN');
-  if(nom)nom.style.display='none';
-  return;
- }
- if(nom){nom.style.display='block';nom.textContent='Fichier : '+fichierNom+' — '+rows.length+' ligne(s) reconnue(s)';}
- var max=Math.min(rows.length,80),h='<div class="IMPORT-WRAP"><table class="IMPORT-TBL"><thead><tr><th>Badge</th><th>Grade</th><th>Nom</th><th>Prénom</th><th>Véhicule</th><th>Place</th></tr></thead><tbody>';
- rows.slice(0,max).forEach(function(r){
-  h+='<tr><td>'+esc(r.badge)+'</td><td>'+esc(r.grade)+'</td><td>'+esc(r.nom)+'</td><td>'+esc(r.prenom)+'</td><td>'+esc(r.label)+'</td><td>'+esc(r.spot)+'</td></tr>';
- });
- h+='</tbody></table></div>';
- if(rows.length>max)h+='<p class="HINT">… et '+(rows.length-max)+' autre(s) ligne(s).</p>';
- if(prev)prev.innerHTML=h;
- if(opts)opts.classList.remove('HIDDEN');
-}
-function initEcranImportVeh(){
- window._importVehRows=[];
- var prev=document.getElementById('IMPORT-PREVIEW'),opts=document.getElementById('IMPORT-OPTS-BOX'),nom=document.getElementById('IMPORT-FICHIER-NOM'),inp=document.getElementById('VEH-IMPORT-FILE');
- if(prev)prev.innerHTML='<p class="HINT">Choisissez un fichier pour afficher l\'aperçu avant import.</p>';
- if(opts)opts.classList.add('HIDDEN');
- if(nom)nom.style.display='none';
- if(inp){
-  inp.value='';
-  inp.onchange=function(ev){
-   var f=ev.target&&ev.target.files&&ev.target.files[0];
-   if(!f)return;
-   parserFichierVehImport(f,function(rows){afficherApercuImportVeh(rows,f.name);});
-  };
+function syncChronoDisplay(on){if(on&&!chronoIv)chronoIv=setInterval(updateChronoUI,250);if(!on&&chronoIv){clearInterval(chronoIv);chronoIv=null;}updateChronoUI();}
+function migrateGestes(){
+ if(!B||!B.GESTES)return;
+ var r=B.GESTES.indexOf('RCP')>=0,d=B.GESTES.indexOf('DEA')>=0;
+ if(r||d){
+  B.GESTES=B.GESTES.filter(function(g){return g!=='RCP'&&g!=='DEA';});
+  if(B.GESTES.indexOf('RCP-DEA')<0)B.GESTES.push('RCP-DEA');
  }
 }
-function telechargerModeleVeh(){
- var csv='Badge;Grade;Nom;Prénom;Véhicule;Type;Place\n001;ADC;DUPONT;Jean;VL commandement;VL;A-01\n002;LT;MARTIN;Paul;VL liaison;VL;A-02\n';
- var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
- var a=document.createElement('a');
- a.href=URL.createObjectURL(blob);
- a.download='modele-import-vehicules-4RIISC.csv';
- a.click();
- setTimeout(function(){URL.revokeObjectURL(a.href);},2000);
+function save(){localStorage.setItem(KEY,JSON.stringify(B));updateAccueilBtns();updateBibCount();}
+function show(id){['P0','P-RESUME','P-HUB','P-MOD','P-BIB'].forEach(function(p){document.getElementById(p).classList.toggle('HIDDEN',p!==id);});
+ document.getElementById('BNAV').classList.toggle('HIDDEN',id==='P0'||id==='P-RESUME'||id==='P-BIB');
+ document.getElementById('FLOAT-SAMU').classList.toggle('HIDDEN',id==='P0'||id==='P-RESUME'||id==='P-BIB'||id==='P-MOD'&&modActif==='samu');
+ syncChronoDisplay(id==='P-HUB'||id==='P-MOD');}
+function updateAccueilBtns(){var e=document.getElementById('BTN-RES');if(e)e.classList.toggle('HIDDEN',!B);}
+function renderResumeScreen(){
+ var el=document.getElementById('RESUME-SUM');if(!el||!B)return;
+ var done=HUB.filter(function(h){return stepDone(h.id);}).length,v=B.v;
+ var s='<b>'+esc(B.ctx.LIEU||'(lieu non renseigné)')+'</b>';
+ if(B.ctx.HEURE)s+=' · '+esc(B.ctx.HEURE);
+ if(B.ctx.RELEVEUR)s+='<br>Releveur : '+esc(B.ctx.RELEVEUR);
+ s+='<br>Progression : '+done+' / 6 étapes';
+ var next=nextStepId(),h=HUB.find(function(x){return x.id===next;});
+ if(h&&done<6)s+='<br>Prochaine : '+h.ico+' '+h.lbl;
+ var urg=Object.keys(v.URG||{}).filter(function(k){return v.URG[k];});
+ if(urg.length)s+='<br>🚨 '+urg.map(function(k){var u=URG.find(function(x){return x.id===k;});return u?u.t:k;}).join(', ');
+ if(B.chronoStart)s+='<br>⏱ '+chronoFmt(chronoMs())+(B.chronoEnd?' (chrono arrêté)':' en cours');
+ el.innerHTML=s;
 }
-function appliquerImportVeh(){
- var rows=window._importVehRows||[];
- if(!rows.length){alert('Aucune donnée à importer.');return;}
- var toBib=document.getElementById('IMPORT-BIBLIO')&&document.getElementById('IMPORT-BIBLIO').checked;
- var toParc=document.getElementById('IMPORT-PARC')&&document.getElementById('IMPORT-PARC').checked;
- var replace=document.getElementById('IMPORT-REMPLACER')&&document.getElementById('IMPORT-REMPLACER').checked;
- if(!toBib&&!toParc){alert('Cochez au moins bibliothèque ou parc actif.');return;}
- if(!confirm('Importer '+rows.length+' fiche(s) ?\n'+(replace?'Les badges existants seront mis à jour.':'Les doublons seront ignorés.')))return;
- var b=loadBiblioVeh(),v=loadVeh(),nbB=0,nbP=0,skipB=0,skipP=0,pleinB=false,pleinP=false;
- rows.forEach(function(r){
-  var d=vehDataFrom(r);
-  if(toBib){
-   var ib=b.findIndex(function(e){return e.badge===d.badge;});
-   if(ib>=0){
-    if(replace){b[ib]=Object.assign({},b[ib],d);nbB++;}
-   }else{
-    if(b.length<MAX_BIBLIO_VEH){b.push(Object.assign({id:Date.now()+Math.random()},d));nbB++;}
-    else{pleinB=true;skipB++;}
-   }
-  }
-  if(toParc){
-   var iv=v.findIndex(function(e){return e.badge===d.badge;});
-   if(iv>=0){
-    if(replace){Object.assign(v[iv],d,{id:v[iv].id,unit:v[iv].unit||''});nbP++;}
-   }else{
-    if(v.length<MAX_VEH){v.push({id:Date.now()+Math.random(),unit:'',grade:d.grade,nom:d.nom,prenom:d.prenom,badge:d.badge,label:d.label,type:d.type,spot:d.spot});nbP++;}
-    else{pleinP=true;skipP++;}
-   }
-  }
+function reprendre(){if(B&&!B.chronoStart)startChrono();save();ouvrirHub();}
+function nouveauDepuisResume(){if(!confirm('Effacer le bilan en cours et recommencer à zéro ?'))return;B=emptyB();B.ctx.HEURE=heure();startChrono();save();ouvrirMod('contexte');}
+function demarrerApp(){
+ load();updateBibCount();updateAccueilBtns();
+ if(B){renderResumeScreen();show('P-RESUME');}
+ else show('P0');
+}
+function loadArchive(){try{var a=JSON.parse(localStorage.getItem(ARCHIVE_KEY)||'[]');return Array.isArray(a)?a:[];}catch(e){return[];}}
+function saveArchive(a){localStorage.setItem(ARCHIVE_KEY,JSON.stringify(a.slice(0,MAX_ARCHIVE)));}
+function updateBibCount(){
+ var n=loadArchive().length,s=n?'('+n+')':'';
+ var e=document.getElementById('BIB-COUNT-P0');if(e)e.textContent=s;
+}
+function archiveLbl(){return(B.ctx.LIEU||'Lieu non renseigné')+' · '+(B.ctx.RELEVEUR||'Releveur')+' · '+(B.ctx.HEURE||heure());}
+function pushArchive(){
+ if(!B||!window._lastTalkie||!B.ctx.LIEU)return;
+ var a=loadArchive();
+ if(a.length&&a[0].txt===window._lastTalkie)return;
+ a.unshift({id:Date.now(),h:B.ctx.HEURE||heure(),lbl:archiveLbl(),txt:window._lastTalkie});
+ saveArchive(a);updateBibCount();
+}
+function ouvrirBib(){renderBib();show('P-BIB');}
+function renderBib(){
+ var el=document.getElementById('BIB-LIST'),a=loadArchive();
+ if(!a.length){el.innerHTML='<p class="BIB-EMPTY">Aucun CR enregistré.<br>Ouvrez 📻 SAMU pour enregistrer automatiquement.</p>';return;}
+ var h='<button class="BTN BTN-PRI BTN-SML" onclick="if(confirm(\'Effacer toute la bibliothèque ?\'))clearArchive()">🗑 Tout effacer</button>';
+ a.forEach(function(it,i){
+  h+='<div class="BIB-ITEM" id="bib-'+it.id+'" onclick="toggleBib('+it.id+')"><div class="BIB-HDR"><span>📻 '+esc(it.h)+' — '+esc(it.lbl)+'</span><button type="button" class="BIB-DEL" onclick="event.stopPropagation();delArchive('+i+')">✕</button></div><div class="BIB-META">Toucher pour lire le CR complet</div><div class="BIB-TXT">'+esc(it.txt)+'</div></div>';
  });
- if(toBib)saveBiblioVeh(b);
- if(toParc)saveVeh(v);
- renderVehicules();
- renderBiblioVeh();
- var msg=[];
- if(toBib)msg.push('Bibliothèque : '+nbB+' fiche(s)'+(pleinB?' (pleine, '+skipB+' ignorée(s))':''));
- if(toParc)msg.push('Parc actif : '+nbP+' véhicule(s)'+(pleinP?' (plein, '+skipP+' ignoré(s))':''));
- alert(msg.join('\n'));
- show('P-VEH');
+ el.innerHTML=h;
 }
-function renderSg(){
- var sg=loadSg(),h='',items=getAllSgItems();
- items.forEach(function(it){
-  var base=SG_ITEMS.some(function(x){return x.id===it.id;}),e=getSgEntry(sg,it.id),s=e.s;
-  h+='<div class="SG-ITEM CARD'+(s==='pb'?' prob':'')+'" id="sg-item-'+it.id+'">';
-  h+='<div class="SG-TITLE">'+esc(it.l)+(base?'':' <small style="font-weight:600">(perso)</small>')+'</div>';
-  h+='<div class="SG-CHOIX">';
-  h+='<label class="SG-OPT ras'+(s==='ras'?' on':'')+'" onmousedown="sgPrep(\''+it.id+'\',\'ras\')" ontouchstart="sgPrep(\''+it.id+'\',\'ras\')"><input type="radio" name="sg-'+it.id+'" id="sg-ras-'+it.id+'"'+(s==='ras'?' checked':'')+' onchange="sgTap(\''+it.id+'\',\'ras\')"> RAS</label>';
-  h+='<label class="SG-OPT pb'+(s==='pb'?' on':'')+'" onmousedown="sgPrep(\''+it.id+'\',\'pb\')" ontouchstart="sgPrep(\''+it.id+'\',\'pb\')"><input type="radio" name="sg-'+it.id+'" id="sg-pb-'+it.id+'"'+(s==='pb'?' checked':'')+' onchange="sgTap(\''+it.id+'\',\'pb\')"> PB</label>';
-  h+='</div>';
-  h+='<div class="SG-OBS-Wrap'+(s==='pb'?'':' HIDDEN')+'" id="sg-obs-wrap-'+it.id+'">';
-  h+='<label>Observation</label>';
-  h+='<textarea id="sg-obs-'+it.id+'" placeholder="Décrire ce qui cloche…" oninput="saveSg()">'+esc(e.obs)+'</textarea>';
-  h+='</div></div>';
- });
- document.getElementById('SG-LIST').innerHTML=h||'<p class="HINT">Aucune action.</p>';
-}
-function renderSgActions(){
- var c=loadSgCustom(),h='';
- c.forEach(function(x,i){
-  h+='<div class="CARD"><div class="CARD-T">'+esc(x.l)+'</div>';
-  h+='<button type="button" class="BTN BTN-SML" style="background:#eee;color:#333" onclick="editActionSg('+i+')">Modifier</button> ';
-  h+='<button type="button" class="BTN BTN-SML" style="background:var(--bad);color:#fff" onclick="supprActionSg('+i+')">Supprimer</button></div>';
- });
- document.getElementById('SG-ACT-LIST').innerHTML=h||'<p class="HINT">Aucune action personnalisée. La liste de base reste toujours disponible.</p>';
-}
-function ajouterActionSg(){
- var l=prompt('Texte de l\'action à contrôler :');if(!l||!l.trim())return;
- var c=loadSgCustom();
- c.push({id:'c_'+Date.now(),l:l.trim()});
- saveSgCustom(c);renderSgActions();renderSg();
-}
-function editActionSg(i){
- var c=loadSgCustom(),x=c[i];if(!x)return;
- x.l=prompt('Modifier l\'action :',x.l)||x.l;
- saveSgCustom(c);renderSgActions();renderSg();
-}
-function supprActionSg(i){
- if(!confirm('Supprimer cette action ?'))return;
- var c=loadSgCustom();c.splice(i,1);
- saveSgCustom(c);renderSgActions();renderSg();
-}
-function effacerHistorique(){
- var a=loadArch();
- if(!a.length)return;
- if(!confirm('Effacer les '+a.length+' ronde(s) de l\'historique ?\nCette action est définitive sur cet appareil.'))return;
- localStorage.removeItem(ARCH_KEY);
- renderArch();
-}
-function supprArch(id){
- if(!confirm('Supprimer ce compte rendu de l\'historique ?'))return;
- var arch=loadArch().filter(function(x){return String(x.id)!==String(id);});
- saveArch(arch);
- renderArch();
-}
-var _ARCH_TRASH='<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V5h6v2M7 7l1 14h8l1-14"/><path d="M10 11v6M14 11v6"/></svg>';
-function renderArch(){
- var a=loadArch(),el=document.getElementById('ARCH-LIST'),clr=document.getElementById('ARCH-CLEAR');
- if(clr)clr.style.display=a.length?'block':'none';
- if(!a.length){
-  el.innerHTML='<p class="HINT">Aucune ronde archivée pour l\'instant.<br><br>Les rapports apparaissent ici après <b>Terminer et rapport</b> sur une ronde parking ou incendie (jusqu\'à '+MAX_ARCH+' dernières rondes).</p>';
-  return;
- }
- el.innerHTML=a.map(function(it){
-  var tag=it.type==='incendie'?'Incendie':'Parking';
-  var prev=it.txt||'';
-  if(prev.length>220)prev=prev.slice(0,220)+'…';
-  var ph=(it.photoCount||(it.photos?it.photos.length:0));
-  var phTxt=ph?(' · '+ph+' photo'+(ph>1?'s':'')):'';
-  return '<div class="ARCH"><div class="ARCH-HDR"><b>'+esc(tag)+' — '+esc(it.h)+phTxt+'</b><button type="button" class="ARCH-DEL" onclick="supprArch('+it.id+')" title="Supprimer" aria-label="Supprimer ce compte rendu">'+_ARCH_TRASH+'</button></div><div style="white-space:pre-wrap;font-size:.78em;line-height:1.4">'+esc(prev)+'</div><div class="ARCH-ACT"><button type="button" class="BTN BTN-SML" style="background:var(--blue);color:#fff" onclick="voirArch('+it.id+')">Voir / partager</button></div></div>';
- }).join('');
-}
-function voirArch(id){
- var it=loadArch().find(function(x){return x.id===id;});
- if(!it)return;
- window._lastRapport=it.txt;window._lastPhotos=it.photos||[];window._lastRapportType=it.type||'';
- document.getElementById('RAPPORT-TXT').textContent=it.txt;
- setRapportRetour('P-ARCH');
- show('P-RAPPORT');
-}
+function toggleBib(id){var el=document.getElementById('bib-'+id);if(el)el.classList.toggle('open');}
+function delArchive(i){if(!confirm('Supprimer ce CR ?'))return;var a=loadArchive();a.splice(i,1);saveArchive(a);renderBib();updateBibCount();}
+function clearArchive(){saveArchive([]);renderBib();updateBibCount();}
+function heure(){var d=new Date();return String(d.getHours()).padStart(2,'0')+'H'+String(d.getMinutes()).padStart(2,'0');}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
 
-(function init(){
- applyTheme(loadTheme());
- var p=loadParam();
- document.getElementById('PRM-SITE').value=p.site||DEFAULT_SITE;
- document.getElementById('PRM-RESP').value=p.resp||'ADC GOURDET — Service général';
- document.getElementById('PRM-TEL').value=p.tel||'';
- document.getElementById('PRM-EMAIL').value=p.email||'';
- appliquerSrcInsigne();
- refreshP0();
- if(!loadPoste()){var d=toDatetimeLocalValue(new Date()).slice(0,10);savePosteCourant({dateGarde:d,roles:{},majLe:new Date().toISOString()});}
- initBiblioVeh();
- renderVehicules();
- renderBatiments();
- renderSg();
- renderSgActions();
- renderArch();
- refreshDiscHint();
- function proposerRondeInc(ri){
-  if(!ri)return;
-  var disc=isDiscoveryMode();
-  if(rondeIncendieTerminee(ri)){
-   showRappel({
-    title:'Ronde incendie terminée',
-    msg:disc?'Tous les bâtiments sont renseignés. Finalisez pour enregistrer le rapport.':'Finalisez pour enregistrer le rapport dans l\'historique.',
-    labelContinue:'Finaliser et rapport',
-    theme:'inc',
-    labelMenu:disc?'Abandonner sans enregistrer':'Retour au menu',
-    menuClass:disc?'abandon':'',
-    note:disc?'Après le rapport, touchez « C\'est terminé — retour au menu » pour ne plus être relancé.':'',
-    onContinue:function(){rondeInc=ri;finRondeInc();},
-    onMenu:function(){if(disc){clearRondeInc();show('P0');}else show('P0');}
-   });
-   return;
-  }
-  showRappel({
-   title:disc?'Ronde incendie en pause':'Ronde incendie',
-   msg:disc?'Vous aviez commencé une ronde incendie.':'Reprendre la ronde incendie en cours ?',
-   labelContinue:'Continuer la ronde incendie',
-   labelMenu:disc?'Abandonner la ronde':'Retour au menu',
-   menuClass:disc?'abandon':'',
-   theme:'inc',
-   note:disc?'Reprise possible 15 minutes sur cet appareil (mode découverte).':'',
-   onContinue:function(){rondeInc=ri;renderRondeInc();syncRondeIncDt();show('P-RONDE-INC');},
-   onMenu:function(){if(disc){clearRondeInc();show('P0');}else show('P0');}
-  });
+function chCtx(f,v){
+ B.ctx[f]=v;
+ save();renderHubStatus();if(modActif==='samu')renderPanel();
+}
+function chV(f,v){
+ B.v[f]=v;
+ var rerender=false;
+ if(f==='AVPU'){maybeAutoInconnue();rerender=true;}
+ save();renderHubStatus();if(modActif==='samu'||rerender)renderPanel();
+}
+function chUrg(id){
+ if(!B.v.URG)B.v.URG={};
+ B.v.URG[id]=!B.v.URG[id];if(!B.v.URG[id])delete B.v.URG[id];
+ if(id==='INCONSC')maybeAutoInconnue();
+ if(id==='INCONSC'&&!B.v.URG.INCONSC&&B.v.INCONNUE&&!B.v.AVPU)B.v.INCONNUE=false;
+ save();renderPanel();renderHubStatus();
+}
+function syncInconnueUrg(){
+ if(!B||!B.v)return;
+ if(!B.v.URG)B.v.URG={};
+ if(B.v.INCONNUE)B.v.URG.INCONSC=true;
+}
+function inconnueBar(){
+ var on=!!B.v.INCONNUE;
+ return '<div class="CHK-BAR'+(on?' on':'')+'" onclick="toggleInconnue(!B.v.INCONNUE)"><span class="CHK-BOX"></span><div><div class="CHK-BAR-T">Victime INCONNUE</div><div class="CHK-BAR-D">Identité non renseignée — coche aussi Inconscience et remplit les champs automatiquement</div></div></div>';
+}
+function applyInconnueVals(){
+ B.v.NOM='';B.v.PRENOM='';B.v.AGE='Inconnu';
+ B.v.PLAINTES='Non renseignable (inconscient)';
+ B.v.ALLERG='Inconnues';
+}
+function clearInconnueVals(){
+ if(B.v.AGE==='Inconnu')B.v.AGE='';
+ if(B.v.PLAINTES==='Non renseignable (inconscient)')B.v.PLAINTES='';
+ if(B.v.ALLERG==='Inconnues')B.v.ALLERG='';
+}
+function toggleInconnue(on){
+ B.v.INCONNUE=!!on;
+ if(on){applyInconnueVals();syncInconnueUrg();}
+ else{
+  clearInconnueVals();
+  if(B.v.URG&&B.v.AVPU!=='U')delete B.v.URG.INCONSC;
  }
- function proposerRondeParking(rc,ri){
-  if(!rc){proposerRondeInc(ri);return;}
-  var disc=isDiscoveryMode();
-  function menuParking(){show('P0');if(ri)proposerRondeInc(ri);}
-  function abandonParking(){clearRondeParking();if(ri)proposerRondeInc(ri);else show('P0');}
-  if(rondeParkingTerminee(rc)){
-   showRappel({
-    title:'Ronde parking terminée',
-    msg:disc?'Tous les véhicules ont un statut. Finalisez pour le rapport.':'Finalisez pour enregistrer le rapport dans l\'historique.',
-    labelContinue:'Finaliser et rapport',
-    theme:'park',
-    labelMenu:disc?'Abandonner sans enregistrer':'Retour au menu',
-    menuClass:disc?'abandon':'',
-    note:disc?'Après le rapport, touchez « C\'est terminé — retour au menu » pour ne plus être relancé.':'',
-    onContinue:function(){ronde=rc;finRonde();},
-    onMenu:disc?abandonParking:menuParking
-   });
-   return;
-  }
-  showRappel({
-   title:disc?'Ronde parking en pause':'Ronde parking',
-   msg:disc?'Vous aviez commencé une ronde parking.':'Reprendre la ronde parking en cours ?',
-   labelContinue:'Continuer la ronde parking',
-   labelMenu:disc?'Abandonner la ronde':'Retour au menu',
-   menuClass:disc?'abandon':'',
-   theme:'park',
-   note:disc?'Reprise possible 15 minutes sur cet appareil (mode découverte).':'',
-   onContinue:function(){ronde=rc;renderRonde();syncRondeParkingDt();show('P-RONDE');},
-   onMenu:disc?abandonParking:function(){if(ri)proposerRondeInc(ri);else show('P0');}
-  });
+ save();renderHubStatus();renderPanel();
+}
+function maybeAutoInconnue(){
+ if(B.v.AVPU==='U'||B.v.URG.INCONSC){
+  if(!B.v.INCONNUE){B.v.INCONNUE=true;applyInconnueVals();syncInconnueUrg();}
  }
- var rc=loadRondeCourante(),ri=loadRondeIncCourante();
- proposerRondeParking(rc,ri);
- if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(function(){});
-})();
+}
+function victimeId(){
+ if(B.v.INCONNUE)return 'identité inconnue';
+ return [B.v.PRENOM,B.v.NOM].filter(Boolean).join(' ')||'non identifiée';
+}
+function victimeAge(){
+ if(B.v.INCONNUE)return B.v.AGE||'Inconnu';
+ return B.v.AGE;
+}
+function chGest(id){var i=B.GESTES.indexOf(id);if(i>=0)B.GESTES.splice(i,1);else B.GESTES.push(id);B.v.SANS_GESTE=false;save();renderHubStatus();renderPanel();}
+function sansGestes(){B.v.SANS_GESTE=true;save();renderHubStatus();renderPanel();}
+function gesteLbl(id){var g=GESTES.find(function(x){return x.id===id;});return g?g.l:id;}
+function circLbl(v){var c=CIRCS.find(function(x){return x.v===v;});return c?c.l:v;}
+
+function choiceHtml(field,opts,cls,ctx){
+ var cur=ctx?B.ctx[field]:B.v[field],h='<div class="CHOICES">';
+ opts.forEach(function(o){var val=typeof o==='object'?o.v:o,lbl=typeof o==='object'?o.l:o;
+  h+='<button type="button" class="CHOICE '+(cls||'')+(cur===val?' on':'')+'" onclick="'+(ctx?'chCtx':'chV')+'(\''+field+'\',\''+val+'\');renderPanel()">'+lbl+'</button>';});
+ return h+'</div>';
+}
+function inp(lbl,f,ph,ctx,off){var v=ctx?B.ctx[f]:B.v[f];return '<label>'+lbl+'</label><input class="'+(off?'inp-off':'')+'" value="'+esc(v||'')+'" placeholder="'+(ph||'')+'" oninput="'+(ctx?'chCtx':'chV')+'(\''+f+'\',this.value)">';}
+function area(lbl,f,ph,ctx,off){var v=ctx?B.ctx[f]:B.v[f];return '<label>'+lbl+'</label><textarea class="'+(off?'inp-off':'')+'" placeholder="'+(ph||'')+'" oninput="'+(ctx?'chCtx':'chV')+'(\''+f+'\',this.value)">'+esc(v||'')+'</textarea>';}
+
+function nouveau(){if(B&&!confirm('Abandonner ?'))return;B=emptyB();B.ctx.HEURE=heure();startChrono();
+ save();ouvrirMod('contexte');}
+function reset(){B=null;localStorage.removeItem(KEY);updateAccueilBtns();syncChronoDisplay(false);stopTalkieNoise();show('P0');}
+function ouvrirHub(){if(!B){show('P0');return;}stopTalkieNoise();zoneActif=null;renderHubStatus();renderHubGrid();show('P-HUB');modActif=null;}
+function ouvrirMod(id){
+ var wasSamu=modActif==='samu';
+ modActif=id;
+ if(id==='samu'){stopChrono();if(!wasSamu)playTalkieFx();}
+ else stopTalkieNoise();
+ if(id!=='victime')zoneActif=null;
+ renderMod();show('P-MOD');
+}
+
+function renderMod(){
+ var h=HUB.find(function(x){return x.id===modActif;});
+ document.getElementById('MOD-TITLE').textContent=h?h.ico+' '+h.lbl:'';
+ document.getElementById('SUBTABS').classList.add('HIDDEN');
+ renderPanel();
+}
+function renderHubStatus(){
+ renderHubHint();
+ var el=document.getElementById('HUB-STATUS'),v=B.v,urg=Object.keys(v.URG||{}).filter(function(k){return v.URG[k];});
+ if(!B.ctx.LIEU&&!B.ctx.RELEVEUR&&!urg.length){
+  el.className='HUB-STATUS empty';
+  el.innerHTML='Rien encore — remplissez les icônes ci-dessous (commencez par 📍 Contexte).';
+  return;
+ }
+ el.className='HUB-STATUS';
+ var s='📻 '+(B.ctx.RELEVEUR||'Releveur')+' · '+(B.ctx.HEURE||'?')+' · '+(B.ctx.LIEU||'(lieu non renseigné)');
+ if(B.ctx.NB_V&&B.ctx.NB_V>1)s+=' · '+B.ctx.NB_V+' victimes';else if(B.ctx.NB_V)s+=' · 1 victime';
+ if(B.ctx.CIRC)s+='<br>'+circLbl(B.ctx.CIRC)+(B.ctx.CIRC_TXT?' — '+B.ctx.CIRC_TXT:'');
+ if(B.v.INCONNUE)s+='<br>👤 Victime : <b>identité inconnue</b>';
+ else if(B.v.NOM||B.v.PRENOM)s+='<br>👤 '+(B.v.PRENOM||'')+' '+(B.v.NOM||'');
+ if(urg.length)s+='<br>🚨 <span style="color:var(--red)">'+urg.map(function(k){var u=URG.find(function(x){return x.id===k;});return u?u.t:k;}).join(', ')+'</span>';
+ el.innerHTML=s;
+}
+function tileBadge(id){
+ var v=B.v;if(id==='urgences'&&Object.keys(v.URG||{}).some(function(k){return v.URG[k];}))return 'alert';
+ if(stepDone(id))return 'ok';
+ return '';
+}
+function renderHubGrid(){
+ var g=document.getElementById('HUB-GRID'),next=nextStepId();g.innerHTML='';
+ HUB.forEach(function(h,i){
+  var t=document.createElement('button');
+  t.className='TILE'+(stepDone(h.id)?' TILE-DONE':'')+(h.id===next?' TILE-NEXT':'');
+  var bd=tileBadge(h.id);
+  t.innerHTML='<span class="TILE-STEP">'+(i+1)+'</span><span class="BADGE'+(bd?' '+bd:'')+'"></span><span class="TILE-ICO">'+h.ico+'</span><span class="TILE-LBL">'+h.lbl+'</span>';
+  t.onclick=function(){ouvrirMod(h.id);};
+  g.appendChild(t);
+ });
+ renderHubHint();
+}
+function posLbl(v){return{ALLONGE:'allongée sur le dos',PLS:'PLS (position latérale de sécurité)',ASSISE:'assise',RCP:'RCP (réanimation cardio-pulmonaire) / DEA'}[v]||v||'?';}
+function avpuHtml(){
+ var cur=B.v.AVPU,h='<label>Conscience AVPU</label><p class="SECT-HINT" style="margin-top:0">A (Alerte) · V (Verbal) · P (Pain = douleur) · U (Unresponsive = inconscient)</p><div class="CHOICES">';
+ AVPU_OPTS.forEach(function(o){
+  h+='<button type="button" class="CHOICE wide-btn'+(cur===o.v?' on':'')+'" onclick="chV(\'AVPU\',\''+o.v+'\');renderPanel()">'+o.t+'<small>'+o.d+'</small></button>';
+ });
+ if(cur)h+='<p class="SECT-HINT" style="margin-top:10px"><b>Choix :</b> '+avpuLbl(cur)+'</p>';
+ return h+'</div>';
+}
+function avpuLbl(v){
+ var o=AVPU_OPTS.find(function(x){return x.v===v;});
+ return o?o.t+' '+o.d:(v||'?');
+}
+function migratePouls(){
+ if(!B||!B.v)return;
+ if(B.v.POULS&&POULS_OPTS.some(function(o){return o.v===B.v.POULS;}))return;
+ if(B.v.POULS_ETAT==='ABSENT'||B.v.POULS==='Absent')B.v.POULS='ABSENT';
+ else if(B.v.POULS_ETAT==='NON'||B.v.POULS==='Inconnu'||B.v.POULS==='Non perçu')B.v.POULS='NON';
+ else if(B.v.POULS_REG==='irrégulier'||B.v.POULS==='Frappé')B.v.POULS='FRAPPE';
+ else if(B.v.POULS_ETAT==='PERCU'||B.v.POULS==='Perçu')B.v.POULS='PSR';
+ delete B.v.POULS_ETAT;delete B.v.POULS_SYM;delete B.v.POULS_REG;
+}
+function poulsLbl(){
+ var o=POULS_OPTS.find(function(x){return x.v===B.v.POULS;});
+ return o?o.t:(B.v.POULS||'?');
+}
+function poulsHtml(){
+ var cur=B.v.POULS,h='<label>Pouls</label><div class="CHOICES">';
+ POULS_OPTS.forEach(function(o){
+  h+='<button type="button" class="CHOICE wide-btn'+(cur===o.v?' on':'')+'" onclick="chV(\'POULS\',\''+o.v+'\');renderPanel()">'+o.t+'<small>'+o.d+'</small></button>';
+ });
+ if(cur)h+='<p class="SECT-HINT" style="margin-top:10px"><b>Transmission :</b> Pouls '+poulsLbl()+'.</p>';
+ return h+'</div>';
+}
+function migrateZones(){
+ if(!B||!B.v)return;
+ if(!B.v.ZONES)B.v.ZONES={};
+ var z=B.v.ZONES,neu={};
+ for(var k in z){
+  if(z[k]===true)neu[k]='DOULEUR';
+  else if(typeof z[k]==='string')neu[k]=z[k];
+ }
+ B.v.ZONES=neu;
+ delete B.v.PLAIES;
+}
+function plaieLbl(id){var p=PLAIE_OPTS.find(function(x){return x.id===id;});return p?p.l:(id||'?');}
+function bodyZoneAttrs(a){var s='';for(var k in a)s+=' '+k+'="'+a[k]+'"';return s;}
+function chZone(id){
+ if(!B.v.ZONES)B.v.ZONES={};
+ zoneActif=id;
+ save();renderPanel();
+}
+function chZoneType(typeId){
+ if(!zoneActif)return;
+ if(!B.v.ZONES)B.v.ZONES={};
+ if(B.v.ZONES[zoneActif]===typeId){delete B.v.ZONES[zoneActif];zoneActif=null;}
+ else B.v.ZONES[zoneActif]=typeId;
+ save();renderHubStatus();renderPanel();
+}
+function rmZone(id){
+ if(B.v.ZONES)delete B.v.ZONES[id];
+ if(zoneActif===id)zoneActif=null;
+ save();renderHubStatus();renderPanel();
+}
+function bodyZonesLbl(){
+ if(!B.v.ZONES)return '';
+ return BODY_ZONES.filter(function(b){return B.v.ZONES[b.id];}).map(function(b){return b.l+' ('+plaieLbl(B.v.ZONES[b.id])+')';}).join(', ');
+}
+function bodyMapHtml(){
+ var z=B.v.ZONES||{},h='<label>Schéma du corps</label><p class="SECT-HINT" style="margin-top:0">1) Touchez une zone · 2) Choisissez le type de lésion · Obstruction VA → 🚨 Urgences</p><div class="BODY-MAP"><svg viewBox="0 0 100 210" class="BODY-SVG" xmlns="http://www.w3.org/2000/svg">';
+ BODY_ZONES.forEach(function(b){
+  var typ=z[b.id],cls='BODY-ZONE'+(typ?' on':'')+(zoneActif===b.id?' sel':''),rx=b.rx?' rx="'+b.rx+'"':'';
+  if(b.e==='ellipse')h+='<ellipse class="'+cls+'" onclick="chZone(\''+b.id+'\')"'+bodyZoneAttrs(b.a)+'/>';
+  else h+='<rect class="'+cls+'" onclick="chZone(\''+b.id+'\')"'+rx+bodyZoneAttrs(b.a)+'/>';
+ });
+ h+='</svg></div>';
+ var sel=BODY_ZONES.filter(function(b){return z[b.id];});
+ if(sel.length){
+  h+='<div class="ZONE-LIST">';
+  sel.forEach(function(b){h+='<span class="ZONE-TAG">'+b.l+' — '+plaieLbl(z[b.id])+' <button type="button" class="ZONE-TAG-X" onclick="event.stopPropagation();rmZone(\''+b.id+'\')">✕</button></span>';});
+  h+='</div>';
+ }
+ if(zoneActif){
+  var zb=BODY_ZONES.find(function(b){return b.id===zoneActif;});
+  if(zb){
+   h+='<div class="ZONE-PICK"><label>Lésion — '+zb.l+'</label><p class="SECT-HINT" style="margin-top:0">Quel type sur cette zone ?</p><div class="CHOICES">';
+   PLAIE_OPTS.forEach(function(p){
+    h+='<button type="button" class="CHOICE wide-btn'+(z[zoneActif]===p.id?' on':'')+'" onclick="chZoneType(\''+p.id+'\')">'+p.l+'</button>';
+   });
+   h+='</div>';
+   if(z[zoneActif])h+='<button class="BTN BTN-SML BTN-SEC" onclick="rmZone(\''+zoneActif+'\')">✕ Retirer '+zb.l+'</button>';
+   h+='</div>';
+  }
+ }
+ return h;
+}
+
+function constantesLbl(){
+ var v=B.v,p=[];
+ if(v.FC)p.push('FC '+v.FC+'/min');
+ if(v.FR)p.push('FR '+v.FR+'/min');
+ if(v.TA)p.push('TA '+v.TA+' mmHg');
+ if(v.SPO2)p.push('SpO₂ '+v.SPO2+(String(v.SPO2).indexOf('%')>=0?'':' %'));
+ if(v.GLYC)p.push('Glycémie '+v.GLYC+' g/L');
+ if(v.TEMP)p.push('Température '+v.TEMP+(String(v.TEMP).indexOf('°')>=0?'':' °C'));
+ return p.join(', ');
+}
+function constantesHtml(){
+ var h='<label>Constantes vitales (chiffres SAMU)</label><p class="SECT-HINT" style="margin-top:0">Annoncez les valeurs mesurées — laissez vide si inconnues.</p><div class="CONST-GRID">';
+ h+=inp('FC (fréquence cardiaque) — /min','FC','72',false)+inp('FR (fréquence respiratoire) — /min','FR','16',false);
+ h+=inp('TA (tension artérielle) — mmHg','TA','120/80',false)+inp('SpO₂ (saturation en oxygène) — %','SPO2','98',false);
+ h+=inp('Glycémie (sucre sanguin) — g/L','GLYC','1,0',false)+inp('Température (°C)','TEMP','36,5',false);
+ return h+'</div>';
+}
+
+function renderPanel(){
+ var p=document.getElementById('MOD-PANEL'),v=B.v,h='';
+ if(modActif==='contexte'){
+  h+='<p class="SECT-HINT">Tablette partagée : <b>saisissez le releveur à chaque bilan</b> (non mémorisé). Votre CR talkie reste individuel.</p>';
+  h+=inp('Releveur — grade, nom, prénom','RELEVEUR','EX: CPL MARTIN P-A',true);
+  h+=inp('Heure','HEURE','',true)+'<button class="BTN BTN-SML BTN-SEC" onclick="B.ctx.HEURE=heure();save();renderPanel()">⏱ Maintenant</button>';
+  h+=inp('Lieu','LIEU','Où sommes-nous ?',true);
+  h+='<label>Nombre de victimes</label><p class="SECT-HINT" style="margin-top:0">Total sur les lieux — à annoncer au SAMU.</p><div class="CHOICES">';
+  [1,2,3,4].forEach(function(n){h+='<button type="button" class="CHOICE'+(B.ctx.NB_V==n?' on':'')+'" onclick="B.ctx.NB_V='+n+';save();renderHubStatus();renderPanel()">'+n+(n===4?'+':'')+'</button>';});
+  h+='</div>';
+  h+='<label>Circonstances</label>'+choiceHtml('CIRC',CIRCS,'',true);
+  h+=area('Précision','CIRC_TXT','Ex: chute d\'une échelle…',true);
+  h+=btnSuivant();
+ }
+ if(modActif==='urgences'){
+  syncInconnueUrg();
+  h+=inconnueBar();
+  h+='<p class="SECT-HINT">Cochez ce qui est en cours — 5 urgences PSC (Premiers Secours Citoyen).</p><div class="BIG-URG">';
+  URG.forEach(function(u){h+='<div class="BU'+(v.URG[u.id]?' on':'')+'" onclick="chUrg(\''+u.id+'\')"><span class="BU-ICO">'+u.ico+'</span><div><div class="BU-TXT">'+u.t+(u.d?' ('+u.d+')':'')+'</div></div></div>';});
+  h+='</div>'+avpuHtml();
+  h+='<label>Position victime</label>'+choiceHtml('POSITION',[
+   {v:'ALLONGE',l:'Allongée sur le dos'},{v:'PLS',l:'PLS (position latérale de sécurité)'},{v:'ASSISE',l:'Assise / demi-assise'},{v:'RCP',l:'RCP / DEA (réa + défibrillateur)'}
+  ],'');
+  h+=btnSuivant();
+ }
+ if(modActif==='victime'){
+  h+=inconnueBar();
+  var off=!!B.v.INCONNUE;
+  h+=inp('Nom','NOM','',false,off)+inp('Prénom','PRENOM','',false,off)+inp('Âge','AGE',off?'Inconnu':'42 ans',false,off);
+  h+=area('Ce que dit la victime','PLAINTES',off?'Non renseignable (inconscient)':'Douleur, malaise…',false,off);
+  h+=inp('Allergies connues','ALLERG',off?'Inconnues':'',false,off);
+  h+=bodyMapHtml();
+  h+=area('Précision lésions (optionnel)','LESIONS','Ex: profondeur, objet enfoncé…',false);
+  h+=btnSuivant();
+ }
+ if(modActif==='etat'){
+  h+='<label>Respiration</label>'+choiceHtml('RESPI',['Normale','Absente','Difficile','Inconnue'],'');
+  h+=poulsHtml();
+  h+='<label>Hémorragie</label>'+choiceHtml('HEMO',['Non','Oui — active'],'red');
+  if(v.HEMO&&v.HEMO!=='Non')h+=inp('Où ?','HEMO_LOC','Bras, jambe…',false);
+  h+=constantesHtml();
+  h+=btnSuivant();
+ }
+ if(modActif==='gestes'){
+  h+='<p class="SECT-HINT">Cochez ce que l\'équipe a fait.</p><div class="CHOICES">';
+  GESTES.forEach(function(g){h+='<button type="button" class="CHOICE'+(B.GESTES.indexOf(g.id)>=0?' on':'')+'" onclick="chGest(\''+g.id+'\')">'+g.l+'</button>';});
+  h+='</div><button type="button" class="BTN BTN-SML BTN-SEC" onclick="sansGestes()"'+(B.v.SANS_GESTE?' style="opacity:.6"':'')+'>Aucun geste particulier</button>';
+  h+=btnSuivant();
+ }
+ if(modActif==='samu'){
+  buildTx();
+  pushArchive();
+  h+=talkieCtlHtml();
+  h+='<p class="SECT-HINT" style="text-align:center;font-weight:800;color:var(--ok)">⏱ Temps releveur : '+chronoFmt(chronoMs())+'</p>';
+  h+='<div class="TALKIE">'+esc(window._lastTalkie)+'</div>';
+  h+=btnSuivant();
+ }
+ p.innerHTML=h;
+}
+
+function buildTx(){
+ var v=B.v,urg=Object.keys(v.URG||{}).filter(function(k){return v.URG[k];}).map(function(k){
+  var u=URG.find(function(x){return x.id===k;});return u?u.t+(u.d?' ('+u.d+')':''):k;});
+ var id=victimeId(),age=victimeAge();
+ var talk=['SAMU, bonjour.','Transmission bilan secouriste — 4° RIISC.','Releveur : '+(B.ctx.RELEVEUR||'non renseigné')+' (CR individuel).','',
+  'Lieu : '+(B.ctx.LIEU||'?')+'.','Circonstances : '+(B.ctx.CIRC?circLbl(B.ctx.CIRC):'?')+(B.ctx.CIRC_TXT?' — '+B.ctx.CIRC_TXT:'')+'.',
+  'Nombre de victimes : '+(B.ctx.NB_V||1)+'.',
+  'Victime principale (détail) : '+id+(age?', '+age:'')+'.'];
+ if(urg.length)talk.push('Urgences en cours : '+urg.join(', ')+'.');
+ talk.push('Conscience AVPU : '+avpuLbl(v.AVPU)+'.','Respiration : '+(v.RESPI||'?')+'.','Pouls : '+poulsLbl()+'.');
+ var cst=constantesLbl();
+ if(cst)talk.push('Constantes : '+cst+'.');
+ if(v.HEMO==='Oui — active')talk.push('Hémorragie : '+ (v.HEMO_LOC||'localisation à préciser')+'.');
+ if(v.PLAINTES)talk.push('Plaintes : '+v.PLAINTES+'.');
+ var zones=bodyZonesLbl();
+ if(zones)talk.push('Lésions par zone : '+zones+'.');
+ if(v.LESIONS)talk.push('Précision lésions : '+v.LESIONS+'.');
+ if(B.GESTES.length)talk.push('Gestes faits : '+B.GESTES.map(gesteLbl).join(', ')+'.');
+ else if(B.v.SANS_GESTE)talk.push('Gestes faits : aucun geste particulier signalé.');
+ talk.push('Position : '+posLbl(v.POSITION)+'.','','Demande de consigne. Fin de transmission.');
+ window._lastTalkie=talk.join('\n');
+}
+function talkieEnabled(){return localStorage.getItem(TALKIE_KEY)!=='0';}
+function setTalkieSound(on){localStorage.setItem(TALKIE_KEY,on?'1':'0');if(modActif==='samu')renderPanel();}
+function talkieCtlHtml(){
+ var on=talkieEnabled();
+ return '<div class="TALKIE-CTL"><button type="button" class="BTN BTN-SML '+(on?'BTN-BLU':'BTN-SEC')+'" onclick="setTalkieSound('+(!on)+')">'+(on?'🔊 Talkie + voix : ON':'🔇 Talkie + voix : OFF')+'</button><button type="button" class="BTN BTN-SML BTN-SEC" onclick="playTalkieFx()">📻 Réécouter l\'appel</button></div>';
+}
+function initTalkieVoices(){
+ if(!window.speechSynthesis)return;
+ window.speechSynthesis.getVoices();
+ window.speechSynthesis.onvoiceschanged=function(){window.speechSynthesis.getVoices();};
+}
+function frVoices(){
+ return window.speechSynthesis.getVoices().filter(function(x){
+  return x.lang==='fr-FR'||(x.lang&&x.lang.indexOf('fr')===0);
+ });
+}
+function isMaleVoice(v){
+ var n=(v.name||'').toLowerCase();
+ if(/female|femme|woman|girl|julie|hortense|amelie|amélie|caroline|virginie|denise|claire|marie|zira|hedvig|anna|elodie|élodie/i.test(n))return false;
+ if(/male|homme|man\b|paul|henri|thomas|damien|nicolas|marcel|claude|guillaume|pierre|jacques|yves|serge|michel|daniel/i.test(n))return true;
+ return null;
+}
+function getTalkieVoice(){
+ var fr=frVoices();
+ if(!fr.length)return null;
+ var male=fr.filter(function(v){return isMaleVoice(v)===true;});
+ if(male.length)return male[0];
+ var notFemale=fr.filter(function(v){return isMaleVoice(v)!==false;});
+ return notFemale[0]||fr[0];
+}
+function speakTalkie(){
+ if(!talkieEnabled()||!window.speechSynthesis)return;
+ window.speechSynthesis.cancel();
+ var u=new SpeechSynthesisUtterance(TALKIE_MSG);
+ u.lang='fr-FR';u.rate=0.84;u.pitch=0.62;u.volume=1;
+ var voice=getTalkieVoice();
+ if(voice)u.voice=voice;
+ window.speechSynthesis.speak(u);
+}
+function getTalkieCtx(){
+ try{
+  if(!talkieCtx)talkieCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(talkieCtx.state==='suspended')talkieCtx.resume();
+  return talkieCtx;
+ }catch(e){return null;}
+}
+function stopTalkieNoise(cancelSpeech){
+ if(cancelSpeech!==false){try{window.speechSynthesis.cancel();}catch(e){}}
+ talkieNodes.forEach(function(n){try{if(n.stop)n.stop(0);n.disconnect();}catch(e){}});
+ talkieNodes=[];
+}
+function playTalkieFx(){
+ if(!talkieEnabled())return;
+ var ctx=getTalkieCtx();if(!ctx)return;
+ stopTalkieNoise();
+ try{
+  var t=ctx.currentTime,out=ctx.createGain();
+  out.gain.value=0.88;
+  out.connect(ctx.destination);
+  talkieNodes.push(out);
+  function hiss(start,len,peak,lo,hi){
+   var sr=ctx.sampleRate,n=Math.floor(sr*len),buf=ctx.createBuffer(1,n,sr),d=buf.getChannelData(0),b=0,i;
+   for(i=0;i<n;i++){b=b*0.95+(Math.random()*2-1)*0.055;d[i]=b;}
+   var src=ctx.createBufferSource();src.buffer=buf;
+   var hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=lo;
+   var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=hi;
+   var g=ctx.createGain();
+   g.gain.setValueAtTime(0.0001,start);
+   g.gain.linearRampToValueAtTime(peak,start+0.02);
+   g.gain.setValueAtTime(peak*0.85,start+len*0.35);
+   g.gain.exponentialRampToValueAtTime(0.0001,start+len);
+   src.connect(hp);hp.connect(lp);lp.connect(g);g.connect(out);
+   src.start(start);src.stop(start+len+0.02);
+   talkieNodes.push(src,hp,lp,g);
+  }
+  function click(start){
+   var o=ctx.createOscillator(),g=ctx.createGain();
+   o.type='triangle';o.frequency.setValueAtTime(180,start);
+   o.frequency.exponentialRampToValueAtTime(90,start+0.04);
+   g.gain.setValueAtTime(0.0001,start);
+   g.gain.linearRampToValueAtTime(0.14,start+0.004);
+   g.gain.exponentialRampToValueAtTime(0.0001,start+0.045);
+   o.connect(g);g.connect(out);
+   o.start(start);o.stop(start+0.05);
+   talkieNodes.push(o,g);
+  }
+  click(t);
+  hiss(t+0.015,0.28,0.14,450,3200);
+  setTimeout(function(){stopTalkieNoise(false);},420);
+  setTimeout(speakTalkie,300);
+ }catch(e){speakTalkie();}
+}
+function toggleTheme(){document.body.classList.toggle('dark');localStorage.setItem('sec_theme',document.body.classList.contains('dark')?'d':'l');}
+window.onload=function(){
+ try{localStorage.removeItem('secourisme_profil');}catch(e){}
+ initTalkieVoices();
+ if(localStorage.getItem('sec_theme')==='d')document.body.classList.add('dark');
+ demarrerApp();
+ if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').catch(function(e){console.warn('Service Worker:',e);});
+ }
+};
 </script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
 </body>
 </html>
